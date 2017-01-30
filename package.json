@@ -1,0 +1,45 @@
+{
+  "name": "APL-configurator",
+  "description": "Configurator for APL pedestrian cross light system",
+  "version": "1.0.0",
+  "author": {
+    "name": "Francesco Bedussi",
+    "email": "francesco@francescobedussi.it",
+    "url": "http://www.francescobedussi.it"
+  },
+  "bugs": {
+    "url": "https://github.com/fbedussi/apl-configurator"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.14.0"
+  },
+  "keywords": [
+    "APL",
+    "configurator",
+    "pedestrina cross",
+    "lights"
+  ],
+  "license": "MIT",
+  "main": "lib/main.js",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fbedussi/apl-configurator.git"
+  },
+  "scripts": {
+    "dev": "webpack --watch"
+  }
+}
