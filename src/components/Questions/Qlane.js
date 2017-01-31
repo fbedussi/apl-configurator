@@ -6,7 +6,6 @@ import {showLane, getLane} from '../../selectors';
 
 
 const mapStateToProps = (state) => ({
-   shown: showLane(state),
    lane: getLane(state)
 });
 
@@ -23,7 +22,7 @@ class Qlane extends React.Component {
 
     render() {
         const baseClassName = 'qlane question';
-        const classes = this.props.shown? baseClassName : baseClassName + ' hide';
+        const classes = this.props.isVisibleIf? baseClassName : baseClassName + ' hide';
 
         return (
          <div className={classes}>

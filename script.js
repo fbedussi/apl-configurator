@@ -23788,128 +23788,47 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 	exports.questions = questions;
-	exports.results = results;
 	function questions() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    power: null,
-	    showPedetrsian: false,
-	    pedestrian: null,
-	    showInteraction: false,
-	    interaction: null,
-	    showLane: false,
-	    lane: null
-	  };
-	  var action = arguments[1];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+			power: null,
+			pedestrian: null,
+			interaction: null,
+			lane: null
+		};
+		var action = arguments[1];
 	
-	  switch (action.type) {
-	    case 'SET_POWER':
-	      return Object.assign({}, state, {
-	        power: action.value,
-	        showPedestrian: !action.value,
-	        showInteraction: false,
-	        pedestrian: null,
-	        interaction: null,
-	        showLane: false,
-	        lane: null
-	      });
+		switch (action.type) {
+			case 'SET_POWER':
+				return Object.assign({}, state, {
+					power: action.value,
+					pedestrian: null,
+					interaction: null,
+					lane: null
+				});
 	
-	    case 'SET_PEDESTRIAN':
-	      return Object.assign({}, state, {
-	        pedestrian: action.value,
-	        showInteraction: action.value,
-	        showLane: !action.value,
-	        interaction: null,
-	        lane: null
-	      });
+			case 'SET_PEDESTRIAN':
+				return Object.assign({}, state, {
+					pedestrian: action.value,
+					interaction: null,
+					lane: null
+				});
 	
-	    case 'SET_INTERACTION':
-	      return Object.assign({}, state, {
-	        interaction: action.value
-	      });
+			case 'SET_INTERACTION':
+				return Object.assign({}, state, {
+					interaction: action.value
+				});
 	
-	    case 'SET_LANE':
-	      return Object.assign({}, state, {
-	        lane: action.value
-	      });
+			case 'SET_LANE':
+				return Object.assign({}, state, {
+					lane: action.value
+				});
 	
-	    default:
-	      return state;
-	  }
-	}
-	
-	function results() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    aplsolar: null,
-	    aplsmart: {
-	      touch: null,
-	      sensor: null
-	    },
-	    aplclassic: {
-	      n: null,
-	      p: null
-	    }
-	  };
-	  var action = arguments[1];
-	
-	  switch (action.type) {
-	    case 'SET_POWER':
-	      return Object.assign({}, state, {
-	        aplsolar: action.value,
-	        aplsmart: {
-	          touch: null,
-	          sensor: null
-	        },
-	        aplclassic: {
-	          n: null,
-	          p: null
-	        }
-	      });
-	
-	    case 'SET_PEDESTRIAN':
-	      return Object.assign({}, state, {
-	        aplsolar: null,
-	        aplsmart: {
-	          touch: null,
-	          sensor: null
-	        },
-	        aplclassic: {
-	          n: null,
-	          p: null
-	        }
-	      });
-	
-	    case 'SET_INTERACTION':
-	      return Object.assign({}, state, {
-	        aplsolar: null,
-	        aplsmart: {
-	          touch: action.value,
-	          sensor: !action.value
-	        },
-	        aplclassic: {
-	          n: null,
-	          p: null
-	        }
-	      });
-	
-	    case 'SET_LANE':
-	      return Object.assign({}, state, {
-	        aplsolar: null,
-	        aplsmart: {
-	          touch: null,
-	          sensor: null
-	        },
-	        aplclassic: {
-	          n: action.value,
-	          p: !action.value
-	        }
-	      });
-	
-	    default:
-	      return state;
-	  }
+			default:
+				return state;
+		}
 	}
 
 /***/ },
@@ -24045,6 +23964,8 @@
 	
 	var _AplClassicP2 = _interopRequireDefault(_AplClassicP);
 	
+	var _selectors = __webpack_require__(222);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24054,7 +23975,11 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	   return {};
+	   return {
+	      power: (0, _selectors.getPower)(state),
+	      interaction: (0, _selectors.getInteraction)(state),
+	      lane: (0, _selectors.getLane)(state)
+	   };
 	};
 	
 	var Results = function (_React$Component) {
@@ -24072,11 +23997,11 @@
 	         return _react2.default.createElement(
 	            'div',
 	            { className: 'results' },
-	            _react2.default.createElement(_AplSolar2.default, null),
-	            _react2.default.createElement(_AplSmartTouch2.default, null),
-	            _react2.default.createElement(_AplSmartSensor2.default, null),
-	            _react2.default.createElement(_AplClassicN2.default, null),
-	            _react2.default.createElement(_AplClassicP2.default, null)
+	            _react2.default.createElement(_AplSolar2.default, { isVisibleIf: this.props.power === false }),
+	            _react2.default.createElement(_AplSmartTouch2.default, { isVisibleIf: this.props.interaction === true }),
+	            _react2.default.createElement(_AplSmartSensor2.default, { isVisibleIf: this.props.interaction === false }),
+	            _react2.default.createElement(_AplClassicN2.default, { isVisibleIf: this.props.lane === true }),
+	            _react2.default.createElement(_AplClassicP2.default, { isVisibleIf: this.props.lane === false })
 	         );
 	      }
 	   }]);
@@ -24104,10 +24029,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _selectors = __webpack_require__(222);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24115,12 +24036,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        shown: (0, _selectors.getAplSolar)(state)
-	    };
-	};
 	
 	var AplSolar = function (_React$Component) {
 	    _inherits(AplSolar, _React$Component);
@@ -24135,7 +24050,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var baseClassName = 'result aplsolar';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	            return _react2.default.createElement(
 	                'div',
 	                { className: classes },
@@ -24153,7 +24068,7 @@
 	
 	;
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplSolar);
+	exports.default = AplSolar;
 
 /***/ },
 /* 222 */
@@ -24164,50 +24079,10 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getAplSolar = getAplSolar;
-	exports.showPedestrian = showPedestrian;
-	exports.showInteraction = showInteraction;
-	exports.showLane = showLane;
-	exports.getAplSmartTouch = getAplSmartTouch;
-	exports.getAplSmartSensor = getAplSmartSensor;
-	exports.getAplClassicP = getAplClassicP;
-	exports.getAplClassicN = getAplClassicN;
 	exports.getPower = getPower;
 	exports.getPedestrian = getPedestrian;
 	exports.getInteraction = getInteraction;
 	exports.getLane = getLane;
-	function getAplSolar(state) {
-	    return state.results.aplsolar;
-	}
-	
-	function showPedestrian(state) {
-	    return state.questions.showPedestrian;
-	}
-	
-	function showInteraction(state) {
-	    return state.questions.showInteraction;
-	}
-	
-	function showLane(state) {
-	    return state.questions.showLane;
-	}
-	
-	function getAplSmartTouch(state) {
-	    return state.results.aplsmart && state.results.aplsmart.touch;
-	}
-	
-	function getAplSmartSensor(state) {
-	    return state.results.aplsmart && state.results.aplsmart.sensor;
-	}
-	
-	function getAplClassicP(state) {
-	    return state.results.aplclassic && state.results.aplclassic.p;
-	}
-	
-	function getAplClassicN(state) {
-	    return state.results.aplclassic && state.results.aplclassic.n;
-	}
-	
 	function getPower(state) {
 	    return state.questions.power;
 	}
@@ -24242,8 +24117,6 @@
 	
 	var _reactRedux = __webpack_require__(200);
 	
-	var _selectors = __webpack_require__(222);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24251,12 +24124,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        shown: (0, _selectors.getAplSmartTouch)(state)
-	    };
-	};
 	
 	var AplSmartTouch = function (_React$Component) {
 	    _inherits(AplSmartTouch, _React$Component);
@@ -24271,7 +24138,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var baseClassName = 'result aplSmart aplSmart--touch';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	            return _react2.default.createElement(
 	                'div',
 	                { className: classes },
@@ -24289,7 +24156,7 @@
 	
 	;
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplSmartTouch);
+	exports.default = AplSmartTouch;
 
 /***/ },
 /* 224 */
@@ -24307,10 +24174,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _selectors = __webpack_require__(222);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24318,12 +24181,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        shown: (0, _selectors.getAplSmartSensor)(state)
-	    };
-	};
 	
 	var AplSmartSensor = function (_React$Component) {
 	    _inherits(AplSmartSensor, _React$Component);
@@ -24338,7 +24195,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var baseClassName = 'result aplSmart aplSmart--sensor';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	            return _react2.default.createElement(
 	                'div',
 	                { className: classes },
@@ -24356,7 +24213,7 @@
 	
 	;
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplSmartSensor);
+	exports.default = AplSmartSensor;
 
 /***/ },
 /* 225 */
@@ -24374,10 +24231,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _selectors = __webpack_require__(222);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24385,12 +24238,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        shown: (0, _selectors.getAplClassicN)(state)
-	    };
-	};
 	
 	var AplClassicN = function (_React$Component) {
 	    _inherits(AplClassicN, _React$Component);
@@ -24405,7 +24252,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var baseClassName = 'result aplClassic aplClassic--n';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	
 	            return _react2.default.createElement(
 	                'div',
@@ -24424,7 +24271,7 @@
 	
 	;
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplClassicN);
+	exports.default = AplClassicN;
 
 /***/ },
 /* 226 */
@@ -24442,10 +24289,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _selectors = __webpack_require__(222);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24453,12 +24296,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        shown: (0, _selectors.getAplClassicP)(state)
-	    };
-	};
 	
 	var AplClassicP = function (_React$Component) {
 	    _inherits(AplClassicP, _React$Component);
@@ -24473,7 +24310,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var baseClassName = 'result aplClassic aplClassic--p';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	            return _react2.default.createElement(
 	                'div',
 	                { className: classes },
@@ -24491,7 +24328,7 @@
 	
 	;
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplClassicP);
+	exports.default = AplClassicP;
 
 /***/ },
 /* 227 */
@@ -24527,6 +24364,8 @@
 	
 	var _Qlane2 = _interopRequireDefault(_Qlane);
 	
+	var _selectors = __webpack_require__(222);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24536,7 +24375,10 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	   return {};
+	   return {
+	      power: (0, _selectors.getPower)(state),
+	      pedestrian: (0, _selectors.getPedestrian)(state)
+	   };
 	};
 	
 	var Questions = function (_React$Component) {
@@ -24555,9 +24397,9 @@
 	            'div',
 	            { className: 'questions' },
 	            _react2.default.createElement(_Qpower2.default, null),
-	            _react2.default.createElement(_Qpedestrian2.default, null),
-	            _react2.default.createElement(_Qinteraction2.default, null),
-	            _react2.default.createElement(_Qlane2.default, null)
+	            _react2.default.createElement(_Qpedestrian2.default, { isVisibleIf: this.props.power === true }),
+	            _react2.default.createElement(_Qinteraction2.default, { isVisibleIf: this.props.pedestrian === true }),
+	            _react2.default.createElement(_Qlane2.default, { isVisibleIf: this.props.pedestrian === false })
 	         );
 	      }
 	   }]);
@@ -24699,7 +24541,6 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
-	        shown: (0, _selectors.showPedestrian)(state),
 	        pedestrian: (0, _selectors.getPedestrian)(state)
 	    };
 	};
@@ -24732,7 +24573,7 @@
 	            var _this2 = this;
 	
 	            var baseClassName = 'qpedestrian question';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	
 	            return _react2.default.createElement(
 	                'div',
@@ -24801,7 +24642,6 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
-	        shown: (0, _selectors.showInteraction)(state),
 	        interaction: (0, _selectors.getInteraction)(state)
 	    };
 	};
@@ -24834,7 +24674,7 @@
 	            var _this2 = this;
 	
 	            var baseClassName = 'qinteraction question';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	
 	            return _react2.default.createElement(
 	                'div',
@@ -24903,7 +24743,6 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
-	        shown: (0, _selectors.showLane)(state),
 	        lane: (0, _selectors.getLane)(state)
 	    };
 	};
@@ -24936,7 +24775,7 @@
 	            var _this2 = this;
 	
 	            var baseClassName = 'qlane question';
-	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            var classes = this.props.isVisibleIf ? baseClassName : baseClassName + ' hide';
 	
 	            return _react2.default.createElement(
 	                'div',

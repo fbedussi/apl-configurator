@@ -5,7 +5,6 @@ import { setPedestrian } from '../../actions';
 import { showPedestrian, getPedestrian } from '../../selectors';
 
 const mapStateToProps = (state) => ({
-    shown: showPedestrian(state),
     pedestrian: getPedestrian(state)
 });
 
@@ -22,7 +21,7 @@ class Qpedestrian extends React.Component {
 
     render() {
         const baseClassName = 'qpedestrian question';
-        const classes = this.props.shown? baseClassName : baseClassName + ' hide';
+        const classes = this.props.isVisibleIf? baseClassName : baseClassName + ' hide';
         
         return (
             <div className={classes}>

@@ -5,7 +5,6 @@ import {setInteraction} from '../../actions';
 import {showInteraction, getInteraction} from '../../selectors';
 
 const mapStateToProps = (state) => ({
-   shown: showInteraction(state),
    interaction: getInteraction(state)
 });
 
@@ -22,7 +21,7 @@ class Qinteraction extends React.Component {
 
     render() {
         const baseClassName = 'qinteraction question';
-        const classes = this.props.shown? baseClassName : baseClassName + ' hide';
+        const classes = this.props.isVisibleIf? baseClassName : baseClassName + ' hide';
         
         return (
          <div className={classes}>
