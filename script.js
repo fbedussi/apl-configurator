@@ -23794,7 +23794,7 @@
 	exports.results = results;
 	function questions() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    power: false,
+	    power: null,
 	    showPedetrsian: false,
 	    pedestrian: null,
 	    showInteraction: false,
@@ -23810,19 +23810,29 @@
 	        power: action.value,
 	        showPedestrian: !action.value,
 	        showInteraction: false,
-	        showLane: false
+	        pedestrian: null,
+	        interaction: null,
+	        showLane: false,
+	        lane: null
 	      });
 	
 	    case 'SET_PEDESTRIAN':
 	      return Object.assign({}, state, {
 	        pedestrian: action.value,
 	        showInteraction: action.value,
-	        showLane: !action.value
+	        showLane: !action.value,
+	        interaction: null,
+	        lane: null
 	      });
 	
 	    case 'SET_INTERACTION':
 	      return Object.assign({}, state, {
 	        interaction: action.value
+	      });
+	
+	    case 'SET_LANE':
+	      return Object.assign({}, state, {
+	        lane: action.value
 	      });
 	
 	    default:
@@ -23832,7 +23842,7 @@
 	
 	function results() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    aplsolar: false,
+	    aplsolar: null,
 	    aplsmart: {
 	      touch: null,
 	      sensor: null
@@ -23847,11 +23857,20 @@
 	  switch (action.type) {
 	    case 'SET_POWER':
 	      return Object.assign({}, state, {
-	        aplsolar: action.value
+	        aplsolar: action.value,
+	        aplsmart: {
+	          touch: null,
+	          sensor: null
+	        },
+	        aplclassic: {
+	          n: null,
+	          p: null
+	        }
 	      });
 	
 	    case 'SET_PEDESTRIAN':
 	      return Object.assign({}, state, {
+	        aplsolar: null,
 	        aplsmart: {
 	          touch: null,
 	          sensor: null
@@ -23864,14 +23883,24 @@
 	
 	    case 'SET_INTERACTION':
 	      return Object.assign({}, state, {
+	        aplsolar: null,
 	        aplsmart: {
 	          touch: action.value,
 	          sensor: !action.value
+	        },
+	        aplclassic: {
+	          n: null,
+	          p: null
 	        }
 	      });
 	
 	    case 'SET_LANE':
 	      return Object.assign({}, state, {
+	        aplsolar: null,
+	        aplsmart: {
+	          touch: null,
+	          sensor: null
+	        },
 	        aplclassic: {
 	          n: action.value,
 	          p: !action.value
@@ -23934,7 +23963,7 @@
 	
 	var _Results2 = _interopRequireDefault(_Results);
 	
-	var _Questions = __webpack_require__(225);
+	var _Questions = __webpack_require__(227);
 	
 	var _Questions2 = _interopRequireDefault(_Questions);
 	
@@ -24008,11 +24037,11 @@
 	
 	var _AplSmartSensor2 = _interopRequireDefault(_AplSmartSensor);
 	
-	var _AplClassicN = __webpack_require__(230);
+	var _AplClassicN = __webpack_require__(225);
 	
 	var _AplClassicN2 = _interopRequireDefault(_AplClassicN);
 	
-	var _AplClassicP = __webpack_require__(231);
+	var _AplClassicP = __webpack_require__(226);
 	
 	var _AplClassicP2 = _interopRequireDefault(_AplClassicP);
 	
@@ -24066,7 +24095,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	   value: true
+	    value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24087,39 +24116,39 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var baseClassName = 'result aplsolar';
-	
 	var mapStateToProps = function mapStateToProps(state) {
-	   return {
-	      clss: (0, _selectors.getAplSolar)(state) ? baseClassName : baseClassName + ' hide'
-	   };
+	    return {
+	        shown: (0, _selectors.getAplSolar)(state)
+	    };
 	};
 	
 	var AplSolar = function (_React$Component) {
-	   _inherits(AplSolar, _React$Component);
+	    _inherits(AplSolar, _React$Component);
 	
-	   function AplSolar() {
-	      _classCallCheck(this, AplSolar);
+	    function AplSolar() {
+	        _classCallCheck(this, AplSolar);
 	
-	      return _possibleConstructorReturn(this, (AplSolar.__proto__ || Object.getPrototypeOf(AplSolar)).apply(this, arguments));
-	   }
+	        return _possibleConstructorReturn(this, (AplSolar.__proto__ || Object.getPrototypeOf(AplSolar)).apply(this, arguments));
+	    }
 	
-	   _createClass(AplSolar, [{
-	      key: 'render',
-	      value: function render() {
-	         return _react2.default.createElement(
-	            'div',
-	            { className: this.props.clss },
-	            _react2.default.createElement(
-	               'h1',
-	               null,
-	               'Apl Solar'
-	            )
-	         );
-	      }
-	   }]);
+	    _createClass(AplSolar, [{
+	        key: 'render',
+	        value: function render() {
+	            var baseClassName = 'result aplsolar';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            return _react2.default.createElement(
+	                'div',
+	                { className: classes },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Apl Solar'
+	                )
+	            );
+	        }
+	    }]);
 	
-	   return AplSolar;
+	    return AplSolar;
 	}(_react2.default.Component);
 	
 	;
@@ -24202,7 +24231,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	   value: true
+	    value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24223,39 +24252,39 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var baseClassName = 'result aplsolar';
-	
 	var mapStateToProps = function mapStateToProps(state) {
-	   return {
-	      clss: (0, _selectors.getAplSmartTouch)(state) ? baseClassName : baseClassName + ' hide'
-	   };
+	    return {
+	        shown: (0, _selectors.getAplSmartTouch)(state)
+	    };
 	};
 	
 	var AplSmartTouch = function (_React$Component) {
-	   _inherits(AplSmartTouch, _React$Component);
+	    _inherits(AplSmartTouch, _React$Component);
 	
-	   function AplSmartTouch() {
-	      _classCallCheck(this, AplSmartTouch);
+	    function AplSmartTouch() {
+	        _classCallCheck(this, AplSmartTouch);
 	
-	      return _possibleConstructorReturn(this, (AplSmartTouch.__proto__ || Object.getPrototypeOf(AplSmartTouch)).apply(this, arguments));
-	   }
+	        return _possibleConstructorReturn(this, (AplSmartTouch.__proto__ || Object.getPrototypeOf(AplSmartTouch)).apply(this, arguments));
+	    }
 	
-	   _createClass(AplSmartTouch, [{
-	      key: 'render',
-	      value: function render() {
-	         return _react2.default.createElement(
-	            'div',
-	            { className: this.props.clss },
-	            _react2.default.createElement(
-	               'h1',
-	               null,
-	               'Apl Smart Touch'
-	            )
-	         );
-	      }
-	   }]);
+	    _createClass(AplSmartTouch, [{
+	        key: 'render',
+	        value: function render() {
+	            var baseClassName = 'result aplSmart aplSmart--touch';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            return _react2.default.createElement(
+	                'div',
+	                { className: classes },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Apl Smart Touch'
+	                )
+	            );
+	        }
+	    }]);
 	
-	   return AplSmartTouch;
+	    return AplSmartTouch;
 	}(_react2.default.Component);
 	
 	;
@@ -24269,7 +24298,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	   value: true
+	    value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24290,39 +24319,39 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var baseClassName = 'result aplSmart aplSmart--sensor';
-	
 	var mapStateToProps = function mapStateToProps(state) {
-	   return {
-	      clss: (0, _selectors.getAplSmartSensor)(state) ? baseClassName : baseClassName + ' hide'
-	   };
+	    return {
+	        shown: (0, _selectors.getAplSmartSensor)(state)
+	    };
 	};
 	
 	var AplSmartSensor = function (_React$Component) {
-	   _inherits(AplSmartSensor, _React$Component);
+	    _inherits(AplSmartSensor, _React$Component);
 	
-	   function AplSmartSensor() {
-	      _classCallCheck(this, AplSmartSensor);
+	    function AplSmartSensor() {
+	        _classCallCheck(this, AplSmartSensor);
 	
-	      return _possibleConstructorReturn(this, (AplSmartSensor.__proto__ || Object.getPrototypeOf(AplSmartSensor)).apply(this, arguments));
-	   }
+	        return _possibleConstructorReturn(this, (AplSmartSensor.__proto__ || Object.getPrototypeOf(AplSmartSensor)).apply(this, arguments));
+	    }
 	
-	   _createClass(AplSmartSensor, [{
-	      key: 'render',
-	      value: function render() {
-	         return _react2.default.createElement(
-	            'div',
-	            { className: this.props.clss },
-	            _react2.default.createElement(
-	               'h1',
-	               null,
-	               'Apl Smart Sensor'
-	            )
-	         );
-	      }
-	   }]);
+	    _createClass(AplSmartSensor, [{
+	        key: 'render',
+	        value: function render() {
+	            var baseClassName = 'result aplSmart aplSmart--sensor';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            return _react2.default.createElement(
+	                'div',
+	                { className: classes },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Apl Smart Sensor'
+	                )
+	            );
+	        }
+	    }]);
 	
-	   return AplSmartSensor;
+	    return AplSmartSensor;
 	}(_react2.default.Component);
 	
 	;
@@ -24331,6 +24360,141 @@
 
 /***/ },
 /* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(200);
+	
+	var _selectors = __webpack_require__(222);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        shown: (0, _selectors.getAplClassicN)(state)
+	    };
+	};
+	
+	var AplClassicN = function (_React$Component) {
+	    _inherits(AplClassicN, _React$Component);
+	
+	    function AplClassicN() {
+	        _classCallCheck(this, AplClassicN);
+	
+	        return _possibleConstructorReturn(this, (AplClassicN.__proto__ || Object.getPrototypeOf(AplClassicN)).apply(this, arguments));
+	    }
+	
+	    _createClass(AplClassicN, [{
+	        key: 'render',
+	        value: function render() {
+	            var baseClassName = 'result aplClassic aplClassic--n';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	
+	            return _react2.default.createElement(
+	                'div',
+	                { className: classes },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Apl Classic N'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return AplClassicN;
+	}(_react2.default.Component);
+	
+	;
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplClassicN);
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(200);
+	
+	var _selectors = __webpack_require__(222);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        shown: (0, _selectors.getAplClassicP)(state)
+	    };
+	};
+	
+	var AplClassicP = function (_React$Component) {
+	    _inherits(AplClassicP, _React$Component);
+	
+	    function AplClassicP() {
+	        _classCallCheck(this, AplClassicP);
+	
+	        return _possibleConstructorReturn(this, (AplClassicP.__proto__ || Object.getPrototypeOf(AplClassicP)).apply(this, arguments));
+	    }
+	
+	    _createClass(AplClassicP, [{
+	        key: 'render',
+	        value: function render() {
+	            var baseClassName = 'result aplClassic aplClassic--p';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	            return _react2.default.createElement(
+	                'div',
+	                { className: classes },
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Apl Classic P'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return AplClassicP;
+	}(_react2.default.Component);
+	
+	;
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplClassicP);
+
+/***/ },
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24347,19 +24511,19 @@
 	
 	var _reactRedux = __webpack_require__(200);
 	
-	var _Qpower = __webpack_require__(226);
+	var _Qpower = __webpack_require__(228);
 	
 	var _Qpower2 = _interopRequireDefault(_Qpower);
 	
-	var _Qpedestrian = __webpack_require__(227);
+	var _Qpedestrian = __webpack_require__(229);
 	
 	var _Qpedestrian2 = _interopRequireDefault(_Qpedestrian);
 	
-	var _Qinteraction = __webpack_require__(228);
+	var _Qinteraction = __webpack_require__(230);
 	
 	var _Qinteraction2 = _interopRequireDefault(_Qinteraction);
 	
-	var _Qlane = __webpack_require__(229);
+	var _Qlane = __webpack_require__(231);
 	
 	var _Qlane2 = _interopRequireDefault(_Qlane);
 	
@@ -24406,7 +24570,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Questions);
 
 /***/ },
-/* 226 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24452,29 +24616,22 @@
 	var Qpower = function (_React$Component) {
 	    _inherits(Qpower, _React$Component);
 	
-	    function Qpower(props) {
+	    function Qpower() {
 	        _classCallCheck(this, Qpower);
 	
-	        var _this = _possibleConstructorReturn(this, (Qpower.__proto__ || Object.getPrototypeOf(Qpower)).call(this, props));
-	
-	        _this.state = {
-	            power: _this.props.power
-	        };
-	
-	        _this.handleChange = _this.handleChange.bind(_this);
-	        return _this;
+	        return _possibleConstructorReturn(this, (Qpower.__proto__ || Object.getPrototypeOf(Qpower)).apply(this, arguments));
 	    }
 	
 	    _createClass(Qpower, [{
 	        key: 'handleChange',
-	        value: function handleChange(e) {
-	            var value = Boolean(Number(e.target.value));
-	            this.setState({ power: value });
+	        value: function handleChange(e, value) {
 	            this.props.setPower(value);
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+	
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'qpower question' },
@@ -24486,13 +24643,17 @@
 	                _react2.default.createElement(
 	                    'label',
 	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '1', onChange: this.handleChange, checked: this.state.power }),
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, true);
+	                        } }),
 	                    'S\xEC'
 	                ),
 	                _react2.default.createElement(
 	                    'label',
 	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '0', onChange: this.handleChange, checked: !this.state.power }),
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, false);
+	                        } }),
 	                    'No'
 	                )
 	            );
@@ -24505,188 +24666,6 @@
 	;
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProsps)(Qpower);
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _actions = __webpack_require__(218);
-	
-	var _selectors = __webpack_require__(222);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var baseClassName = 'qpedestrian question';
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        clss: (0, _selectors.showPedestrian)(state) ? baseClassName : baseClassName + ' hide',
-	        pedestrian: (0, _selectors.getPedestrian)(state)
-	    };
-	};
-	
-	var mapDispatchToProsps = function mapDispatchToProsps(dispatch) {
-	    return {
-	        setPedestrian: function setPedestrian(e) {
-	            var value = Boolean(Number(e.target.value));
-	            dispatch({ type: 'SET_PEDESTRIAN', value: value });
-	        }
-	    };
-	};
-	
-	var Qpedestrian = function (_React$Component) {
-	    _inherits(Qpedestrian, _React$Component);
-	
-	    function Qpedestrian() {
-	        _classCallCheck(this, Qpedestrian);
-	
-	        return _possibleConstructorReturn(this, (Qpedestrian.__proto__ || Object.getPrototypeOf(Qpedestrian)).apply(this, arguments));
-	    }
-	
-	    _createClass(Qpedestrian, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: this.props.clss },
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Il sistema deve essere dotato di dispositivo per l\'interazione con il pedone?'
-	                ),
-	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '1', onChange: this.props.setPedestrian, checked: this.props.pedestrian }),
-	                    'S\xEC'
-	                ),
-	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '0', onChange: this.props.setPedestrian, checked: !this.props.pedestrian }),
-	                    'No'
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Qpedestrian;
-	}(_react2.default.Component);
-	
-	;
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProsps)(Qpedestrian);
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _actions = __webpack_require__(218);
-	
-	var _selectors = __webpack_require__(222);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var baseClassName = 'qinteraction question';
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        clss: (0, _selectors.showInteraction)(state) ? baseClassName : baseClassName + ' hide',
-	        interaction: (0, _selectors.getInteraction)(state)
-	    };
-	};
-	
-	var mapDispatchToProsps = function mapDispatchToProsps(dispatch) {
-	    return {
-	        setInteraction: function setInteraction(e) {
-	            var value = Boolean(Number(e.target.value));
-	            dispatch({ type: 'SET_INTERACTION', value: value });
-	        }
-	    };
-	};
-	
-	var Qinteraction = function (_React$Component) {
-	    _inherits(Qinteraction, _React$Component);
-	
-	    function Qinteraction() {
-	        _classCallCheck(this, Qinteraction);
-	
-	        return _possibleConstructorReturn(this, (Qinteraction.__proto__ || Object.getPrototypeOf(Qinteraction)).apply(this, arguments));
-	    }
-	
-	    _createClass(Qinteraction, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: this.props.clss },
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'L\'interazione con il pedone deve essere attiva?'
-	                ),
-	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '1', onChange: this.props.setInteraction, checked: this.props.interaction }),
-	                    'S\xEC'
-	                ),
-	                _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '0', onChange: this.props.setInteraction, checked: !this.props.interaction }),
-	                    'No'
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Qinteraction;
-	}(_react2.default.Component);
-	
-	;
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProsps)(Qinteraction);
 
 /***/ },
 /* 229 */
@@ -24718,19 +24697,220 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var baseClassName = 'qlane question';
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        shown: (0, _selectors.showPedestrian)(state),
+	        pedestrian: (0, _selectors.getPedestrian)(state)
+	    };
+	};
+	
+	var mapDispatchToProsps = function mapDispatchToProsps(dispatch) {
+	    return {
+	        setPedestrian: function setPedestrian(value) {
+	            dispatch({ type: 'SET_PEDESTRIAN', value: value });
+	        }
+	    };
+	};
+	
+	var Qpedestrian = function (_React$Component) {
+	    _inherits(Qpedestrian, _React$Component);
+	
+	    function Qpedestrian() {
+	        _classCallCheck(this, Qpedestrian);
+	
+	        return _possibleConstructorReturn(this, (Qpedestrian.__proto__ || Object.getPrototypeOf(Qpedestrian)).apply(this, arguments));
+	    }
+	
+	    _createClass(Qpedestrian, [{
+	        key: 'handleChange',
+	        value: function handleChange(e, value) {
+	            this.props.setPedestrian(value);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var baseClassName = 'qpedestrian question';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	
+	            return _react2.default.createElement(
+	                'div',
+	                { className: classes },
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Il sistema deve essere dotato di dispositivo per l\'interazione con il pedone?'
+	                ),
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qpedestrian', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, true);
+	                        }, checked: this.props.pedestrian === true }),
+	                    'S\xEC'
+	                ),
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qpedestrian', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, false);
+	                        }, checked: this.props.pedestrian === false }),
+	                    'No'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Qpedestrian;
+	}(_react2.default.Component);
+	
+	;
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProsps)(Qpedestrian);
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(200);
+	
+	var _actions = __webpack_require__(218);
+	
+	var _selectors = __webpack_require__(222);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
-	        clss: (0, _selectors.showLane)(state) ? baseClassName : baseClassName + ' hide',
+	        shown: (0, _selectors.showInteraction)(state),
+	        interaction: (0, _selectors.getInteraction)(state)
+	    };
+	};
+	
+	var mapDispatchToProsps = function mapDispatchToProsps(dispatch) {
+	    return {
+	        setInteraction: function setInteraction(value) {
+	            dispatch({ type: 'SET_INTERACTION', value: value });
+	        }
+	    };
+	};
+	
+	var Qinteraction = function (_React$Component) {
+	    _inherits(Qinteraction, _React$Component);
+	
+	    function Qinteraction() {
+	        _classCallCheck(this, Qinteraction);
+	
+	        return _possibleConstructorReturn(this, (Qinteraction.__proto__ || Object.getPrototypeOf(Qinteraction)).apply(this, arguments));
+	    }
+	
+	    _createClass(Qinteraction, [{
+	        key: 'handleChange',
+	        value: function handleChange(e, value) {
+	            this.props.setInteraction(value);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var baseClassName = 'qinteraction question';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	
+	            return _react2.default.createElement(
+	                'div',
+	                { className: classes },
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'L\'interazione con il pedone deve essere attiva?'
+	                ),
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qinteraction', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, true);
+	                        }, checked: this.props.interaction === true }),
+	                    'S\xEC'
+	                ),
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qinteraction', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, false);
+	                        }, checked: this.props.interaction === false }),
+	                    'No'
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Qinteraction;
+	}(_react2.default.Component);
+	
+	;
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProsps)(Qinteraction);
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(200);
+	
+	var _actions = __webpack_require__(218);
+	
+	var _selectors = __webpack_require__(222);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        shown: (0, _selectors.showLane)(state),
 	        lane: (0, _selectors.getLane)(state)
 	    };
 	};
 	
 	var mapDispatchToProsps = function mapDispatchToProsps(dispatch) {
 	    return {
-	        setLane: function setLane(e) {
-	            var value = Boolean(Number(e.target.value));
+	        setLane: function setLane(value) {
 	            dispatch((0, _actions.setLane)(value));
 	        }
 	    };
@@ -24746,11 +24926,21 @@
 	    }
 	
 	    _createClass(Qlane, [{
+	        key: 'handleChange',
+	        value: function handleChange(e, value) {
+	            this.props.setLane(value);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+	
+	            var baseClassName = 'qlane question';
+	            var classes = this.props.shown ? baseClassName : baseClassName + ' hide';
+	
 	            return _react2.default.createElement(
 	                'div',
-	                { className: this.props.clss },
+	                { className: classes },
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
@@ -24759,13 +24949,17 @@
 	                _react2.default.createElement(
 	                    'label',
 	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '1', onChange: this.props.setLane, checked: this.props.lane }),
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qlane', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, true);
+	                        }, checked: this.props.lane === true }),
 	                    'S\xEC'
 	                ),
 	                _react2.default.createElement(
 	                    'label',
 	                    null,
-	                    _react2.default.createElement('input', { type: 'radio', name: 'qpower', value: '0', onChange: this.props.setLane, checked: !this.props.lane }),
+	                    _react2.default.createElement('input', { type: 'radio', name: 'qlane', onChange: function onChange(e) {
+	                            return _this2.handleChange(e, false);
+	                        }, checked: this.props.lane === false }),
 	                    'No'
 	                )
 	            );
@@ -24778,140 +24972,6 @@
 	;
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProsps)(Qlane);
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _selectors = __webpack_require__(222);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var baseClassName = 'result aplClassic aplClassic--n';
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	   return {
-	      clss: (0, _selectors.getAplClassicN)(state) ? baseClassName : baseClassName + ' hide'
-	   };
-	};
-	
-	var AplClassicN = function (_React$Component) {
-	   _inherits(AplClassicN, _React$Component);
-	
-	   function AplClassicN() {
-	      _classCallCheck(this, AplClassicN);
-	
-	      return _possibleConstructorReturn(this, (AplClassicN.__proto__ || Object.getPrototypeOf(AplClassicN)).apply(this, arguments));
-	   }
-	
-	   _createClass(AplClassicN, [{
-	      key: 'render',
-	      value: function render() {
-	         return _react2.default.createElement(
-	            'div',
-	            { className: this.props.clss },
-	            _react2.default.createElement(
-	               'h1',
-	               null,
-	               'Apl Classic N'
-	            )
-	         );
-	      }
-	   }]);
-	
-	   return AplClassicN;
-	}(_react2.default.Component);
-	
-	;
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplClassicN);
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(200);
-	
-	var _selectors = __webpack_require__(222);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var baseClassName = 'result aplClassic aplClassic--p';
-	
-	var mapStateToProps = function mapStateToProps(state) {
-	   return {
-	      clss: (0, _selectors.getAplClassicP)(state) ? baseClassName : baseClassName + ' hide'
-	   };
-	};
-	
-	var AplClassicP = function (_React$Component) {
-	   _inherits(AplClassicP, _React$Component);
-	
-	   function AplClassicP() {
-	      _classCallCheck(this, AplClassicP);
-	
-	      return _possibleConstructorReturn(this, (AplClassicP.__proto__ || Object.getPrototypeOf(AplClassicP)).apply(this, arguments));
-	   }
-	
-	   _createClass(AplClassicP, [{
-	      key: 'render',
-	      value: function render() {
-	         return _react2.default.createElement(
-	            'div',
-	            { className: this.props.clss },
-	            _react2.default.createElement(
-	               'h1',
-	               null,
-	               'Apl Classic P'
-	            )
-	         );
-	      }
-	   }]);
-	
-	   return AplClassicP;
-	}(_react2.default.Component);
-	
-	;
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AplClassicP);
 
 /***/ }
 /******/ ]);

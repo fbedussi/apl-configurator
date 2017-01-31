@@ -15,19 +15,8 @@ const mapDispatchToProsps = (dispatch) => ({
 });
 
 class Qpower extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            power: this.props.power
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(e) {
-        var value = Boolean(Number(e.target.value));
-        this.setState({power: value});
+    
+    handleChange(e, value) {
         this.props.setPower(value);
     }
 
@@ -36,11 +25,11 @@ class Qpower extends React.Component {
 		 <div className="qpower question">
             <p>C'è alimentazione nel luogo di installazione dell'attravaresamento pedonale?</p>
             <label>
-                <input type="radio" name="qpower" value="1" onChange={this.handleChange} checked={this.state.power}/>
+                <input type="radio" name="qpower" onChange={e => this.handleChange(e, true)} />
                 Sì
             </label>
             <label>
-                <input type="radio" name="qpower" value="0" onChange={this.handleChange} checked={!this.state.power}/>
+                <input type="radio" name="qpower" onChange={e => this.handleChange(e, false)} />
                 No
             </label>
          </div>
