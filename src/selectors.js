@@ -1,15 +1,15 @@
-export function getPower(state) {
-    return state.questions.power;
+export function getCurrentNode(state) {
+    return state.currentNode;
 }
 
-export function getPedestrian(state) {
-    return state.questions.pedestrian;
+export function getStepsLeft(state) {
+    return state.stepsLeft;
 }
 
-export function getInteraction(state) {
-    return state.questions.interaction;
+export function getSteps(state) {
+    return state.steps;
 }
 
-export function getLane(state) {
-    return state.questions.lane;
+export function getBreadcrumbs(state) {
+    return state.breadcrumbs;
 }

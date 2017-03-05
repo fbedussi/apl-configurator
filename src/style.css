@@ -20,13 +20,8 @@ html, body, #app {
 
 .configuratorWrapper {
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
     max-width: 1000px;
     margin: 0 auto;
     font-size: 1.5rem;
@@ -34,8 +29,6 @@ html, body, #app {
 
 .progressWrapper {
     color: var(--color-darkGrey);
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 2em 0;
 }
@@ -45,12 +38,8 @@ html, body, #app {
 }
 
 progress {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    appearance: none;
+    flex: 1;
     background-color: var(--color-grey);
     border-radius: 0;
     border: none;
@@ -69,9 +58,7 @@ progress::-moz-progress-bar {
 }
 
 .workarea {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    flex: 1;
     padding: 2em 1em;
     background-color: var(--color-grey);
     color: var(--color-darkGrey);
@@ -94,9 +81,7 @@ progress::-moz-progress-bar {
 }
 
 input[type="radio"] {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    appearance: none;
     width: 1.5em;
     height: 1.5em;
     background-color: white;
@@ -108,7 +93,6 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked {
-    background-image: -webkit-radial-gradient(var(--color-orange) 0%, var(--color-orange) 40%, white 40%, white);
     background-image: radial-gradient(var(--color-orange) 0%, var(--color-orange) 40%, white 40%, white);
 }
 
@@ -122,9 +106,7 @@ input[type="radio"]:checked {
 
 .backBtn {
     display: inline-block;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    appearance: none;
     background: transparent;
     border: none;
     color: var(--color-darkGrey);
