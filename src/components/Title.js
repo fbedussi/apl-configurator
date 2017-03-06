@@ -5,7 +5,7 @@ const Title = ({currentNode}) => {
         return null;
     }
 
-    return <h1>{currentNode.title}</h1>
+    return <h1 className="title">{currentNode.title}</h1>
 }
 
 export default Title;

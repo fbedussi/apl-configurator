@@ -77,6 +77,7 @@ progress::-moz-progress-bar {
     color: var(--color-darkGrey);
     text-align: center; 
     position: relative;
+    overflow: hidden;
 }
 
 .slide {
@@ -165,21 +166,51 @@ input[type="radio"]:checked {
 }
 
 .example-enter {
-  opacity: 0.01;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    -webkit-transform: translatex(100%);
+            transform: translatex(100%);
 }
 
 .example-enter.example-enter-active {
-  opacity: 1;
-  -webkit-transition: opacity 500ms ease-in;
-  transition: opacity 500ms ease-in;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .example-leave {
-  opacity: 1;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;     
 }
 
 .example-leave.example-leave-active {
-  opacity: 0.01;
-  -webkit-transition: opacity 300ms ease-in;
-  transition: opacity 300ms ease-in;
+      -webkit-transform: translatex(-100%);
+              transform: translatex(-100%);
+}
+
+.back .example-enter.example-enter-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.back .example-enter {
+    -webkit-transform: translatex(-100%);
+            transform: translatex(-100%);
+    z-index: 2;
+}
+
+.back .example-leave.example-leave-active {
+      -webkit-transform: translatex(100%);
+              transform: translatex(100%);
+}
+
+.title {
+    margin-bottom: 1em;
+}
+
+.image {
+    max-width: 100%;
 }

@@ -21,3 +21,7 @@ export function getLabels(state) {
 export function getChangeSlide(state) {
     return state.changeSlide;
 }
+
+export function getGoingBack(state) {
+    return state.goingBack;
+}

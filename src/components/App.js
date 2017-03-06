@@ -2,17 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels } from '../selectors';
+import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels, getGoingBack } from '../selectors';
 import { parseAnswer, goBack } from '../actions';
 
 import Answers from './Answers';
 import Title from './Title';
 import Back from './Back';
+import Image from './Image';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
     steps: getSteps(state),
     stepsLeft: getStepsLeft(state),
+    goingBack: getGoingBack(state),
     currentNode: getCurrentNode(state),
     breadcrumbs: getBreadcrumbs(state)
 });
@@ -30,14 +32,17 @@ class App extends React.Component {
                     <span className="progressLabel">{this.props.labels["configurator"]}</span>
                     <progress className="progressBar" value={this.props.steps - this.props.stepsLeft} max={this.props.steps}></progress>
                 </div>
-                <div className="workarea">
+                <div className={`workarea ${this.props.goingBack? 'back' : ''}`}>
                     <ReactCSSTransitionGroup
                         transitionName="example"
                         transitionEnterTimeout={500}
-                        transitionLeaveTimeout={300}>
+                        transitionLeaveTimeout={500}>
                         <div className="slide" key={this.props.currentNode.id}>
                             <Title currentNode={this.props.currentNode} />
                             <p className={this.props.currentNode.type}>{this.props.currentNode.text}</p>
+                            <Image 
+                                imgName={this.props.currentNode.image}
+                            />
                             <Answers
                                 id={this.props.currentNode.id}
                                 answers={this.props.currentNode.answers}

@@ -85,9 +85,9 @@
 	      _react2.default.createElement(_App2.default, null)
 	   ), document.getElementById('app'));
 	}
-	run();
+	//run();
 	store.subscribe(run);
-	//store.dispatch(init());
+	store.dispatch((0, _actions.init)());
 
 /***/ },
 /* 1 */
@@ -23781,7 +23781,7 @@
 
 /***/ },
 /* 217 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
@@ -23792,29 +23792,7 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
 	exports.default = reducer;
-	
-	var _texts = __webpack_require__(237);
-	
-	var _texts2 = _interopRequireDefault(_texts);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// function countLevelsObj(obj, id) {
-	// 	var levels = 0;
-	
-	// 	Object.keys(obj).forEach(key => {
-	// 			if (obj.yes) {
-	// 				findSubObj(obj.yes, id);
-	// 			}
-	
-	// 			if (obj.no) {
-	// 				findSubObj(obj.no, id);
-	// 			}
-	// 		}
-	// 	});
-	
-	// 	return subObj;
-	// }
+	//import texts from '../texts.json';
 	
 	function depthOf(obj) {
 		var level = 0;
@@ -23828,20 +23806,33 @@
 		return level;
 	}
 	
-	var steps = depthOf(_texts2.default.it);
+	//var steps = depthOf(texts.it);
 	
 	function reducer() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-			steps: steps,
-			stepsLeft: steps,
-			breadcrumbs: [],
-			labels: _texts2.default.it.labels,
-			currentNode: _texts2.default.it.questions,
-			questions: _texts2.default.it.questions
+			// steps: steps,
+			// stepsLeft: steps,
+			// goingBack: false,
+			// breadcrumbs: [],
+			// labels: texts.it.labels,
+			// currentNode: texts.it.questions,
+			// questions: texts.it.questions
 		};
 		var action = arguments[1];
 	
 		switch (action.type) {
+			case 'SET_TEXTS':
+				var steps = depthOf(action.texts.it);
+				return Object.assign({}, state, {
+					steps: steps,
+					stepsLeft: steps,
+					goingBack: false,
+					breadcrumbs: [],
+					labels: action.texts.it.labels,
+					currentNode: action.texts.it.questions,
+					questions: action.texts.it.questions
+				});
+	
 			case 'PARSE_ANSWER':
 				var newNode = state.currentNode[action.value];
 				var newBreadcrumbs = state.breadcrumbs.concat(state.currentNode);
@@ -23849,6 +23840,7 @@
 				return Object.assign({}, state, {
 					breadcrumbs: newBreadcrumbs,
 					currentNode: newNode,
+					goingBack: false,
 					stepsLeft: depthOf(newNode)
 				});
 	
@@ -23859,6 +23851,7 @@
 				return Object.assign({}, state, {
 					breadcrumbs: state.breadcrumbs.length >= 1 ? state.breadcrumbs.slice(0, state.breadcrumbs.length - 1) : [],
 					currentNode: backNode,
+					goingBack: true,
 					stepsLeft: depthOf(backNode)
 				});
 	
@@ -23876,25 +23869,25 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.init = init;
 	exports.parseAnswer = parseAnswer;
 	exports.goBack = goBack;
-	// export function init(language = 'it') {
-	//     return function(dispatch) {
-	//         fetch('http://localhost/apl-configurator/texts.json', {
-	//             "mode": "no-cors"
-	//         })
-	//         .then(response => {
-	//             console.log(response);
-	//             return response.json();
-	//         })
-	//         .then(texts => {
-	//             dispatch({ type: 'SET_TEXTS', texts })
-	//         })
-	//         .catch(function (err) {
-	//             console.log('ERROR: ', err);
-	//         });
-	//     }
-	// }
+	function init() {
+	    var language = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'it';
+	
+	    return function (dispatch) {
+	        fetch('texts.json', {
+	            mode: 'no-cors'
+	        }).then(function (response) {
+	            console.log(response);
+	            return response.json();
+	        }).then(function (texts) {
+	            dispatch({ type: 'SET_TEXTS', texts: texts });
+	        }).catch(function (err) {
+	            console.log('ERROR: ', err);
+	        });
+	    };
+	}
 	
 	function parseAnswer(value) {
 	    return { type: 'PARSE_ANSWER', value: value };
@@ -23942,6 +23935,10 @@
 	
 	var _Back2 = _interopRequireDefault(_Back);
 	
+	var _Image = __webpack_require__(238);
+	
+	var _Image2 = _interopRequireDefault(_Image);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23955,6 +23952,7 @@
 	        labels: (0, _selectors.getLabels)(state),
 	        steps: (0, _selectors.getSteps)(state),
 	        stepsLeft: (0, _selectors.getStepsLeft)(state),
+	        goingBack: (0, _selectors.getGoingBack)(state),
 	        currentNode: (0, _selectors.getCurrentNode)(state),
 	        breadcrumbs: (0, _selectors.getBreadcrumbs)(state)
 	    };
@@ -24000,13 +23998,13 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'workarea' },
+	                    { className: 'workarea ' + (this.props.goingBack ? 'back' : '') },
 	                    _react2.default.createElement(
 	                        _reactAddonsCssTransitionGroup2.default,
 	                        {
 	                            transitionName: 'example',
 	                            transitionEnterTimeout: 500,
-	                            transitionLeaveTimeout: 300 },
+	                            transitionLeaveTimeout: 500 },
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'slide', key: this.props.currentNode.id },
@@ -24016,6 +24014,9 @@
 	                                { className: this.props.currentNode.type },
 	                                this.props.currentNode.text
 	                            ),
+	                            _react2.default.createElement(_Image2.default, {
+	                                imgName: this.props.currentNode.image
+	                            }),
 	                            _react2.default.createElement(_Answers2.default, {
 	                                id: this.props.currentNode.id,
 	                                answers: this.props.currentNode.answers,
@@ -26170,6 +26171,7 @@
 	exports.getBreadcrumbs = getBreadcrumbs;
 	exports.getLabels = getLabels;
 	exports.getChangeSlide = getChangeSlide;
+	exports.getGoingBack = getGoingBack;
 	function getCurrentNode(state) {
 	    return state.currentNode;
 	}
@@ -26192,6 +26194,10 @@
 	
 	function getChangeSlide(state) {
 	    return state.changeSlide;
+	}
+	
+	function getGoingBack(state) {
+	    return state.goingBack;
 	}
 
 /***/ },
@@ -26244,7 +26250,7 @@
 /* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -26264,8 +26270,8 @@
 	    }
 	
 	    return _react2.default.createElement(
-	        'h1',
-	        null,
+	        "h1",
+	        { className: "title" },
 	        currentNode.title
 	    );
 	};
@@ -26330,251 +26336,33 @@
 	exports.default = Back;
 
 /***/ },
-/* 237 */
-/***/ function(module, exports) {
+/* 237 */,
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-		"it": {
-			"labels": {
-				"back": "Indietro",
-				"configurator": "Configuratore"
-			},
-			"questions": {
-				"id": 1,
-				"type": "question",
-				"text": "Nel sito di installazione è possibile collegare ol sistema APL alla rete elettrica?",
-				"answers": [
-					{
-						"a": "no"
-					},
-					{
-						"b": "sì"
-					}
-				],
-				"a": {
-					"id": 2,
-					"type": "answer",
-					"title": "Apl solar",
-					"text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
-				},
-				"b": {
-					"id": 3,
-					"type": "question",
-					"text": "Il sistema deve essere dotato di dispositivo per l'interazione con il pedone?",
-					"answers": [
-						{
-							"a": "no"
-						},
-						{
-							"b": "sì"
-						}
-					],
-					"a": {
-						"id": 4,
-						"type": "question",
-						"text": "Nel luogo di installazione è già presente illuminazione stradale oppure altra illuminazione artificiale? (Vetrine, insegne luminose, ecc.)?",
-						"answers": [
-							{
-								"a": "no"
-							},
-							{
-								"b": "sì"
-							}
-						],
-						"a": {
-							"id": 5,
-							"type": "question",
-							"text": "La distanza tra i 2 pali è maggiore di 9 metri?",
-							"answers": [
-								{
-									"a": "no"
-								},
-								{
-									"b": "sì"
-								}
-							],
-							"a": {
-								"id": 6,
-								"type": "question",
-								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
-								"answers": [
-									{
-										"a": "no"
-									},
-									{
-										"b": "sì"
-									}
-								],
-								"a": {
-									"id": 7,
-									"type": "answer",
-									"title": "Apl classic Stratos N soluzione 1",
-									"text": "Testo"
-								},
-								"b": {
-									"id": 8,
-									"type": "answer",
-									"title": "Apl classic Stratos N soluzione 2",
-									"text": "Testo"
-								}
-							},
-							"b": {
-								"id": 9,
-								"type": "question",
-								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
-								"answers": [
-									{
-										"a": "no"
-									},
-									{
-										"b": "sì"
-									}
-								],
-								"a": {
-									"id": 10,
-									"type": "answer",
-									"title": "Apl classic Stratos P soluzione 1",
-									"text": "Testo"
-								},
-								"b": {
-									"id": 11,
-									"type": "answer",
-									"title": "Apl classic Stratos P soluzione 2",
-									"text": "Testo"
-								}
-							}
-						},
-						"b": {
-							"id": 12,
-							"type": "question",
-							"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
-							"answers": [
-								{
-									"a": "no"
-								},
-								{
-									"b": "sì"
-								}
-							],
-							"a": {
-								"id": 13,
-								"type": "answer",
-								"title": "Apl classic Stratos P soluzione 1",
-								"text": "Testo"
-							},
-							"b": {
-								"id": 14,
-								"type": "answer",
-								"title": "Apl classic Stratos P soluzione 2 o 3",
-								"text": "Testo"
-							}
-						}
-					},
-					"b": {
-						"id": 15,
-						"type": "question",
-						"text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? Scarica le istruzioni posizionamento sensore per valutare se è possibile utilizzarlo nella tua installazione",
-						"answers": [
-							{
-								"a": "Sensore"
-							},
-							{
-								"b": "Pulsante touch"
-							}
-						],
-						"a": {
-							"id": 16,
-							"type": "question",
-							"text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
-							"answers": [
-								{
-									"a": "no"
-								},
-								{
-									"b": "sì"
-								}
-							],
-							"a": {
-								"id": 17,
-								"type": "question",
-								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
-								"answers": [
-									{
-										"a": "no"
-									},
-									{
-										"b": "sì"
-									}
-								],
-								"a": {
-									"id": 18,
-									"type": "answer",
-									"title": "Apl smart soluzione 1 con sensore",
-									"text": "Testo"
-								},
-								"b": {
-									"id": 19,
-									"type": "answer",
-									"title": "Apl smart soluzione 2 o 3 con sensore",
-									"text": "Testo"
-								}
-							},
-							"b": {
-								"id": 20,
-								"type": "answer",
-								"title": "Apl smart soluzione 2 o 3 con sensore",
-								"text": "Testo"
-							}
-						},
-						"b": {
-							"id": 21,
-							"type": "question",
-							"text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
-							"answers": [
-								{
-									"a": "no"
-								},
-								{
-									"b": "sì"
-								}
-							],
-							"a": {
-								"id": 22,
-								"type": "question",
-								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
-								"answers": [
-									{
-										"a": "no"
-									},
-									{
-										"b": "sì"
-									}
-								],
-								"a": {
-									"id": 23,
-									"type": "answer",
-									"title": "Apl smart soluzione 1 con pulsante touch",
-									"text": "Testo"
-								},
-								"b": {
-									"id": 24,
-									"type": "answer",
-									"title": "Apl smart soluzione 2 o 3 con pulsante touch",
-									"text": "Testo"
-								}
-							},
-							"b": {
-								"id": 25,
-								"type": "answer",
-								"title": "Apl smart soluzione 2 o 3 con pulsante touch",
-								"text": "Testo"
-							}
-						}
-					}
-				}
-			}
-		}
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Image = function Image(_ref) {
+	    var imgName = _ref.imgName;
+	
+	    if (!(imgName && imgName.length)) {
+	        return null;
+	    }
+	
+	    return _react2.default.createElement("img", { className: "image", src: "images/" + imgName });
 	};
+	
+	exports.default = Image;
 
 /***/ }
 /******/ ]);

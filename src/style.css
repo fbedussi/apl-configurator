@@ -64,6 +64,7 @@ progress::-moz-progress-bar {
     color: var(--color-darkGrey);
     text-align: center; 
     position: relative;
+    overflow: hidden;
 }
 
 .slide {
@@ -147,19 +148,39 @@ input[type="radio"]:checked {
 }
 
 .example-enter {
-  opacity: 0.01;
+    transition: transform 0.5s;
+    transform: translatex(100%);
 }
 
 .example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+  transform: translateX(0);
 }
 
 .example-leave {
-  opacity: 1;
+    transition: transform 0.5s;     
 }
 
 .example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+      transform: translatex(-100%);
+}
+
+.back .example-enter.example-enter-active {
+  transform: translateX(0);
+}
+
+.back .example-enter {
+    transform: translatex(-100%);
+    z-index: 2;
+}
+
+.back .example-leave.example-leave-active {
+      transform: translatex(100%);
+}
+
+.title {
+    margin-bottom: 1em;
+}
+
+.image {
+    max-width: 100%;
 }

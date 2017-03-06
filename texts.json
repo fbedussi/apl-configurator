@@ -74,13 +74,15 @@
                                 "id": 7,
                                 "type": "answer",
                                 "title": "Apl classic Stratos N soluzione 1",
-                                "text": "Testo"
+                                "image": "APL_classic_soluzione1.jpg",
+                                "text": ""
                             },
                             "b": {
                                 "id": 8,
                                 "type": "answer",
                                 "title": "Apl classic Stratos N soluzione 2",
-                                "text": "Testo"
+                                "image": "APL_classic_soluzione2.jpg",                                
+                                "text": ""
                             }
                         },
                         "b": {
@@ -99,13 +101,15 @@
                                 "id": 10,
                                 "type": "answer",
                                 "title": "Apl classic Stratos P soluzione 1",
-                                "text": "Testo"
+                                "image": "APL_classic_soluzione3.jpg",                                
+                                "text": ""
                             },
                             "b": {
                                 "id": 11,
                                 "type": "answer",
                                 "title": "Apl classic Stratos P soluzione 2",
-                                "text": "Testo"
+                                "image": "APL_classic_soluzione4.jpg",                                
+                                "text": ""
                             }
                         }
                     },
@@ -125,13 +129,15 @@
                             "id": 13,
                             "type": "answer",
                             "title": "Apl classic Stratos P soluzione 1",
-                            "text": "Testo"
+                            "image": "APL_classicELV_soluzione1.jpg",                            
+                            "text": ""
                         },
                         "b": {
                             "id": 14,
                             "type": "answer",
                             "title": "Apl classic Stratos P soluzione 2 o 3",
-                            "text": "Testo"
+                            "image": "APL_classicELV_soluzione2.jpg",                                                        
+                            "text": ""
                         }
                     }
                 },
@@ -175,20 +181,23 @@
                                 "id": 18,
                                 "type": "answer",
                                 "title": "Apl smart soluzione 1 con sensore",
-                                "text": "Testo"
+                                "image": "APL_classicELV_soluzione1.jpg",                                                            
+                                "text": ""
                             },
                             "b": {
                                 "id": 19,
                                 "type": "answer",
                                 "title": "Apl smart soluzione 2 o 3 con sensore",
-                                "text": "Testo"
+                                "image": "APL_classicELV_soluzione1.jpg",                                                            
+                                "text": ""
                             }
                         },
                         "b": {
                             "id": 20,
                             "type": "answer",
                             "title": "Apl smart soluzione 2 o 3 con sensore",
-                            "text": "Testo"
+                            "image": "APL_classicELV_soluzione1.jpg",                                                        
+                            "text": ""
                         }
                     },
                     "b": {
@@ -219,20 +228,23 @@
                                 "id": 23,
                                 "type": "answer",
                                 "title": "Apl smart soluzione 1 con pulsante touch",
-                                "text": "Testo"
+                                "image": "APL_classicELV_soluzione1.jpg",                                                            
+                                "text": ""
                             },
                             "b": {
                                 "id": 24,
                                 "type": "answer",
                                 "title": "Apl smart soluzione 2 o 3 con pulsante touch",
-                                "text": "Testo"
+                                "image": "APL_classicELV_soluzione1.jpg",                                                            
+                                "text": ""
                             }
                         },
                         "b": {
                             "id": 25,
                             "type": "answer",
                             "title": "Apl smart soluzione 2 o 3 con pulsante touch",
-                            "text": "Testo"
+                            "image": "APL_solar.jpg",                                                        
+                            "text": ""
                         }
                     }
                 }
