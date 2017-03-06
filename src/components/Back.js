@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Back = ({ show, clickHandler }) => {
+const Back = ({ show, label, clickHandler }) => {
     if (!show) {
         return null;
     }
@@ -16,7 +16,7 @@ const Back = ({ show, clickHandler }) => {
                     </g>
                 </svg>
             </span>
-            <span className="button-label">Indietro</span>
+            <span className="button-label">{label}</span>
         </button>
     </div>
 }

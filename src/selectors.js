@@ -13,3 +13,11 @@ export function getSteps(state) {
 export function getBreadcrumbs(state) {
     return state.breadcrumbs;
 }
+
+export function getLabels(state) {
+    return state.labels;
+}
+
+export function getChangeSlide(state) {
+    return state.changeSlide;
+}

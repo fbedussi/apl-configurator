@@ -22596,7 +22596,7 @@
 	
 	var _Provider2 = _interopRequireDefault(_Provider);
 	
-	var _connectAdvanced = __webpack_require__(205);
+	var _connectAdvanced = __webpack_require__(204);
 	
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 	
@@ -22621,15 +22621,9 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _Subscription = __webpack_require__(202);
+	var _PropTypes = __webpack_require__(202);
 	
-	var _Subscription2 = _interopRequireDefault(_Subscription);
-	
-	var _storeShape = __webpack_require__(203);
-	
-	var _storeShape2 = _interopRequireDefault(_storeShape);
-	
-	var _warning = __webpack_require__(204);
+	var _warning = __webpack_require__(203);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -22690,132 +22684,42 @@
 	}
 	
 	Provider.propTypes = {
-	  store: _storeShape2.default.isRequired,
+	  store: _PropTypes.storeShape.isRequired,
 	  children: _react.PropTypes.element.isRequired
 	};
 	Provider.childContextTypes = {
-	  store: _storeShape2.default.isRequired,
-	  storeSubscription: _react.PropTypes.instanceOf(_Subscription2.default)
+	  store: _PropTypes.storeShape.isRequired,
+	  storeSubscription: _PropTypes.subscriptionShape
 	};
 	Provider.displayName = 'Provider';
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 202 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	exports.__esModule = true;
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	// encapsulates the subscription logic for connecting a component to the redux store, as
-	// well as nesting subscriptions of descendant components, so that we can ensure the
-	// ancestor components re-render before descendants
-	
-	var CLEARED = null;
-	var nullListeners = {
-	  notify: function notify() {}
-	};
-	
-	function createListenerCollection() {
-	  // the current/next pattern is copied from redux's createStore code.
-	  // TODO: refactor+expose that code to be reusable here?
-	  var current = [];
-	  var next = [];
-	
-	  return {
-	    clear: function clear() {
-	      next = CLEARED;
-	      current = CLEARED;
-	    },
-	    notify: function notify() {
-	      var listeners = current = next;
-	      for (var i = 0; i < listeners.length; i++) {
-	        listeners[i]();
-	      }
-	    },
-	    subscribe: function subscribe(listener) {
-	      var isSubscribed = true;
-	      if (next === current) next = current.slice();
-	      next.push(listener);
-	
-	      return function unsubscribe() {
-	        if (!isSubscribed || current === CLEARED) return;
-	        isSubscribed = false;
-	
-	        if (next === current) next = current.slice();
-	        next.splice(next.indexOf(listener), 1);
-	      };
-	    }
-	  };
-	}
-	
-	var Subscription = function () {
-	  function Subscription(store, parentSub) {
-	    _classCallCheck(this, Subscription);
-	
-	    this.store = store;
-	    this.parentSub = parentSub;
-	    this.unsubscribe = null;
-	    this.listeners = nullListeners;
-	  }
-	
-	  Subscription.prototype.addNestedSub = function addNestedSub(listener) {
-	    this.trySubscribe();
-	    return this.listeners.subscribe(listener);
-	  };
-	
-	  Subscription.prototype.notifyNestedSubs = function notifyNestedSubs() {
-	    this.listeners.notify();
-	  };
-	
-	  Subscription.prototype.isSubscribed = function isSubscribed() {
-	    return Boolean(this.unsubscribe);
-	  };
-	
-	  Subscription.prototype.trySubscribe = function trySubscribe() {
-	    if (!this.unsubscribe) {
-	      // this.onStateChange is set by connectAdvanced.initSubscription()
-	      this.unsubscribe = this.parentSub ? this.parentSub.addNestedSub(this.onStateChange) : this.store.subscribe(this.onStateChange);
-	
-	      this.listeners = createListenerCollection();
-	    }
-	  };
-	
-	  Subscription.prototype.tryUnsubscribe = function tryUnsubscribe() {
-	    if (this.unsubscribe) {
-	      this.unsubscribe();
-	      this.unsubscribe = null;
-	      this.listeners.clear();
-	      this.listeners = nullListeners;
-	    }
-	  };
-	
-	  return Subscription;
-	}();
-	
-	exports.default = Subscription;
-
-/***/ },
-/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
+	exports.storeShape = exports.subscriptionShape = undefined;
 	
 	var _react = __webpack_require__(1);
 	
-	exports.default = _react.PropTypes.shape({
+	var subscriptionShape = exports.subscriptionShape = _react.PropTypes.shape({
+	  trySubscribe: _react.PropTypes.func.isRequired,
+	  tryUnsubscribe: _react.PropTypes.func.isRequired,
+	  notifyNestedSubs: _react.PropTypes.func.isRequired,
+	  isSubscribed: _react.PropTypes.func.isRequired
+	});
+	
+	var storeShape = exports.storeShape = _react.PropTypes.shape({
 	  subscribe: _react.PropTypes.func.isRequired,
 	  dispatch: _react.PropTypes.func.isRequired,
 	  getState: _react.PropTypes.func.isRequired
 	});
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22845,7 +22749,7 @@
 	}
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22856,23 +22760,21 @@
 	
 	exports.default = connectAdvanced;
 	
-	var _hoistNonReactStatics = __webpack_require__(206);
+	var _hoistNonReactStatics = __webpack_require__(205);
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
-	var _invariant = __webpack_require__(207);
+	var _invariant = __webpack_require__(206);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
 	var _react = __webpack_require__(1);
 	
-	var _Subscription = __webpack_require__(202);
+	var _Subscription = __webpack_require__(207);
 	
 	var _Subscription2 = _interopRequireDefault(_Subscription);
 	
-	var _storeShape = __webpack_require__(203);
-	
-	var _storeShape2 = _interopRequireDefault(_storeShape);
+	var _PropTypes = __webpack_require__(202);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22885,6 +22787,29 @@
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	var hotReloadingVersion = 0;
+	var dummyState = {};
+	function noop() {}
+	function makeSelectorStateful(sourceSelector, store) {
+	  // wrap the selector in an object that tracks its results between runs.
+	  var selector = {
+	    run: function runComponentSelector(props) {
+	      try {
+	        var nextProps = sourceSelector(store.getState(), props);
+	        if (nextProps !== selector.props || selector.error) {
+	          selector.shouldComponentUpdate = true;
+	          selector.props = nextProps;
+	          selector.error = null;
+	        }
+	      } catch (error) {
+	        selector.shouldComponentUpdate = true;
+	        selector.error = error;
+	      }
+	    }
+	  };
+	
+	  return selector;
+	}
+	
 	function connectAdvanced(
 	/*
 	  selectorFactory is a func that is responsible for returning the selector function used to
@@ -22923,11 +22848,11 @@
 	  var subscriptionKey = storeKey + 'Subscription';
 	  var version = hotReloadingVersion++;
 	
-	  var contextTypes = (_contextTypes = {}, _contextTypes[storeKey] = _storeShape2.default, _contextTypes[subscriptionKey] = _react.PropTypes.instanceOf(_Subscription2.default), _contextTypes);
-	  var childContextTypes = (_childContextTypes = {}, _childContextTypes[subscriptionKey] = _react.PropTypes.instanceOf(_Subscription2.default), _childContextTypes);
+	  var contextTypes = (_contextTypes = {}, _contextTypes[storeKey] = _PropTypes.storeShape, _contextTypes[subscriptionKey] = _PropTypes.subscriptionShape, _contextTypes);
+	  var childContextTypes = (_childContextTypes = {}, _childContextTypes[subscriptionKey] = _PropTypes.subscriptionShape, _childContextTypes);
 	
 	  return function wrapWithConnect(WrappedComponent) {
-	    (0, _invariant2.default)(typeof WrappedComponent == 'function', 'You must pass a component to the function returned by ' + ('connect. Instead received ' + WrappedComponent));
+	    (0, _invariant2.default)(typeof WrappedComponent == 'function', 'You must pass a component to the function returned by ' + ('connect. Instead received ' + JSON.stringify(WrappedComponent)));
 	
 	    var wrappedComponentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 	
@@ -22956,16 +22881,11 @@
 	        _this.version = version;
 	        _this.state = {};
 	        _this.renderCount = 0;
-	        _this.store = _this.props[storeKey] || _this.context[storeKey];
-	        _this.parentSub = props[subscriptionKey] || context[subscriptionKey];
-	
+	        _this.store = props[storeKey] || context[storeKey];
+	        _this.propsMode = Boolean(props[storeKey]);
 	        _this.setWrappedInstance = _this.setWrappedInstance.bind(_this);
 	
-	        (0, _invariant2.default)(_this.store, 'Could not find "' + storeKey + '" in either the context or ' + ('props of "' + displayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "' + storeKey + '" as a prop to "' + displayName + '".'));
-	
-	        // make sure `getState` is properly bound in order to avoid breaking
-	        // custom store implementations that rely on the store's context
-	        _this.getState = _this.store.getState.bind(_this.store);
+	        (0, _invariant2.default)(_this.store, 'Could not find "' + storeKey + '" in either the context or props of ' + ('"' + displayName + '". Either wrap the root component in a <Provider>, ') + ('or explicitly pass "' + storeKey + '" as a prop to "' + displayName + '".'));
 	
 	        _this.initSelector();
 	        _this.initSubscription();
@@ -22975,7 +22895,12 @@
 	      Connect.prototype.getChildContext = function getChildContext() {
 	        var _ref2;
 	
-	        return _ref2 = {}, _ref2[subscriptionKey] = this.subscription || this.parentSub, _ref2;
+	        // If this component received store from props, its subscription should be transparent
+	        // to any descendants receiving store+subscription from context; it passes along
+	        // subscription passed to it. Otherwise, it shadows the parent subscription, which allows
+	        // Connect to control ordering of notifications to flow top-down.
+	        var subscription = this.propsMode ? null : this.subscription;
+	        return _ref2 = {}, _ref2[subscriptionKey] = subscription || this.context[subscriptionKey], _ref2;
 	      };
 	
 	      Connect.prototype.componentDidMount = function componentDidMount() {
@@ -23002,12 +22927,11 @@
 	
 	      Connect.prototype.componentWillUnmount = function componentWillUnmount() {
 	        if (this.subscription) this.subscription.tryUnsubscribe();
-	        // these are just to guard against extra memory leakage if a parent element doesn't
-	        // dereference this instance properly, such as an async callback that never finishes
 	        this.subscription = null;
+	        this.notifyNestedSubs = noop;
 	        this.store = null;
-	        this.parentSub = null;
-	        this.selector.run = function () {};
+	        this.selector.run = noop;
+	        this.selector.shouldComponentUpdate = false;
 	      };
 	
 	      Connect.prototype.getWrappedInstance = function getWrappedInstance() {
@@ -23020,55 +22944,47 @@
 	      };
 	
 	      Connect.prototype.initSelector = function initSelector() {
-	        var dispatch = this.store.dispatch;
-	        var getState = this.getState;
-	
-	        var sourceSelector = selectorFactory(dispatch, selectorFactoryOptions);
-	
-	        // wrap the selector in an object that tracks its results between runs
-	        var selector = this.selector = {
-	          shouldComponentUpdate: true,
-	          props: sourceSelector(getState(), this.props),
-	          run: function runComponentSelector(props) {
-	            try {
-	              var nextProps = sourceSelector(getState(), props);
-	              if (selector.error || nextProps !== selector.props) {
-	                selector.shouldComponentUpdate = true;
-	                selector.props = nextProps;
-	                selector.error = null;
-	              }
-	            } catch (error) {
-	              selector.shouldComponentUpdate = true;
-	              selector.error = error;
-	            }
-	          }
-	        };
+	        var sourceSelector = selectorFactory(this.store.dispatch, selectorFactoryOptions);
+	        this.selector = makeSelectorStateful(sourceSelector, this.store);
+	        this.selector.run(this.props);
 	      };
 	
 	      Connect.prototype.initSubscription = function initSubscription() {
-	        var _this2 = this;
+	        if (!shouldHandleStateChanges) return;
 	
-	        if (shouldHandleStateChanges) {
-	          (function () {
-	            var subscription = _this2.subscription = new _Subscription2.default(_this2.store, _this2.parentSub);
-	            var dummyState = {};
+	        // parentSub's source should match where store came from: props vs. context. A component
+	        // connected to the store via props shouldn't use subscription from context, or vice versa.
+	        var parentSub = (this.propsMode ? this.props : this.context)[subscriptionKey];
+	        this.subscription = new _Subscription2.default(this.store, parentSub, this.onStateChange.bind(this));
 	
-	            subscription.onStateChange = function onStateChange() {
-	              this.selector.run(this.props);
+	        // `notifyNestedSubs` is duplicated to handle the case where the component is  unmounted in
+	        // the middle of the notification loop, where `this.subscription` will then be null. An
+	        // extra null check every change can be avoided by copying the method onto `this` and then
+	        // replacing it with a no-op on unmount. This can probably be avoided if Subscription's
+	        // listeners logic is changed to not call listeners that have been unsubscribed in the
+	        // middle of the notification loop.
+	        this.notifyNestedSubs = this.subscription.notifyNestedSubs.bind(this.subscription);
+	      };
 	
-	              if (!this.selector.shouldComponentUpdate) {
-	                subscription.notifyNestedSubs();
-	              } else {
-	                this.componentDidUpdate = function componentDidUpdate() {
-	                  this.componentDidUpdate = undefined;
-	                  subscription.notifyNestedSubs();
-	                };
+	      Connect.prototype.onStateChange = function onStateChange() {
+	        this.selector.run(this.props);
 	
-	                this.setState(dummyState);
-	              }
-	            }.bind(_this2);
-	          })();
+	        if (!this.selector.shouldComponentUpdate) {
+	          this.notifyNestedSubs();
+	        } else {
+	          this.componentDidUpdate = this.notifyNestedSubsOnComponentDidUpdate;
+	          this.setState(dummyState);
 	        }
+	      };
+	
+	      Connect.prototype.notifyNestedSubsOnComponentDidUpdate = function notifyNestedSubsOnComponentDidUpdate() {
+	        // `componentDidUpdate` is conditionally implemented when `onStateChange` determines it
+	        // needs to notify nested subs. Once called, it unimplements itself until further state
+	        // changes occur. Doing it this way vs having a permanent `componentDidMount` that does
+	        // a boolean check every time avoids an extra method call most of the time, resulting
+	        // in some perf boost.
+	        this.componentDidUpdate = undefined;
+	        this.notifyNestedSubs();
 	      };
 	
 	      Connect.prototype.isSubscribed = function isSubscribed() {
@@ -23076,7 +22992,7 @@
 	      };
 	
 	      Connect.prototype.addExtraProps = function addExtraProps(props) {
-	        if (!withRef && !renderCountProp) return props;
+	        if (!withRef && !renderCountProp && !(this.propsMode && this.subscription)) return props;
 	        // make a shallow copy so that fields added don't leak to the original selector.
 	        // this is especially important for 'ref' since that's a reference back to the component
 	        // instance. a singleton memoized selector would then be holding a reference to the
@@ -23084,6 +23000,7 @@
 	        var withExtras = _extends({}, props);
 	        if (withRef) withExtras.ref = this.setWrappedInstance;
 	        if (renderCountProp) withExtras[renderCountProp] = this.renderCount++;
+	        if (this.propsMode && this.subscription) withExtras[subscriptionKey] = this.subscription;
 	        return withExtras;
 	      };
 	
@@ -23127,7 +23044,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 206 */
+/* 205 */
 /***/ function(module, exports) {
 
 	/**
@@ -23183,7 +23100,7 @@
 
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23241,6 +23158,104 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
+/* 207 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	exports.__esModule = true;
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	// encapsulates the subscription logic for connecting a component to the redux store, as
+	// well as nesting subscriptions of descendant components, so that we can ensure the
+	// ancestor components re-render before descendants
+	
+	var CLEARED = null;
+	var nullListeners = {
+	  notify: function notify() {}
+	};
+	
+	function createListenerCollection() {
+	  // the current/next pattern is copied from redux's createStore code.
+	  // TODO: refactor+expose that code to be reusable here?
+	  var current = [];
+	  var next = [];
+	
+	  return {
+	    clear: function clear() {
+	      next = CLEARED;
+	      current = CLEARED;
+	    },
+	    notify: function notify() {
+	      var listeners = current = next;
+	      for (var i = 0; i < listeners.length; i++) {
+	        listeners[i]();
+	      }
+	    },
+	    subscribe: function subscribe(listener) {
+	      var isSubscribed = true;
+	      if (next === current) next = current.slice();
+	      next.push(listener);
+	
+	      return function unsubscribe() {
+	        if (!isSubscribed || current === CLEARED) return;
+	        isSubscribed = false;
+	
+	        if (next === current) next = current.slice();
+	        next.splice(next.indexOf(listener), 1);
+	      };
+	    }
+	  };
+	}
+	
+	var Subscription = function () {
+	  function Subscription(store, parentSub, onStateChange) {
+	    _classCallCheck(this, Subscription);
+	
+	    this.store = store;
+	    this.parentSub = parentSub;
+	    this.onStateChange = onStateChange;
+	    this.unsubscribe = null;
+	    this.listeners = nullListeners;
+	  }
+	
+	  Subscription.prototype.addNestedSub = function addNestedSub(listener) {
+	    this.trySubscribe();
+	    return this.listeners.subscribe(listener);
+	  };
+	
+	  Subscription.prototype.notifyNestedSubs = function notifyNestedSubs() {
+	    this.listeners.notify();
+	  };
+	
+	  Subscription.prototype.isSubscribed = function isSubscribed() {
+	    return Boolean(this.unsubscribe);
+	  };
+	
+	  Subscription.prototype.trySubscribe = function trySubscribe() {
+	    if (!this.unsubscribe) {
+	      this.unsubscribe = this.parentSub ? this.parentSub.addNestedSub(this.onStateChange) : this.store.subscribe(this.onStateChange);
+	
+	      this.listeners = createListenerCollection();
+	    }
+	  };
+	
+	  Subscription.prototype.tryUnsubscribe = function tryUnsubscribe() {
+	    if (this.unsubscribe) {
+	      this.unsubscribe();
+	      this.unsubscribe = null;
+	      this.listeners.clear();
+	      this.listeners = nullListeners;
+	    }
+	  };
+	
+	  return Subscription;
+	}();
+	
+	exports.default = Subscription;
+
+/***/ },
 /* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -23252,7 +23267,7 @@
 	
 	exports.createConnect = createConnect;
 	
-	var _connectAdvanced = __webpack_require__(205);
+	var _connectAdvanced = __webpack_require__(204);
 	
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 	
@@ -23377,28 +23392,39 @@
 /* 209 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	exports.__esModule = true;
 	exports.default = shallowEqual;
 	var hasOwn = Object.prototype.hasOwnProperty;
 	
-	function shallowEqual(a, b) {
-	  if (a === b) return true;
+	function is(x, y) {
+	  if (x === y) {
+	    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+	  } else {
+	    return x !== x && y !== y;
+	  }
+	}
 	
-	  var countA = 0;
-	  var countB = 0;
+	function shallowEqual(objA, objB) {
+	  if (is(objA, objB)) return true;
 	
-	  for (var key in a) {
-	    if (hasOwn.call(a, key) && a[key] !== b[key]) return false;
-	    countA++;
+	  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+	    return false;
 	  }
 	
-	  for (var _key in b) {
-	    if (hasOwn.call(b, _key)) countB++;
+	  var keysA = Object.keys(objA);
+	  var keysB = Object.keys(objB);
+	
+	  if (keysA.length !== keysB.length) return false;
+	
+	  for (var i = 0; i < keysA.length; i++) {
+	    if (!hasOwn.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+	      return false;
+	    }
 	  }
 	
-	  return countA === countB;
+	  return true;
 	}
 
 /***/ },
@@ -23494,10 +23520,12 @@
 	      return proxy.dependsOnOwnProps ? proxy.mapToProps(stateOrDispatch, ownProps) : proxy.mapToProps(stateOrDispatch);
 	    };
 	
-	    proxy.dependsOnOwnProps = getDependsOnOwnProps(mapToProps);
+	    // allow detectFactoryAndVerify to get ownProps
+	    proxy.dependsOnOwnProps = true;
 	
 	    proxy.mapToProps = function detectFactoryAndVerify(stateOrDispatch, ownProps) {
 	      proxy.mapToProps = mapToProps;
+	      proxy.dependsOnOwnProps = getDependsOnOwnProps(mapToProps);
 	      var props = proxy(stateOrDispatch, ownProps);
 	
 	      if (typeof props === 'function') {
@@ -23529,7 +23557,7 @@
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(204);
+	var _warning = __webpack_require__(203);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -23757,7 +23785,7 @@
 	exports.__esModule = true;
 	exports.default = verifySubselectors;
 	
-	var _warning = __webpack_require__(204);
+	var _warning = __webpack_require__(203);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -23834,9 +23862,11 @@
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			steps: steps,
 			stepsLeft: steps,
+			changeSlide: false,
 			breadcrumbs: [],
-			currentNode: _texts2.default.it,
-			texts: _texts2.default.it
+			labels: _texts2.default.it.labels,
+			currentNode: _texts2.default.it.questions,
+			questions: _texts2.default.it.questions
 		};
 		var action = arguments[1];
 	
@@ -23847,11 +23877,18 @@
 				return Object.assign({}, state, {
 					breadcrumbs: state.breadcrumbs.concat(state.currentNode),
 					currentNode: newNode,
+					changeSlide: false,
 					stepsLeft: depthOf(newNode)
+				});
+	
+			case 'CHANGE_SLIDE':
+				return Object.assign({}, state, {
+					changeSlide: true
 				});
 	
 			case 'GO_BACK':
 				var backNode = state.breadcrumbs.length >= 1 ? state.breadcrumbs[state.breadcrumbs.length - 1] : state.currentNode;
+	
 				return Object.assign({}, state, {
 					breadcrumbs: state.breadcrumbs.length >= 2 ? state.breadcrumbs.slice(0, state.breadcrumbs.length - 2) : [],
 					currentNode: backNode,
@@ -23869,27 +23906,14 @@
 
 	module.exports = {
 		"it": {
-			"id": 1,
-			"type": "question",
-			"text": "Nel sito di installazione è possibile collegare ol sistema APL alla rete elettrica?",
-			"answers": [
-				{
-					"a": "no"
-				},
-				{
-					"b": "sì"
-				}
-			],
-			"a": {
-				"id": 2,
-				"type": "answer",
-				"title": "Apl solar",
-				"text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
+			"labels": {
+				"back": "Indietro",
+				"configurator": "Configuratore"
 			},
-			"b": {
-				"id": 3,
+			"questions": {
+				"id": 1,
 				"type": "question",
-				"text": "Il sistema deve essere dotato di dispositivo per l'interazione con il pedone?",
+				"text": "Nel sito di installazione è possibile collegare ol sistema APL alla rete elettrica?",
 				"answers": [
 					{
 						"a": "no"
@@ -23899,9 +23923,15 @@
 					}
 				],
 				"a": {
-					"id": 4,
+					"id": 2,
+					"type": "answer",
+					"title": "Apl solar",
+					"text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
+				},
+				"b": {
+					"id": 3,
 					"type": "question",
-					"text": "Nel luogo di installazione è già presente illuminazione stradale oppure altra illuminazione artificiale? (Vetrine, insegne luminose, ecc.)?",
+					"text": "Il sistema deve essere dotato di dispositivo per l'interazione con il pedone?",
 					"answers": [
 						{
 							"a": "no"
@@ -23911,9 +23941,9 @@
 						}
 					],
 					"a": {
-						"id": 5,
+						"id": 4,
 						"type": "question",
-						"text": "La distanza tra i 2 pali è maggiore di 9 metri?",
+						"text": "Nel luogo di installazione è già presente illuminazione stradale oppure altra illuminazione artificiale? (Vetrine, insegne luminose, ecc.)?",
 						"answers": [
 							{
 								"a": "no"
@@ -23923,9 +23953,9 @@
 							}
 						],
 						"a": {
-							"id": 6,
+							"id": 5,
 							"type": "question",
-							"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+							"text": "La distanza tra i 2 pali è maggiore di 9 metri?",
 							"answers": [
 								{
 									"a": "no"
@@ -23935,20 +23965,58 @@
 								}
 							],
 							"a": {
-								"id": 7,
-								"type": "answer",
-								"title": "Apl classic Stratos N soluzione 1",
-								"text": "Testo"
+								"id": 6,
+								"type": "question",
+								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+								"answers": [
+									{
+										"a": "no"
+									},
+									{
+										"b": "sì"
+									}
+								],
+								"a": {
+									"id": 7,
+									"type": "answer",
+									"title": "Apl classic Stratos N soluzione 1",
+									"text": "Testo"
+								},
+								"b": {
+									"id": 8,
+									"type": "answer",
+									"title": "Apl classic Stratos N soluzione 2",
+									"text": "Testo"
+								}
 							},
 							"b": {
-								"id": 8,
-								"type": "answer",
-								"title": "Apl classic Stratos N soluzione 2",
-								"text": "Testo"
+								"id": 9,
+								"type": "question",
+								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+								"answers": [
+									{
+										"a": "no"
+									},
+									{
+										"b": "sì"
+									}
+								],
+								"a": {
+									"id": 10,
+									"type": "answer",
+									"title": "Apl classic Stratos P soluzione 1",
+									"text": "Testo"
+								},
+								"b": {
+									"id": 11,
+									"type": "answer",
+									"title": "Apl classic Stratos P soluzione 2",
+									"text": "Testo"
+								}
 							}
 						},
 						"b": {
-							"id": 9,
+							"id": 12,
 							"type": "question",
 							"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
 							"answers": [
@@ -23960,73 +24028,35 @@
 								}
 							],
 							"a": {
-								"id": 10,
+								"id": 13,
 								"type": "answer",
 								"title": "Apl classic Stratos P soluzione 1",
 								"text": "Testo"
 							},
 							"b": {
-								"id": 11,
+								"id": 14,
 								"type": "answer",
-								"title": "Apl classic Stratos P soluzione 2",
+								"title": "Apl classic Stratos P soluzione 2 o 3",
 								"text": "Testo"
 							}
 						}
 					},
 					"b": {
-						"id": 12,
+						"id": 15,
 						"type": "question",
-						"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+						"text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? Scarica le istruzioni posizionamento sensore per valutare se è possibile utilizzarlo nella tua installazione",
 						"answers": [
 							{
-								"a": "no"
+								"a": "Sensore"
 							},
 							{
-								"b": "sì"
+								"b": "Pulsante touch"
 							}
 						],
 						"a": {
-							"id": 13,
-							"type": "answer",
-							"title": "Apl classic Stratos P soluzione 1",
-							"text": "Testo"
-						},
-						"b": {
-							"id": 14,
-							"type": "answer",
-							"title": "Apl classic Stratos P soluzione 2 o 3",
-							"text": "Testo"
-						}
-					}
-				},
-				"b": {
-					"id": 15,
-					"type": "question",
-					"text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? Scarica le istruzioni posizionamento sensore per valutare se è possibile utilizzarlo nella tua installazione",
-					"answers": [
-						{
-							"a": "Sensore"
-						},
-						{
-							"b": "Pulsante touch"
-						}
-					],
-					"a": {
-						"id": 16,
-						"type": "question",
-						"text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
-						"answers": [
-							{
-								"a": "no"
-							},
-							{
-								"b": "sì"
-							}
-						],
-						"a": {
-							"id": 17,
+							"id": 16,
 							"type": "question",
-							"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+							"text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
 							"answers": [
 								{
 									"a": "no"
@@ -24036,41 +24066,41 @@
 								}
 							],
 							"a": {
-								"id": 18,
-								"type": "answer",
-								"title": "Apl smart soluzione 1 con sensore",
-								"text": "Testo"
+								"id": 17,
+								"type": "question",
+								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+								"answers": [
+									{
+										"a": "no"
+									},
+									{
+										"b": "sì"
+									}
+								],
+								"a": {
+									"id": 18,
+									"type": "answer",
+									"title": "Apl smart soluzione 1 con sensore",
+									"text": "Testo"
+								},
+								"b": {
+									"id": 19,
+									"type": "answer",
+									"title": "Apl smart soluzione 2 o 3 con sensore",
+									"text": "Testo"
+								}
 							},
 							"b": {
-								"id": 19,
+								"id": 20,
 								"type": "answer",
 								"title": "Apl smart soluzione 2 o 3 con sensore",
 								"text": "Testo"
 							}
 						},
 						"b": {
-							"id": 20,
-							"type": "answer",
-							"title": "Apl smart soluzione 2 o 3 con sensore",
-							"text": "Testo"
-						}
-					},
-					"b": {
-						"id": 21,
-						"type": "question",
-						"text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
-						"answers": [
-							{
-								"a": "no"
-							},
-							{
-								"b": "sì"
-							}
-						],
-						"a": {
-							"id": 22,
+							"id": 21,
 							"type": "question",
-							"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+							"text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
 							"answers": [
 								{
 									"a": "no"
@@ -24080,23 +24110,36 @@
 								}
 							],
 							"a": {
-								"id": 23,
-								"type": "answer",
-								"title": "Apl smart soluzione 1 con pulsante touch",
-								"text": "Testo"
+								"id": 22,
+								"type": "question",
+								"text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+								"answers": [
+									{
+										"a": "no"
+									},
+									{
+										"b": "sì"
+									}
+								],
+								"a": {
+									"id": 23,
+									"type": "answer",
+									"title": "Apl smart soluzione 1 con pulsante touch",
+									"text": "Testo"
+								},
+								"b": {
+									"id": 24,
+									"type": "answer",
+									"title": "Apl smart soluzione 2 o 3 con pulsante touch",
+									"text": "Testo"
+								}
 							},
 							"b": {
-								"id": 24,
+								"id": 25,
 								"type": "answer",
 								"title": "Apl smart soluzione 2 o 3 con pulsante touch",
 								"text": "Testo"
 							}
-						},
-						"b": {
-							"id": 25,
-							"type": "answer",
-							"title": "Apl smart soluzione 2 o 3 con pulsante touch",
-							"text": "Testo"
 						}
 					}
 				}
@@ -24185,6 +24228,7 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 	    return {
+	        labels: (0, _selectors.getLabels)(state),
 	        steps: (0, _selectors.getSteps)(state),
 	        stepsLeft: (0, _selectors.getStepsLeft)(state),
 	        currentNode: (0, _selectors.getCurrentNode)(state),
@@ -24226,30 +24270,35 @@
 	                    _react2.default.createElement(
 	                        'span',
 	                        { className: 'progressLabel' },
-	                        'Configuratore'
+	                        this.props.labels["configurator"]
 	                    ),
 	                    _react2.default.createElement('progress', { className: 'progressBar', value: this.props.steps - this.props.stepsLeft, max: this.props.steps })
 	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'workarea' },
-	                    _react2.default.createElement(_Title2.default, { currentNode: this.props.currentNode }),
 	                    _react2.default.createElement(
-	                        'p',
-	                        { className: this.props.currentNode.type },
-	                        this.props.currentNode.text
-	                    ),
-	                    _react2.default.createElement(_Answers2.default, {
-	                        id: this.props.currentNode.id,
-	                        answers: this.props.currentNode.answers,
-	                        setAnswer: this.props.setAnswer
-	                    }),
-	                    _react2.default.createElement(_Back2.default, {
-	                        show: Boolean(this.props.breadcrumbs.length),
-	                        clickHandler: function clickHandler() {
-	                            return _this2.props.goBack(_this2.props.currentNode);
-	                        }
-	                    })
+	                        'div',
+	                        { className: 'slide' },
+	                        _react2.default.createElement(_Title2.default, { currentNode: this.props.currentNode }),
+	                        _react2.default.createElement(
+	                            'p',
+	                            { className: this.props.currentNode.type },
+	                            this.props.currentNode.text
+	                        ),
+	                        _react2.default.createElement(_Answers2.default, {
+	                            id: this.props.currentNode.id,
+	                            answers: this.props.currentNode.answers,
+	                            setAnswer: this.props.setAnswer
+	                        }),
+	                        _react2.default.createElement(_Back2.default, {
+	                            show: Boolean(this.props.breadcrumbs.length),
+	                            label: this.props.labels["back"],
+	                            clickHandler: function clickHandler() {
+	                                return _this2.props.goBack(_this2.props.currentNode);
+	                            }
+	                        })
+	                    )
 	                )
 	            );
 	        }
@@ -24275,6 +24324,8 @@
 	exports.getStepsLeft = getStepsLeft;
 	exports.getSteps = getSteps;
 	exports.getBreadcrumbs = getBreadcrumbs;
+	exports.getLabels = getLabels;
+	exports.getChangeSlide = getChangeSlide;
 	function getCurrentNode(state) {
 	    return state.currentNode;
 	}
@@ -24289,6 +24340,14 @@
 	
 	function getBreadcrumbs(state) {
 	    return state.breadcrumbs;
+	}
+	
+	function getLabels(state) {
+	    return state.labels;
+	}
+	
+	function getChangeSlide(state) {
+	    return state.changeSlide;
 	}
 
 /***/ },
@@ -24387,6 +24446,7 @@
 	
 	var Back = function Back(_ref) {
 	    var show = _ref.show,
+	        label = _ref.label,
 	        clickHandler = _ref.clickHandler;
 	
 	    if (!show) {
@@ -24417,7 +24477,7 @@
 	            _react2.default.createElement(
 	                "span",
 	                { className: "button-label" },
-	                "Indietro"
+	                label
 	            )
 	        )
 	    );

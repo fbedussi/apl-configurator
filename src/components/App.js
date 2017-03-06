@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs } from '../selectors';
+import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels } from '../selectors';
 import { parseAnswer, goBack } from '../actions';
 
 import Answers from './Answers';
@@ -9,6 +9,7 @@ import Title from './Title';
 import Back from './Back';
 
 const mapStateToProps = (state) => ({
+    labels: getLabels(state),
     steps: getSteps(state),
     stepsLeft: getStepsLeft(state),
     currentNode: getCurrentNode(state),
@@ -25,10 +26,11 @@ class App extends React.Component {
         return (
             <div className="configuratorWrapper">
                 <div className="progressWrapper">
-                    <span className="progressLabel">Configuratore</span>
+                    <span className="progressLabel">{this.props.labels["configurator"]}</span>
                     <progress className="progressBar" value={this.props.steps - this.props.stepsLeft} max={this.props.steps}></progress>
                 </div>
                 <div className="workarea">
+                    <div className="slide">
                     <Title currentNode={this.props.currentNode} />
                     <p className={this.props.currentNode.type}>{this.props.currentNode.text}</p>
                     <Answers
@@ -38,10 +40,12 @@ class App extends React.Component {
                     />
                     <Back 
                         show={Boolean(this.props.breadcrumbs.length)}
+                        label={this.props.labels["back"]}
                         clickHandler={() => 
                             this.props.goBack(this.props.currentNode)
                         } 
                     />
+                    </div>
                 </div>
             </div>
         );

@@ -72,10 +72,23 @@ progress::-moz-progress-bar {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    padding: 2em 1em;
     background-color: var(--color-grey);
     color: var(--color-darkGrey);
     text-align: center; 
+    overflow: hidden;
+}
+
+.workareaInner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.step {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    padding: 2em 1em;
+    width: 100%;
 }
 
 .question {
