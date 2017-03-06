@@ -72,23 +72,19 @@ progress::-moz-progress-bar {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
+    padding: 2em 1em;
     background-color: var(--color-grey);
     color: var(--color-darkGrey);
     text-align: center; 
-    overflow: hidden;
+    position: relative;
 }
 
-.workareaInner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-
-.step {
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    padding: 2em 1em;
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    padding: 2em 1em;    
 }
 
 .question {
@@ -166,4 +162,24 @@ input[type="radio"]:checked {
 
 .backBtn:hover #arrow {
     fill: var(--color-orange);
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 500ms ease-in;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  -webkit-transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-in;
 }
