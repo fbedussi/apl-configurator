@@ -1,8 +1,10 @@
+var webpack = require("webpack");
+
 module.exports = {
     entry: './src/main.js',
     output: {
         path: './',
-        filename: 'script.js'
+        filename: 'script.min.js'
     },
     module: {
         loaders: [
@@ -28,8 +30,18 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({ minimize: true })
+    ],
     // postcss: function () {
     //     return [autoprefixer];
     // },
-    devtool: 'source-map'
+    devtool: 'source-map',
+    resolve: {
+        alias: {
+            "react": "preact-compat",
+            "react-dom": "preact-compat",
+            "react-addons-css-transition-group": "preact-css-transition-group"
+        }
+    }
 };
