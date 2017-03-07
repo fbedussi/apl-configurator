@@ -25,3 +25,7 @@ export function getChangeSlide(state) {
 export function getGoingBack(state) {
     return state.goingBack;
 }
+
+export function getAnswers(state) {
+    return state.answers;
+}

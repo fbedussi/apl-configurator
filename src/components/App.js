@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels, getGoingBack } from '../selectors';
+import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getAnswers } from '../selectors';
 import { parseAnswer, goBack } from '../actions';
 
 import Answers from './Answers';
 import Title from './Title';
 import Back from './Back';
 import Image from './Image';
+import Recap from './Recap';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
@@ -16,7 +17,8 @@ const mapStateToProps = (state) => ({
     stepsLeft: getStepsLeft(state),
     goingBack: getGoingBack(state),
     currentNode: getCurrentNode(state),
-    breadcrumbs: getBreadcrumbs(state)
+    breadcrumbs: getBreadcrumbs(state),
+    answers: getAnswers(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -54,6 +56,11 @@ class App extends React.Component {
                                 clickHandler={() =>
                                     this.props.goBack(this.props.currentNode)
                                 }
+                            />
+                            <Recap
+                                show={this.props.currentNode.type === 'answer'}
+                                breadcrumbs={this.props.breadcrumbs}
+                                answers={this.props.answers}
                             />
                         </div>
 

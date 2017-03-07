@@ -31,6 +31,7 @@ export default function reducer(state = {
 				stepsLeft: steps,
 				goingBack: false,
 				breadcrumbs: [],
+				answers: [],
 				labels: action.texts.it.labels,
 				currentNode: action.texts.it.questions,
 				questions: action.texts.it.questions
@@ -39,9 +40,11 @@ export default function reducer(state = {
 		case 'PARSE_ANSWER':
 			let newNode = state.currentNode[action.value];
 			let newBreadcrumbs = state.breadcrumbs.concat(state.currentNode);
+			let newAnswers = state.answers.concat(action.value);
 			//console.log(newBreadcrumbs);
 			return Object.assign({}, state, {
 				breadcrumbs: newBreadcrumbs,
+				answers: newAnswers,
 				currentNode: newNode,
 				goingBack: false,
 				stepsLeft: depthOf(newNode)
@@ -54,6 +57,7 @@ export default function reducer(state = {
 			//console.log(state.breadcrumbs.length >= 1? state.breadcrumbs.slice(0, state.breadcrumbs.length - 1) : []);
 			return Object.assign({}, state, {
 				breadcrumbs: state.breadcrumbs.length >= 1 ? state.breadcrumbs.slice(0, state.breadcrumbs.length - 1) : [],
+				answers: state.answers.length >= 1 ? state.answers.slice(0, state.answers.length - 1) : [],
 				currentNode: backNode,
 				goingBack: true,
 				stepsLeft: depthOf(backNode)
