@@ -50,6 +50,6 @@
   },
   "scripts": {
     "dev": "webpack --watch",
-    "css": "postcss --use autoprefixer -w -o style.css ./src/style.css"
+    "css": "postcss -w -o style.css ./src/style.css"
   }
 }

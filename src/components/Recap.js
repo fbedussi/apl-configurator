@@ -15,24 +15,27 @@ const Recap = ({ show, breadcrumbs, answers }) => {
         return null;
     }
 
-    return <table className="recap">
-        <thead>
-            <th>
-                <td>Domanda</td>
-                <td>Risposta</td>
-            </th>
-        </thead>
-        <tbody>
-            {breadcrumbs.map((node, i) => <tr>
-                <td>
-                    {node.text}
-                </td>
-                <td>
-                    {getAnswerLabel(node, answers, i)}
-                </td>
-            </tr>)}
-        </tbody>
-    </table>
+    return <div className="recap">
+        <h2 className="recap-title">Le tue risposte</h2>
+        <table className="recap-table">
+            <thead>
+                <tr>
+                    <th>Domanda</th>
+                    <th>Risposta</th>
+                </tr>
+            </thead>
+            <tbody>
+                {breadcrumbs.map((node, i) => <tr>
+                    <td>
+                        {node.text}
+                    </td>
+                    <td>
+                        {getAnswerLabel(node, answers, i)}
+                    </td>
+                </tr>)}
+            </tbody>
+        </table>
+    </div>
 }
 
 export default Recap;

@@ -10,6 +10,7 @@ import Title from './Title';
 import Back from './Back';
 import Image from './Image';
 import Recap from './Recap';
+import Quotation from './Quotation';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
@@ -36,7 +37,7 @@ class App extends React.Component {
                 </div>
                 <div className={`workarea ${this.props.goingBack? 'back' : ''}`}>
                     <ReactCSSTransitionGroup
-                        transitionName="example"
+                        transitionName="slider"
                         transitionEnterTimeout={500}
                         transitionLeaveTimeout={500}>
                         <div className="slide" key={this.props.currentNode.id}>
@@ -61,6 +62,9 @@ class App extends React.Component {
                                 show={this.props.currentNode.type === 'answer'}
                                 breadcrumbs={this.props.breadcrumbs}
                                 answers={this.props.answers}
+                            />
+                            <Quotation
+                                show={this.props.currentNode.type === 'answer'}
                             />
                         </div>
 

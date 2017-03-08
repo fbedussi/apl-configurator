@@ -14,12 +14,11 @@
     display: none;
 }
 
-html, body, #app {
-    height: 100%;
-}
+/*html, body, #app {
+    min-height: 100%;
+}*/
 
 .configuratorWrapper {
-    height: 100%;
     display: flex;
     flex-direction: column;
     max-width: 1000px;
@@ -64,15 +63,16 @@ progress::-moz-progress-bar {
     color: var(--color-darkGrey);
     text-align: center; 
     position: relative;
+    min-height: 100vh;
     overflow: hidden;
 }
 
 .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
+    /*top: 0;
+    left: 0;*/
     width: 100%;
     padding: 2em 1em;    
+    transition: transform 0.5s;
 }
 
 .question {
@@ -147,33 +147,34 @@ input[type="radio"]:checked {
     fill: var(--color-orange);
 }
 
-.example-enter {
-    transition: transform 0.5s;
+.slider-enter {
+    position: absolute;
+    width: calc(100% - 2em);
     transform: translatex(100%);
 }
 
-.example-enter.example-enter-active {
-  transform: translateX(0);
+.slider-enter.slider-enter-active {
+    transform: translateX(0);
 }
 
-.example-leave {
+.slider-leave {
     transition: transform 0.5s;     
 }
 
-.example-leave.example-leave-active {
+.slider-leave.slider-leave-active {
       transform: translatex(-100%);
 }
 
-.back .example-enter.example-enter-active {
+.back .slider-enter.slider-enter-active {
   transform: translateX(0);
 }
 
-.back .example-enter {
+.back .slider-enter {
     transform: translatex(-100%);
     z-index: 2;
 }
 
-.back .example-leave.example-leave-active {
+.back .slider-leave.slider-leave-active {
       transform: translatex(100%);
 }
 

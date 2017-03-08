@@ -20,6 +20,7 @@
                 "id": 2,
                 "type": "answer",
                 "title": "Apl solar",
+                "image": "APL_solar.jpg",
                 "text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
             },
             "b": {
