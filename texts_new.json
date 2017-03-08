@@ -1,0 +1,283 @@
+{
+    "it": {
+        "labels": {
+            "back": "Indietro",
+            "configurator": "Configuratore"
+        },
+        
+        "answers": [
+            {
+                "id": 1,
+                "title": "Apl solar",
+                "text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
+            },
+            {
+                "id": 2,
+                "title": "Apl classic Stratos N soluzione 1",
+                "image": "APL_classic_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 3,
+                "title": "Apl classic Stratos N soluzione 2",
+                "image": "APL_classic_soluzione2.jpg",
+                "text": ""
+            },
+            {
+                "id": 4,
+                "title": "Apl classic Stratos P soluzione 1",
+                "image": "APL_classic_soluzione3.jpg",
+                "text": ""
+            },
+            {
+                "id": 5,
+                "title": "Apl classic Stratos P soluzione 2",
+                "image": "APL_classic_soluzione4.jpg",
+                "text": ""
+            },
+            {
+                "id": 6,
+                "title": "Apl classic Stratos P soluzione 2 o 3",
+                "image": "APL_classicELV_soluzione2.jpg",
+                "text": ""
+            },
+            {
+                "id": 7,
+                "title": "Apl smart soluzione 1 con sensore",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 8,
+                "title": "Apl smart soluzione 2 o 3 con sensore",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 9,
+                "title": "Apl smart soluzione 1 con pulsante touch",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 10,
+                "title": "Apl smart soluzione 2 o 3 con pulsante touch",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            }
+        ],
+
+        "questions": [
+            {
+                "id": 1,
+                "text": "Nel sito di installazione è possibile collegare ol sistema APL alla rete elettrica?",
+                "answers": [
+                    {
+                        "a": "no"
+                    },
+                    {
+                        "b": "sì"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "text": "Il sistema deve essere dotato di dispositivo per l'interazione con il pedone?",
+                "answers": [
+                    {
+                        "a": "no"
+                    },
+                    {
+                        "b": "sì"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "text": "Nel luogo di installazione è già presente illuminazione stradale oppure altra illuminazione artificiale? (Vetrine, insegne luminose, ecc.)?",
+                "answers": [
+                    {
+                        "a": "no"
+                    },
+                    {
+                        "b": "sì"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "text": "La distanza tra i 2 pali è maggiore di 9 metri?",
+                "answers": [
+                    {
+                        "a": "no"
+                    },
+                    {
+                        "b": "sì"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
+                "answers": [
+                    {
+                        "a": "no"
+                    },
+                    {
+                        "b": "sì"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? Scarica le istruzioni posizionamento sensore per valutare se è possibile utilizzarlo nella tua installazione",
+                "answers": [
+                    {
+                        "a": "Sensore"
+                    },
+                    {
+                        "b": "Pulsante touch"
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
+                "answers": [
+                    {
+                        "a": "no"
+                    },
+                    {
+                        "b": "sì"
+                    }
+                ]
+            }
+        ],
+
+        "tree": {
+            "id": 1,
+            "questionId": 1,
+            "answerId": null,
+            "a": {
+                "id": 2,
+                "questionId": null,
+                "answerId": 1
+            },
+            "b": {
+                "id": 3,
+                "questionId": 2,
+                "answerId": null,
+                "a": {
+                    "id": 4,
+                    "questionId": 3,
+                    "answerId": null,
+                    "a": {
+                        "id": 5,
+                        "questionId": 4,
+                        "answerId": null,
+                        "a": {
+                            "id": 6,
+                            "questionId": 5,
+                            "answerId": null,
+                            "a": {
+                                "id": 7,
+                                "questionId": null,
+                                "answerId": 2
+                            },
+                            "b": {
+                                "id": 8,
+                                "questionId": null,
+                                "answerId": 3
+                            }
+                        },
+                        "b": {
+                            "id": 9,
+                            "questionId": 5,
+                            "answerId": null,
+                            "a": {
+                                "id": 10,
+                                "questionId": null,
+                                "answerId": 4
+                            },
+                            "b": {
+                                "id": 11,
+                                "questionId": null,
+                                "answerId": 5
+                            }
+                        }
+                    },
+                    "b": {
+                        "id": 12,
+                        "questionId": 5,
+                        "answerId": null,
+                        "a": {
+                            "id": 13,
+                            "questionId": null,
+                            "answerId": 4
+                        },
+                        "b": {
+                            "id": 14,
+                            "questionId": null,
+                            "answerId": 6
+                        }
+                    }
+                },
+                "b": {
+                    "id": 15,
+                    "questionId": 6,
+                    "answerId": null,
+                    "a": {
+                        "id": 16,
+                        "questionId": 7,
+                        "answerId": null,
+                        "a": {
+                            "id": 17,
+                            "questionId": 5,
+                            "answerId": null,
+                            "a": {
+                                "id": 18,
+                                "questionId": null,
+                                "answerId": 7
+                            },
+                            "b": {
+                                "id": 19,
+                                "questionId": null,
+                                "answerId": 8
+                            }
+                        },
+                        "b": {
+                            "id": 20,
+                            "questionId": null,
+                            "answerId": 8
+                        }
+                    },
+                    "b": {
+                        "id": 21,
+                        "questionId": 7,
+                        "answerId": null,
+                        "a": {
+                            "id": 22,
+                            "questionId": 5,
+                            "answerId": null,
+                            "a": {
+                                "id": 23,
+                                "questionId": null,
+                                "answerId": 9
+                            },
+                            "b": {
+                                "id": 24,
+                                "questionId": null,
+                                "answerId": 10
+                            }
+                        },
+                        "b": {
+                            "id": 25,
+                            "questionId": null,
+                            "answerId": 10
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
