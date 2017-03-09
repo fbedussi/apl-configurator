@@ -27,6 +27,7 @@ export default function reducer(state = {
 		case 'SET_TEXTS':
 			let steps = depthOf(action.texts.it)
 			return Object.assign({}, state, {
+				showForm: false,
 				steps: steps,
 				stepsLeft: steps,
 				goingBack: false,
@@ -62,6 +63,9 @@ export default function reducer(state = {
 				goingBack: true,
 				stepsLeft: depthOf(backNode)
 			});
+
+		case 'TOGGLE_FORM':
+			return Object.assign({}, state, {showForm: !state.showForm});
 
 		default:
 			return state;

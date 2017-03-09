@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getAnswers } from '../selectors';
-import { parseAnswer, goBack } from '../actions';
+import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getAnswers, getShowForm } from '../selectors';
+import { parseAnswer, goBack, toggleForm } from '../actions';
 
 import Answers from './Answers';
 import Title from './Title';
@@ -19,12 +19,14 @@ const mapStateToProps = (state) => ({
     goingBack: getGoingBack(state),
     currentNode: getCurrentNode(state),
     breadcrumbs: getBreadcrumbs(state),
-    answers: getAnswers(state)
+    answers: getAnswers(state),
+    showForm: getShowForm(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setAnswer: (value) => dispatch(parseAnswer(value)),
-    goBack: (currentNode) => dispatch(goBack(currentNode))
+    goBack: (currentNode) => dispatch(goBack(currentNode)),
+    toggleForm: () => dispatch(toggleForm())
 })
 
 class App extends React.Component {
@@ -65,6 +67,8 @@ class App extends React.Component {
                             />
                             <Quotation
                                 show={this.props.currentNode.type === 'answer'}
+                                clickHandler={() => this.props.toggleForm()}
+                                showForm={this.props.showForm}
                             />
                         </div>
 

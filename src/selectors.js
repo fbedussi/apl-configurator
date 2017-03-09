@@ -29,3 +29,7 @@ export function getGoingBack(state) {
 export function getAnswers(state) {
     return state.answers;
 }
+
+export function getShowForm(state) {
+    return state.showForm;
+}

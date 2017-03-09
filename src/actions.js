@@ -26,3 +26,7 @@ export function parseAnswer(value) {
 export function goBack(currentNode) {
     return {type: 'GO_BACK', currentNode};
 }
+
+export function toggleForm() {
+    return {type: 'TOGGLE_FORM'};    
+}

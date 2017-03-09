@@ -1,42 +1,49 @@
 import React from 'react';
 
-function getAnswerLabel(node, answers, i) {
-    var selectedAnswerKey = answers[i];
-    var selectedAnswerArr = node.answers.filter(answer => {
-        var answerKey = Object.keys(answer)[0];
-        return answerKey === selectedAnswerKey
-    });
-    var selecterAnswerLAbel = selectedAnswerArr[0][selectedAnswerKey];
-    return selecterAnswerLAbel
-}
-
-const Quotation = ({ show}) => {
+const Quotation = ({show, clickHandler, showForm}) => {
     if (!show) {
         return null;
     }
 
-    var showForm = false;
-
     return <div className="quotation">
         <button 
-            className="quotation-btn"
-            onClick={() => {
-                showForm = !showForm;
-            }
-            }
-        >Verifica quanto costa</button>
-        <form 
-            className={`quotation-form ${showForm? 'show' : 'hide'}`}
+            className={`quotation-btn ctaBtn ${showForm? 'hide' : 'show'}`}
+            onClick={clickHandler}
         >
-            <label>
+            scopri quanto costa
+        </button>
+        <form 
+            className={`quotation-form ${showForm? 'show' : 'hide' }`}
+        >
+            <label className="quotation-field">
                 Nome
-                <input type="text"/>>
+                <input type="text"/>
             </label>
-            <label>
+            <label className="quotation-field">
                 e-main
-                <input type="email"/>>
+                <input type="email"/>
             </label>
-            <button>Invia</button>
+            <label className="quotation-field">
+                Telefono
+                <input type="tel"/>
+            </label>
+            <fieldset className="quotation-field">
+                Sono un:
+                <label>
+                    <input type="radio" name="iam"/>
+                    Progettista
+                </label>
+                <label>
+                    <input type="radio" name="iam"/>
+                    Rivenditore
+                </label>
+            </fieldset>
+            <label className="quotation-field">
+                Eventuali informazioni aggiuntive:
+                <textarea className="quotation-msg"></textarea>
+            </label>
+
+            <button className="ctaBtn">Invia</button>
         </form>
     </div>
 }
