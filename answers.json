@@ -1,0 +1,62 @@
+{"answers": [
+            {
+                "id": 1,
+                "title": "Apl solar",
+                "text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
+            },
+            {
+                "id": 2,
+                "title": "Apl classic Stratos N soluzione 1",
+                "image": "APL_classic_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 3,
+                "title": "Apl classic Stratos N soluzione 2",
+                "image": "APL_classic_soluzione2.jpg",
+                "text": ""
+            },
+            {
+                "id": 4,
+                "title": "Apl classic Stratos P soluzione 1",
+                "image": "APL_classic_soluzione3.jpg",
+                "text": ""
+            },
+            {
+                "id": 5,
+                "title": "Apl classic Stratos P soluzione 2",
+                "image": "APL_classic_soluzione4.jpg",
+                "text": ""
+            },
+            {
+                "id": 6,
+                "title": "Apl classic Stratos P soluzione 2 o 3",
+                "image": "APL_classicELV_soluzione2.jpg",
+                "text": ""
+            },
+            {
+                "id": 7,
+                "title": "Apl smart soluzione 1 con sensore",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 8,
+                "title": "Apl smart soluzione 2 o 3 con sensore",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 9,
+                "title": "Apl smart soluzione 1 con pulsante touch",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            },
+            {
+                "id": 10,
+                "title": "Apl smart soluzione 2 o 3 con pulsante touch",
+                "image": "APL_classicELV_soluzione1.jpg",
+                "text": ""
+            }
+        ]
+}
