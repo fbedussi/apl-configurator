@@ -68,7 +68,6 @@ progress::-moz-progress-bar {
     color: var(--color-darkGrey);
     text-align: center; 
     position: relative;
-    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -181,6 +180,29 @@ input[type="radio"]:checked {
 
 .back .slider-leave.slider-leave-active {
       transform: translatex(100%);
+}
+
+.slide {
+    overflow: hidden;
+    padding: 0;
+}
+
+.accordion-enter {
+  max-height: 0;
+  transition: max-height 0.4s 0.4s;
+}
+
+.accordion-enter.accordion-enter-active {
+  max-height: 1000px;
+}
+
+.accordion-leave {
+  max-height: 1000px;
+  transition: max-height 0.4s;
+}
+
+.accordion-leave.accordion-leave-active {
+  max-height: 0;
 }
 
 .title {
