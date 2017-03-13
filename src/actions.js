@@ -30,3 +30,7 @@ export function goBack(currentNode) {
 export function toggleForm() {
     return {type: 'TOGGLE_FORM'};    
 }
+
+export function requestSent() {
+    return {type: 'REQUEST_SENT'};        
+}

@@ -29,13 +29,14 @@ export default function reducer(state = {
 			return Object.assign({}, state, {
 				showForm: false,
 				steps: steps,
-				stepsLeft: steps,
+				stepsLeft: steps - 1,
 				goingBack: false,
 				breadcrumbs: [],
 				answers: [],
 				labels: action.texts.it.labels,
 				currentNode: action.texts.it.questions,
-				questions: action.texts.it.questions
+				questions: action.texts.it.questions,
+				requestSent: null
 			});
 
 		case 'PARSE_ANSWER':
@@ -67,6 +68,9 @@ export default function reducer(state = {
 		case 'TOGGLE_FORM':
 			return Object.assign({}, state, {showForm: !state.showForm});
 
+		case 'REQUEST_SENT':
+			return Object.assign({}, state, {requestSent: true});
+		
 		default:
 			return state;
 	}

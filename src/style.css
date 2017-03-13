@@ -10,6 +10,16 @@
     box-sizing: border-box;
 }
 
+html, body, #app, .appInner {
+    min-height: 100vh;
+}
+
+.appInner {
+    display: flex;
+    flex-direction: column;
+    font-family: museo-sans, sans-serif;
+}
+
 button {
     appearance: none;
     border: none;
@@ -23,12 +33,26 @@ fieldset {
     display: none;
 }
 
+.header {
+    background-color: #3D3D3D;
+    text-align: center;
+    height: 133px;
+}
+
+.logoWrapper {
+    margin: 36px 0;
+    display: inline-block;
+}
+
 .configuratorWrapper {
     display: flex;
     flex-direction: column;
     max-width: 1000px;
     margin: 0 auto;
     font-size: 1.5rem;
+    margin-bottom: 2em;
+    flex: 1;
+    width: 100%;
 }
 
 .progressWrapper {
@@ -72,8 +96,6 @@ progress::-moz-progress-bar {
 }
 
 .slide {
-    /*top: 0;
-    left: 0;*/
     width: 100%;
     padding: 2em 1em;    
     transition: transform 0.5s;
@@ -189,7 +211,7 @@ input[type="radio"]:checked {
 
 .accordion-enter {
   max-height: 0;
-  transition: max-height 0.4s 0.4s;
+  transition: max-height 0.5s 0.5s;
 }
 
 .accordion-enter.accordion-enter-active {
@@ -198,7 +220,7 @@ input[type="radio"]:checked {
 
 .accordion-leave {
   max-height: 1000px;
-  transition: max-height 0.4s;
+  transition: max-height 0.5s;
 }
 
 .accordion-leave.accordion-leave-active {
@@ -232,4 +254,16 @@ input[type="radio"]:checked {
 .quotation-msg {
     width: 100%;
     height: 3em;
+}
+
+.footer {
+    background-color: #eee;
+    text-align: center;
+    height: 8em;
+}
+
+.backToSiteBtn {
+    margin: 3em 0;
+    display: inline-block;
+    text-decoration: none;
 }

@@ -47,8 +47,8 @@ class Slide extends React.Component {
         return (
             <ReactCSSTransitionGroup
                 transitionName="accordion"
-                transitionEnterTimeout={400}
-                transitionLeaveTimeout={400}>
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}>
                 <div className="slide" key={this.props.currentNode.id} ref={slide => this.slide = slide}>
                     <div className="slideInner">
                         <Title currentNode={this.props.currentNode} />

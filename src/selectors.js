@@ -33,3 +33,7 @@ export function getAnswers(state) {
 export function getShowForm(state) {
     return state.showForm;
 }
+
+export function getRequestSent(state) {
+    return state.requestSent;
+}
