@@ -14,6 +14,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Form extends React.Component {
     handleSubmit(e) {
+        e.preventDefault();
+
         console.log(e);
         var form = e.target;
         var data = new FormData(form);
@@ -38,18 +40,18 @@ class Form extends React.Component {
             <label className="quotation-field" htmlFor="name">
                 Nome
             </label>
-                <input type="text" id="name" name="name"/>
+                <input type="text" id="name" name="name" minLength="2"/>
             <label className="quotation-field">
                 Cognome
-                <input type="text" id="surname" name="surname"/>
+                <input type="text" id="surname" name="surname" minLength="2"/>
             </label>
             <label className="quotation-field">
                 Società* (ragione sociale)
-                <input type="text" id="company" name="company"/>
+                <input type="text" id="company" name="company" required minLength="2"/>
             </label>
             <label className="quotation-field">
                 Indirizzo*
-                <input type="text" id="address" name="address"/>
+                <input type="text" id="address" name="address" required minLength="5"/>
             </label>
             <label className="quotation-field">
                 Posizione
@@ -57,7 +59,7 @@ class Form extends React.Component {
             </label>
             <label className="quotation-field">
                 e-mail*
-                <input type="email" id="email" name="email"/>
+                <input type="email" id="email" name="email" required/>
             </label>
             <label className="quotation-field">
                 Telefono
