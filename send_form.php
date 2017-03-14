@@ -9,8 +9,8 @@ foreach ($_POST as $key => $value)
 $to      = "francesco@francescobedussi.it";
 $subject = "Apl - Richiesta preventivo";
 $headers = "From: info@attraversamentipedonali.it" . "\r\n" .
-    "Reply-To: info@attraversamentipedonali.it" . "\r\n" .
+    "Reply-To: francesco@francescobedussi.it" . "\r\n" .
     "X-Mailer: PHP/" . phpversion();
 
-echo mail($to, $subject, $message, $headers);
+echo mail($to, $subject, $message, $headers, '-ffrancesco@francescobedussi.it');
 ?>

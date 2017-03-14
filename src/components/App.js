@@ -25,17 +25,17 @@ class App extends React.Component {
                         <img src="images/logo_apl-02.png" alt="torna al sito attraversamentipedonali.it" />
                     </a>
                 </header>
-                <div className={`configuratorWrapper ${this.props.requestSent? 'hide' : ''}`}>
+                <div className={"configuratorWrapper"}>
                     <div className="progressWrapper">
                         <span className="progressLabel">{this.props.labels["configurator"]}</span>
                         <progress className="progressBar" value={this.props.steps - this.props.stepsLeft} max={this.props.steps}></progress>
                     </div>
                     <div className={`workarea ${this.props.goingBack ? 'back' : ''}`}>
-                        <Slide />
+                        <Slide/>
+                        <div className={`formSuccessAlert ${this.props.requestSent? '' : 'hide'}`}>
+                            Richiesta inviata con successo
+                        </div>
                     </div>
-                </div>
-                <div className={`formSuccessAlert ${this.props.requestSent? '' : 'hide'}`}>
-                    Richiesta inviata con successo
                 </div>
                 <footer class="footer">
                     <a class="ctaBtn backToSiteBtn" href="http://www.attraversamentipedonali.it/">Torna al sito www.attraversamentipedonali.it</a>

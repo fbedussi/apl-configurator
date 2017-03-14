@@ -19,7 +19,9 @@ class Form extends React.Component {
         console.log(e);
         var form = e.target;
         var data = new FormData(form);
-        fetch('send_form.php', {
+
+        //https://github.com/dwyl/html-form-send-email-via-google-script-without-server
+        fetch('https://script.google.com/macros/s/AKfycbx4vjw-Pgwb8C4-W046IS20B8N0yWVwbdQl5JNlMiH14L1fcSm5/exec', {
             method: 'post',
             body: data
         })

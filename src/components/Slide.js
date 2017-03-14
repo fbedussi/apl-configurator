@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getAnswers, getShowForm } from '../selectors';
+import { getSteps, getStepsLeft, getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getAnswers, getShowForm, getRequestSent } from '../selectors';
 import { parseAnswer, goBack, toggleForm } from '../actions';
 
 import Answers from './Answers';
@@ -18,7 +18,8 @@ const mapStateToProps = (state) => ({
     currentNode: getCurrentNode(state),
     breadcrumbs: getBreadcrumbs(state),
     answers: getAnswers(state),
-    showForm: getShowForm(state)
+    showForm: getShowForm(state),
+    requestSent: getRequestSent(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -49,7 +50,7 @@ class Slide extends React.Component {
                 transitionName="accordion"
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={500}>
-                <div className="slide" key={this.props.currentNode.id} ref={slide => this.slide = slide}>
+                <div className={`slide ${this.props.requestSent? 'hide' : ''}`} key={this.props.currentNode.id} ref={slide => this.slide = slide}>
                     <div className="slideInner">
                         <Title currentNode={this.props.currentNode} />
                         <p className={this.props.currentNode.type}>{this.props.currentNode.text}</p>
