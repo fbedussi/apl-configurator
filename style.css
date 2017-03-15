@@ -1,13 +1,17 @@
-thead {
+.recap-table td, .recap-table th\ {
+    border: none;
+}
+.recap-head {
      background-color: #eeeeee;
 }
-
+.recap-body tr:nth-child(even) {
+    background-color: #eeeeee;    
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html, body, #app, .appInner {
     min-height: 100vh;
 }
@@ -31,7 +35,7 @@ fieldset {
     border: none;
 }
 .hide {
-    display: none;
+    display: none !important;
 }
 .header {
     background-color: #3D3D3D;
@@ -270,4 +274,9 @@ input[type="radio"]:checked {
 /*Recap*/
 .recap thead {
     background-color: #eeeeee;
+}
+.recapAndImageWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }

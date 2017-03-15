@@ -6,9 +6,6 @@ import {Provider, connect} from 'react-redux';
 import reducer from './reducers';
 import {init} from './actions';
 
-import 'style!./variables.css'
-import 'style!./style.css'
-
 import App from './components/App';
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware));

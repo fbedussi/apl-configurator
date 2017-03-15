@@ -53,6 +53,6 @@
   },
   "scripts": {
     "dev": "webpack --watch",
-    "css": "postcss -w -o style.css ./src/style.css"
+    "css": "postcss -w -o style.css ./src/css/style.css"
   }
 }

@@ -1,9 +1,6 @@
 @import "variables.css";
 @import "recap.css";
 
-
-
-
 * {
     margin: 0;
     padding: 0;
@@ -280,4 +277,8 @@ input[type="radio"]:checked {
 /*Recap*/
 .recap thead {
     background-color: var(--color-mediumGrey);
+}
+
+.recapAndImageWrapper {
+    display: flex;
 }

@@ -20,13 +20,13 @@ const Recap = ({ show, breadcrumbs, answers }) => {
     return <div className="recap">
         <h2 className="recap-title">Le tue risposte</h2>
         <table className="recap-table">
-            <thead>
+            <thead className="recap-head">
                 <tr>
                     <th>Domanda</th>
                     <th>Risposta</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="recap-body">
                 {breadcrumbs.map((node, i) => <tr>
                     <td>
                         {node.text}
