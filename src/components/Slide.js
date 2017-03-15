@@ -53,7 +53,12 @@ class Slide extends React.Component {
                 <div className={`slide ${this.props.requestSent? 'hide' : ''}`} key={this.props.currentNode.id} ref={slide => this.slide = slide}>
                     <div className="slideInner">
                         <Title currentNode={this.props.currentNode} />
-                        <p className={this.props.currentNode.type}>{this.props.currentNode.text}</p>
+                        <p>{this.props.currentNode.text}</p>
+                        <Recap
+                            show={this.props.currentNode.type === 'answer'}
+                            breadcrumbs={this.props.breadcrumbs}
+                            answers={this.props.answers}
+                        />
                         <Image
                             imgName={this.props.currentNode.image}
                         />
@@ -68,11 +73,6 @@ class Slide extends React.Component {
                             clickHandler={() =>
                                 this.props.goBack(this.props.currentNode)
                             }
-                        />
-                        <Recap
-                            show={this.props.currentNode.type === 'answer'}
-                            breadcrumbs={this.props.breadcrumbs}
-                            answers={this.props.answers}
                         />
                         <Quotation
                             show={this.props.currentNode.type === 'answer'}

@@ -1,7 +1,8 @@
 
 module.exports = {
   plugins: [
-    require('autoprefixer')({ /* ...options */ }),
-    require('postcss-custom-properties')
+    require('postcss-partial-import'),
+    //require('postcss-custom-properties'),
+    require('postcss-cssnext')({ /* ...options */ })
   ]
 }

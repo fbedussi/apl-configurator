@@ -1,5 +1,7 @@
 import React from 'react';
 
+//import 'style!../recap.css'
+
 function getAnswerLabel(node, answers, i) {
     var selectedAnswerKey = answers[i];
     var selectedAnswerArr = node.answers.filter(answer => {
