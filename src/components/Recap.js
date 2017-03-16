@@ -18,7 +18,6 @@ const Recap = ({ show, breadcrumbs, answers }) => {
     }
 
     return <div className="recap">
-        <h2 className="recap-title">Le tue risposte</h2>
         <table className="recap-table">
             <thead className="recap-head">
                 <tr>

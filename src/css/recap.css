@@ -1,11 +1,27 @@
-.recap-table td, .recap-table th\ {
+.recap-table {
+    border-spacing: 0;
+
+     & th, & td {
+         padding: 0.5rem 1rem;
+         text-align: left;
+     }
+}
+
+.recap-table td, .recap-table th {
     border: none;
 }
 
 .recap-head {
      background-color: var(--color-mediumGrey);
+     text-transform: uppercase;
+     color: white;
+
 }
 
-.recap-body tr:nth-child(even) {
-    background-color: var(--color-grey);    
+.recap-body {
+    font-size: 80%;
+    
+    & tr:nth-child(even) {
+        background-color: var(--color-grey);    
+    }
 }

@@ -39,6 +39,11 @@ class Form extends React.Component {
             className={`quotation-form ${this.props.showForm? 'show' : 'hide' }`}
             name="contactForm"
         >
+            <p class="quotation-mandatory">* campi obbligatori</p>
+            [].map(input => <Input 
+                label={input.label}
+                required={input.required}
+            />);
             <label className="quotation-field" htmlFor="name">
                 Nome
             </label>

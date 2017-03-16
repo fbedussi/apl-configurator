@@ -1,11 +1,57 @@
-.recap-table td, .recap-table th\ {
+.answer-text {
+    margin-bottom: 1em;
+}
+.answer-recapAndImage {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 1em
+}
+.answer-recapAndImage > * {
+    width: 50%;
+}
+.recap {
+    padding-right: 1em;
+}
+.image {
+    padding-left: 1em;
+}
+.answer-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.quotation-btn {
+    margin-right: 4em;
+}
+.recap-table {
+    border-spacing: 0
+}
+.recap-table th, .recap-table td {
+    padding: 8px 16px;
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+.recap-table td, .recap-table th {
     border: none;
 }
 .recap-head {
-     background-color: #eeeeee;
+     background-color: #bbbbbb;
+     text-transform: uppercase;
+     color: white;
+
+}
+.recap-body {
+    font-size: 80%
 }
 .recap-body tr:nth-child(even) {
-    background-color: #eeeeee;    
+    background-color: #eeeeee;
 }
 * {
     margin: 0;
@@ -273,7 +319,7 @@ input[type="radio"]:checked {
 }
 /*Recap*/
 .recap thead {
-    background-color: #eeeeee;
+    background-color: #bbbbbb;
 }
 .recapAndImageWrapper {
     display: -webkit-box;

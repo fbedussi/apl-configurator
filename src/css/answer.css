@@ -1,0 +1,32 @@
+.answer-text {
+    margin-bottom: 1em;
+}
+
+.answer-recapAndImage {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+
+    & > * {
+        width: 50%;
+    }
+}
+
+.recap {
+    padding-right: 1em;
+}
+
+.image {
+    padding-left: 1em;
+}
+
+.answer-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quotation-btn {
+    margin-right: 4em;
+}

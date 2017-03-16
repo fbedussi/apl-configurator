@@ -31,8 +31,8 @@ class Answer extends React.Component {
         return (
             <div className="slideInner">
                 <Title currentNode={this.props.currentNode} />
-                <p>{this.props.currentNode.text}</p>
-                <div class="recapAndImageWrapper">
+                <p class="answer-text">{this.props.currentNode.text}</p>
+                <div class="answer-recapAndImage">
                     <Recap
                         show={this.props.currentNode.type === 'answer'}
                         breadcrumbs={this.props.breadcrumbs}
@@ -42,18 +42,20 @@ class Answer extends React.Component {
                         imgName={this.props.currentNode.image}
                     />
                 </div>
-                <Back
-                    show={Boolean(this.props.breadcrumbs.length)}
-                    label={this.props.labels["back"]}
-                    clickHandler={() =>
-                        this.props.goBack(this.props.currentNode)
-                    }
-                />
-                <Quotation
-                    show={this.props.currentNode.type === 'answer'}
-                    clickHandler={() => this.props.toggleForm()}
-                    showForm={this.props.showForm}
-                />
+                <div class="answer-buttons">
+                    <Back
+                        show={Boolean(this.props.breadcrumbs.length)}
+                        label={this.props.labels["back"]}
+                        clickHandler={() =>
+                            this.props.goBack(this.props.currentNode)
+                        }
+                    />
+                    <Quotation
+                        show={this.props.currentNode.type === 'answer'}
+                        clickHandler={() => this.props.toggleForm()}
+                        showForm={this.props.showForm}
+                    />
+                </div>
             </div>
         );
     }
