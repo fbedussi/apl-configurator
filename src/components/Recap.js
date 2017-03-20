@@ -19,9 +19,7 @@ const Recap = ({ labels, breadcrumbs, answersHistory, questions }) => {
                     var question = questions.filter(question => question.id === node.questionId)[0];
 
                     return <tr key={i}>
-                            <td>
-                                {question.text}
-                            </td>
+                            <td dangerouslySetInnerHTML={{__html: question.text}}/>
                             <td>
                                 {getAnswerLabel(question, answersHistory[i])}
                             </td>

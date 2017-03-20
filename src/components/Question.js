@@ -28,7 +28,7 @@ class Question extends React.Component {
         return (
             <div className="slideInner">
                 <Title currentNode={question.title} />
-                <p className="text question-text">{question.text}</p>
+                <p className="text question-text" dangerouslySetInnerHTML={{__html: question.text}} />
 
                 <Images
                     sources={question.images}
