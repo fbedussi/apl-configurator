@@ -1,0 +1,54 @@
+.quotation-form {
+    font-size: 80%;
+    margin-top: 2em;
+    color: black;
+}
+
+.form-mandatory {
+    text-align: right;
+    margin-bottom: 0.5em;
+}
+
+.form-field {
+    display: flex;
+    margin-bottom: 0.5em;
+    min-height: 2em;
+}
+
+.form-label {
+    display: inline-block;
+    width: 30%;
+    padding-right: 0.5em;
+    text-align: right;
+    align-self: center;
+}
+
+.form-input {
+    display: inline-block;
+    width: 70%;
+    background-color: var(--color-grey);
+}
+
+.form-reason {
+    background-color: transparent;
+    text-align: left;
+
+    & input {
+        margin-right: 0.5em;
+        vertical-align: middle;
+    }
+
+    & label {
+        margin-right: 1.5em;
+        vertical-align: middle;
+    }
+}
+
+.form-msg {
+    height: 8em;
+}
+
+.form-submit {
+    float: right;
+    margin-right: 5em;
+}

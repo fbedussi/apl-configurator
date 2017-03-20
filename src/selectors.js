@@ -27,7 +27,7 @@ export function getGoingBack(state) {
 }
 
 export function getAnswers(state) {
-    return state.answers;
+    return state.answersHistory;
 }
 
 export function getShowForm(state) {

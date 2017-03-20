@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getShowForm } from '../selectors';
 import { requestSent } from '../actions';
 
+import Input from './Input';
+
 const mapStateToProps = (state) => ({
     showForm: getShowForm(state)
 });
@@ -25,78 +27,77 @@ class Form extends React.Component {
             method: 'post',
             body: data
         })
-        .then(response => {
-            console.log(response);
-            this.props.requestSent();
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(response => {
+                console.log(response);
+                this.props.requestSent();
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     render() {
         return <form onSubmit={(e) => this.handleSubmit(e)}
-            className={`quotation-form ${this.props.showForm? 'show' : 'hide' }`}
+            className={`quotation-form ${this.props.showForm ? 'show' : 'hide'}`}
             name="contactForm"
         >
-            <p class="quotation-mandatory">* campi obbligatori</p>
-            [].map(input => <Input 
-                label={input.label}
+            <p class="form-mandatory">* campi obbligatori</p>
+            {[{
+                labelText: 'Nome',
+                name: 'name',
+                minLength: 2
+            }, {
+                labelText: 'Cognome',
+                name: 'surname',
+                minLength: 2
+            }, {
+                labelText: 'Società (ragione sociale)',
+                name: 'company',
+                required: true,
+                minLength: 2
+            }, {
+                labelText: 'Indirizzo',
+                name: 'address',
+                minLength: 5,
+                required: true
+            }, {
+                labelText: 'e-mail',
+                name: 'email',
+                type: 'email',
+                required: true
+            }, {
+                labelText: 'Telefono',
+                name: 'phone',
+                minLength: 5,
+                type: 'tel'
+            }, {
+                labelText: 'Sito',
+                name: 'website'
+            }].map(input => <Input
+                labelText={input.labelText}
+                name={input.name}
+                minLength={input.minLength}
                 required={input.required}
-            />);
-            <label className="quotation-field" htmlFor="name">
-                Nome
-            </label>
-                <input type="text" id="name" name="name" minLength="2"/>
-            <label className="quotation-field">
-                Cognome
-                <input type="text" id="surname" name="surname" minLength="2"/>
-            </label>
-            <label className="quotation-field">
-                Società* (ragione sociale)
-                <input type="text" id="company" name="company" required minLength="2"/>
-            </label>
-            <label className="quotation-field">
-                Indirizzo*
-                <input type="text" id="address" name="address" required minLength="5"/>
-            </label>
-            <label className="quotation-field">
-                Posizione
-                <input type="text" id="role" name="role"/>
-            </label>
-            <label className="quotation-field">
-                e-mail*
-                <input type="email" id="email" name="email" required/>
-            </label>
-            <label className="quotation-field">
-                Telefono
-                <input type="tel" id="tel" name="tel"/>
-            </label>
-            <label className="quotation-field">
-                Sito
-                <input type="text" id="website" name="website"/>
-            </label>
-            <fieldset className="quotation-field">
-                Motivo della richiesta:
-                <label>
-                    <input type="radio" name="reason" id="peoject"/>
-                    Elaborazione progetto
-                </label>
-                <label>
-                    <input type="radio" name="reason" id="call"/>
-                    Miglioria per gara d'appalto
-                </label>
-                <label>
-                    <input type="radio" name="reason" id="other"/>
-                    Altro
-                </label>
-            </fieldset>
-            <label className="quotation-field">
-                Eventuali informazioni aggiuntive:
-                <textarea className="quotation-msg" id="msg" name="msg"></textarea>
+                type={input.type}
+            />)}
+
+            <div className="form-field">
+                <span className="form-label">Motivo della richiesta:</span>
+                <span className="form-input form-reason">
+                    <input type="radio" name="reason" id="project" />
+                    <label htmlFor="project">Elaborazione progetto</label>
+                    <input type="radio" name="reason" id="call" />
+                    <label htmlFor="call">Miglioria per gara d'appalto</label>
+                    <input type="radio" name="reason" id="other" />
+                    <label htmlFor="other">Altro</label>
+                </span>
+            </div>
+            <label className="form-field">
+                <span className="form-label">Eventuali informazioni aggiuntive:</span>
+                <textarea className="form-msg form-input" id="msg" name="msg"></textarea>
             </label>
 
-            <button className="ctaBtn" type="submit">Invia</button>
+            <button className="ctaBtn form-submit" type="submit">Invia</button>
         </form>
     }
 }

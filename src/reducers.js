@@ -32,7 +32,7 @@ export default function reducer(state = {
 				stepsLeft: steps - 1,
 				goingBack: false,
 				breadcrumbs: [],
-				answers: [],
+				answersHystory: [],
 				labels: action.texts.it.labels,
 				currentNode: action.texts.it.questions,
 				questions: action.texts.it.questions,

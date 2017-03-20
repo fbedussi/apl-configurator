@@ -1,0 +1,18 @@
+.footer {
+    background-color: #eee;
+    text-align: center;
+    color: black;
+}
+
+.footer-logoAndLink {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 74px 0;
+}
+
+.copyright {
+    display: block;
+    text-align: left;
+}

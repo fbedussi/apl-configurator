@@ -1,0 +1,52 @@
+.slider-enter {
+    position: absolute;
+    width: calc(100% - 2em);
+    transform: translatex(100%);
+}
+
+.slider-enter.slider-enter-active {
+    transform: translateX(0);
+}
+
+.slider-leave {
+    transition: transform 0.5s;     
+}
+
+.slider-leave.slider-leave-active {
+      transform: translatex(-100%);
+}
+
+.back .slider-enter.slider-enter-active {
+  transform: translateX(0);
+}
+
+.back .slider-enter {
+    transform: translatex(-100%);
+    z-index: 2;
+}
+
+.back .slider-leave.slider-leave-active {
+      transform: translatex(100%);
+}
+
+.slide {
+    overflow: hidden;
+}
+
+.accordion-enter {
+  max-height: 0;
+  transition: max-height 0.5s 0.5s;
+}
+
+.accordion-enter.accordion-enter-active {
+  max-height: 1000px;
+}
+
+.accordion-leave {
+  max-height: 1000px;
+  transition: max-height 0.5s;
+}
+
+.accordion-leave.accordion-leave-active {
+  max-height: 0;
+}

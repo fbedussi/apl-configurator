@@ -4,14 +4,14 @@ export function init(language = 'it') {
     //return { type: 'SET_TEXTS', texts };
     
     return function(dispatch) {
-        fetch('texts.json', {
+        fetch('texts_new.json', {
             mode: 'no-cors'
         })
         .then(response => {
-            console.log(response);
+            //console.log(response);
             return response.json();
         })
-        .then(texts => {
+        .then(textsOrig => {
             dispatch({ type: 'SET_TEXTS', texts })
         })
         .catch(function (err) {

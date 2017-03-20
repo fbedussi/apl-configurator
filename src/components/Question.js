@@ -5,7 +5,7 @@ import { getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getAnswers } f
 import { parseAnswer, goBack } from '../actions';
 
 import Title from './Title';
-import Image from './Image';
+import Images from './Images';
 import Answers from './Answers';
 import Back from './Back';
 
@@ -28,8 +28,8 @@ class Question extends React.Component {
                 <Title currentNode={this.props.currentNode} />
                 <p>{this.props.currentNode.text}</p>
 
-                <Image
-                    imgName={this.props.currentNode.image}
+                <Images
+                    sources={this.props.currentNode.images}
                 />
                 <Answers
                     id={this.props.currentNode.id}

@@ -8,10 +8,10 @@ import { goBack, toggleForm } from '../actions';
 import Answers from './Answers';
 import Title from './Title';
 import Back from './Back';
-import Image from './Image';
+import Images from './Images';
 import Recap from './Recap';
-import Quotation from './Quotation';
-
+import QuotationButton from './QuotationButton';
+import Form from './Form';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
@@ -38,10 +38,13 @@ class Answer extends React.Component {
                         breadcrumbs={this.props.breadcrumbs}
                         answers={this.props.answers}
                     />
-                    <Image
-                        imgName={this.props.currentNode.image}
+                    <Images
+                        sources={this.props.currentNode.images}
                     />
                 </div>
+                <Form
+                    showForm={this.props.showForm} 
+                />
                 <div class="answer-buttons">
                     <Back
                         show={Boolean(this.props.breadcrumbs.length)}
@@ -50,12 +53,12 @@ class Answer extends React.Component {
                             this.props.goBack(this.props.currentNode)
                         }
                     />
-                    <Quotation
-                        show={this.props.currentNode.type === 'answer'}
+                    <QuotationButton
+                        show={this.props.currentNode.type === 'answer' && !this.props.showForm}
                         clickHandler={() => this.props.toggleForm()}
-                        showForm={this.props.showForm}
                     />
                 </div>
+                
             </div>
         );
     }
