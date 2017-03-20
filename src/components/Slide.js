@@ -18,13 +18,13 @@ const mapDispatchToProps = (dispatch) => ({
 class Slide extends React.Component {
     render() {
         /*return (
-            <ReactCSSTransitionGroup
-                transitionName="accordion"
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={500}>
-                <div className={`slide ${this.props.requestSent? 'hide' : ''}`} key={this.props.currentNode.id} ref={slide => this.slide = slide}>
+             <ReactCSSTransitionGroup
+                transitionName="fade"
+                transitionEnterTimeout={2500}
+                transitionLeaveTimeout={2500}>
+            <div className={`slide ${this.props.requestSent? 'hide' : ''}`} key={this.props.currentNode.id} ref={slide => this.slide = slide}>
                     <SlideInner />
-                </div>
+            </div>
             </ReactCSSTransitionGroup>
         );*/
         return (
