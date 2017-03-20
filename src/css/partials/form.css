@@ -2,6 +2,7 @@
     font-size: 80%;
     margin-top: 2em;
     color: black;
+    margin-bottom: 1em;
 }
 
 .form-mandatory {
@@ -44,6 +45,10 @@
     }
 }
 
+.form-reason-option {
+    display: block;
+}
+
 .form-msg {
     height: 8em;
 }
@@ -51,4 +56,5 @@
 .form-submit {
     float: right;
     margin-right: 5em;
+    margin-top: 1em;
 }

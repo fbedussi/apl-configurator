@@ -24,11 +24,11 @@ const mapDispatchToProps = (dispatch) => ({
 class App extends React.Component {
     render() {
         return (
-            <div class="appInner">
+            <div className="appInner">
                 <header className="header">
                     <div className="wrapper header-wrapper">
                         <a className="logoLink" href="http://www.attraversamentipedonali.it/">
-                            <img src="images/logo_apl-02.png" alt="torna al sito attraversamentipedonali.it" />
+                            <img src="images/logo_apl-02.png" alt={this.props.labels.logoAlt} />
                         </a>
                         <LinkHome text="Home page >" />
                     </div>
@@ -38,14 +38,14 @@ class App extends React.Component {
                         <span className="progressLabel">{this.props.labels["configurator"]}</span>
                         <progress className="progressBar" value={this.props.steps - this.props.stepsLeft} max={this.props.steps}></progress>
                     </div>
-                    <div className={`workarea ${this.props.goingBack ? 'back' : ''} ${this.props.currentNode.type}`}>
+                    <div className={`workarea ${this.props.goingBack ? 'back' : ''} ${this.props.currentNode.questionId? 'question' : 'answer'}`}>
                         <Slide />
                     </div>
                 </div>
                 <footer className="footer">
                     <div className="wrapper footer-wrapper">
                         <div className="footer-logoAndLink">
-                            <img src="images/d-power-logo.png" alt="Attraversamento Pedonale Luminoso è un progetto D-power" />
+                            <img src="images/d-power-logo.png" alt={this.props.labels.logoDpowerAlt} />
                             <LinkHome text="Home page >" />
                         </div>
                         <small className="copyright">&copy; Detas.com - All rights reserved</small>

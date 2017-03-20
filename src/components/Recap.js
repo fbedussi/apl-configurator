@@ -1,39 +1,32 @@
 import React from 'react';
 
-//import 'style!../recap.css'
-
-function getAnswerLabel(node, answers, i) {
-    var selectedAnswerKey = answers[i];
-    var selectedAnswerArr = node.answers.filter(answer => {
-        var answerKey = Object.keys(answer)[0];
-        return answerKey === selectedAnswerKey
-    });
-    var selecterAnswerLAbel = selectedAnswerArr[0][selectedAnswerKey];
-    return selecterAnswerLAbel
+function getAnswerLabel(question, answerKey) {
+    return question.answers[answerKey];
 }
 
-const Recap = ({ show, breadcrumbs, answers }) => {
-    if (!show) {
-        return null;
-    }
-
+const Recap = ({ labels, breadcrumbs, answersHistory, questions }) => {
+    
     return <div className="recap">
         <table className="recap-table">
             <thead className="recap-head">
                 <tr>
-                    <th>Domanda</th>
-                    <th>Risposta</th>
+                    <th>{labels.question}</th>
+                    <th>{labels.answer}</th>
                 </tr>
             </thead>
             <tbody className="recap-body">
-                {breadcrumbs.map((node, i) => <tr>
-                    <td>
-                        {node.text}
-                    </td>
-                    <td>
-                        {getAnswerLabel(node, answers, i)}
-                    </td>
-                </tr>)}
+                {breadcrumbs.map((node, i) => {
+                    var question = questions.filter(question => question.id === node.questionId)[0];
+
+                    return <tr key={i}>
+                            <td>
+                                {question.text}
+                            </td>
+                            <td>
+                                {getAnswerLabel(question, answersHistory[i])}
+                            </td>
+                        </tr>;
+                })}
             </tbody>
         </table>
     </div>

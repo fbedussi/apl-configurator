@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getShowForm } from '../selectors';
+import { getLabels, getShowForm } from '../selectors';
 import { requestSent } from '../actions';
 
 import Input from './Input';
 
 const mapStateToProps = (state) => ({
+    labels: getLabels(state),
     showForm: getShowForm(state)
 });
 
@@ -41,63 +42,70 @@ class Form extends React.Component {
             className={`quotation-form ${this.props.showForm ? 'show' : 'hide'}`}
             name="contactForm"
         >
-            <p class="form-mandatory">* campi obbligatori</p>
+            <p className="form-mandatory">{this.props.labels.mandatory}</p>
             {[{
-                labelText: 'Nome',
+                labelText: this.props.labels.name,
                 name: 'name',
                 minLength: 2
             }, {
-                labelText: 'Cognome',
+                labelText: this.props.labels.surname,
                 name: 'surname',
                 minLength: 2
             }, {
-                labelText: 'Società (ragione sociale)',
+                labelText: this.props.labels.company,
                 name: 'company',
                 required: true,
                 minLength: 2
             }, {
-                labelText: 'Indirizzo',
+                labelText: this.props.labels.address,
                 name: 'address',
                 minLength: 5,
                 required: true
             }, {
-                labelText: 'e-mail',
+                labelText: this.props.labels.email,
                 name: 'email',
                 type: 'email',
                 required: true
             }, {
-                labelText: 'Telefono',
+                labelText: this.props.labels.phone,
                 name: 'phone',
                 minLength: 5,
                 type: 'tel'
             }, {
-                labelText: 'Sito',
+                labelText: this.props.labels.website,
                 name: 'website'
-            }].map(input => <Input
+            }].map((input, i) => <Input
                 labelText={input.labelText}
                 name={input.name}
                 minLength={input.minLength}
                 required={input.required}
                 type={input.type}
+                key={i}
             />)}
 
             <div className="form-field">
-                <span className="form-label">Motivo della richiesta:</span>
+                <span className="form-label">{this.props.labels.reason}</span>
                 <span className="form-input form-reason">
-                    <input type="radio" name="reason" id="project" />
-                    <label htmlFor="project">Elaborazione progetto</label>
-                    <input type="radio" name="reason" id="call" />
-                    <label htmlFor="call">Miglioria per gara d'appalto</label>
-                    <input type="radio" name="reason" id="other" />
-                    <label htmlFor="other">Altro</label>
+                    <span className="form-reason-option">
+                        <input type="radio" name="reason" id="project" />
+                        <label htmlFor="project">{this.props.labels.project}</label>
+                    </span>
+                    <span className="form-reason-option">
+                        <input type="radio" name="reason" id="call" />
+                        <label htmlFor="call">{this.props.labels.call}</label>
+                    </span>
+                    <span className="form-reason-option">
+                        <input type="radio" name="reason" id="other" />
+                        <label htmlFor="other">{this.props.labels.other}</label>
+                    </span>
                 </span>
             </div>
             <label className="form-field">
-                <span className="form-label">Eventuali informazioni aggiuntive:</span>
+                <span className="form-label">{this.props.labels.msg}</span>
                 <textarea className="form-msg form-input" id="msg" name="msg"></textarea>
             </label>
 
-            <button className="ctaBtn form-submit" type="submit">Invia</button>
+            <button className="ctaBtn form-submit" type="submit">{this.props.labels.submit}</button>
         </form>
     }
 }

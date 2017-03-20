@@ -1,6 +1,6 @@
 import React from 'react';
 
-const QuotationButton = ({show, clickHandler}) => {
+const QuotationButton = ({show, text, clickHandler}) => {
     if (!show) {
         return null;
     }
@@ -10,7 +10,7 @@ const QuotationButton = ({show, clickHandler}) => {
             className={'quotation-btn ctaBtn'}
             onClick={clickHandler}
         >
-            scopri quanto costa
+            {text}
         </button>
     </div>
 }

@@ -5,8 +5,8 @@ const Images = ({ sources }) => {
         return null;
     }
 
-    return <div class="imagesContainer">
-            sources.map(src => <img className="image" src={`images/${src}`}/>)
+    return <div className="imagesContainer">
+            {sources.map((src, i) => <img key={i} className="image" src={`images/${src}`}/>)}
         </div>
 }
 

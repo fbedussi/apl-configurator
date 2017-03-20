@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Title = ({currentNode}) => {
-    if (!currentNode.title) {
+const Title = ({text}) => {
+    if (!text) {
         return null;
     }
 
-    return <h1 className="title">{currentNode.title}</h1>
+    return <h1 className="title">{text}</h1>
 }
 
 export default Title;

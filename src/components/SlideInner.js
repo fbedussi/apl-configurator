@@ -16,11 +16,11 @@ const mapDispatchToProps = (dispatch) => ({
 
 class SlideInner extends React.Component {
     render() {
-        if (this.props.currentNode.type === 'question') {
+        if (this.props.currentNode.questionId) {
             return (<Question />);
         }
 
-        if (this.props.currentNode.type === 'answer') {
+        if (this.props.currentNode.answerId) {
             return (<Answer />);
         }
     }

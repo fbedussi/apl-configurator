@@ -1,6 +1,7 @@
 .progressWrapper {
     color: var(--color-darkGrey);
     display: flex;
+    align-items: center;
     padding: 2em 0;
 }
 
@@ -8,12 +9,13 @@
     margin-right: 2em;
 }
 
-progress {
+.progressBar {
     appearance: none;
     flex: 1;
     background-color: var(--color-grey);
     border-radius: 0;
     border: none;
+    height: 0.5em
 }   
 
 progress::-webkit-progress-bar {

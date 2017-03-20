@@ -8,10 +8,10 @@ export function init(language = 'it') {
             mode: 'no-cors'
         })
         .then(response => {
-            //console.log(response);
+            console.log(response);
             return response.json();
         })
-        .then(textsOrig => {
+        .then(texts => {
             dispatch({ type: 'SET_TEXTS', texts })
         })
         .catch(function (err) {

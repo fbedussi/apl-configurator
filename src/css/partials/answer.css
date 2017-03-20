@@ -12,15 +12,7 @@
 }
 
 .answer-recapAndImage {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    align-items: center;
     margin-bottom: 1em;
-
-    & > * {
-        width: 50%;
-    }
 }
 
 .recap {

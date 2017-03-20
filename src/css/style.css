@@ -8,6 +8,10 @@
 @import "partials/form.css";
 @import "partials/footer.css";
 
+html {
+    font-size: 20px;
+}
+
 html, body, #app, .appInner {
     min-height: 100vh;
 }
@@ -30,7 +34,7 @@ html, body, #app, .appInner {
 }
 
 .wrapper {
-    max-width: 1000px;
+    max-width: 90%;
     margin: 0 auto;
 }
 
@@ -125,13 +129,17 @@ input[type="radio"]:checked {
     margin-bottom: 1em;
 }
 
+.text {
+    margin-bottom: 1em;
+}
+
 .image {
     max-width: 100%;
 }
 
 .ctaBtn {
     text-transform: uppercase;
-    padding: 0.5em 1em;
+    padding: 1em 1.5em;
     background-color: var(--color-darkGrey);
     border-radius: 3px;
     color: var(--color-grey);
@@ -139,4 +147,30 @@ input[type="radio"]:checked {
 
 .ctaBtn:hover {
     background-color: var(--color-orange);
+}
+
+@media screen and (min-width: 1000px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .wrapper {
+        max-width: 1000px;
+    }
+
+    .answer-recapAndImage {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    
+        & > * {
+            width: 50%;
+        }
+    }
+
+    .form-reason-option {
+        display: inline-block;
+    }
 }

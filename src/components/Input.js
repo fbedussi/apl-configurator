@@ -8,8 +8,8 @@ const Input = ({ labelText, name, minLenght, required, type }) => {
     }
 
     return <div className="form-field">
-            <label class="form-label" for={name}>{labelText}</label>
-            <input class="form-input" type={type} minLength={minLenght} required={Boolean(required)}/>
+            <label className="form-label" htmlFor={name}>{labelText}</label>
+            <input className="form-input" type={type} minLength={minLenght} required={Boolean(required)}/>
     </div>
 }
 

@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getAnswers } from '../selectors';
+import { getCurrentNode, getBreadcrumbs, getLabels, getGoingBack, getQuestions } from '../selectors';
 import { parseAnswer, goBack } from '../actions';
 
 import Title from './Title';
 import Images from './Images';
-import Answers from './Answers';
+import Options from './Options';
 import Back from './Back';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
     currentNode: getCurrentNode(state),
-    breadcrumbs: getBreadcrumbs(state),
-    answers: getAnswers(state),
+    questions: getQuestions(state),
+    breadcrumbs: getBreadcrumbs(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,17 +23,19 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Question extends React.Component {
     render() {
+        var question = this.props.questions.filter(question => question.id === this.props.currentNode.questionId)[0];
+        
         return (
             <div className="slideInner">
-                <Title currentNode={this.props.currentNode} />
-                <p>{this.props.currentNode.text}</p>
+                <Title currentNode={question.title} />
+                <p className="text question-text">{question.text}</p>
 
                 <Images
-                    sources={this.props.currentNode.images}
+                    sources={question.images}
                 />
-                <Answers
-                    id={this.props.currentNode.id}
-                    answers={this.props.currentNode.answers}
+                <Options
+                    nodeId={this.props.currentNode.id}
+                    answers={question.answers}
                     setAnswer={this.props.setAnswer}
                 />
                 <Back
