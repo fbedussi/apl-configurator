@@ -23,7 +23,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Question extends React.Component {
     render() {
-        var question = this.props.questions.filter(question => question.id === this.props.currentNode.questionId)[0];
+        var nodeId = isNaN(this.props.nodeId)? 1: this.props.nodeId;
+        var question = this.props.questions.filter(question => question.id === nodeId)[0];
         
         return (
             <div className="slideInner">
@@ -34,9 +35,11 @@ class Question extends React.Component {
                     sources={question.images}
                 />
                 <Options
-                    nodeId={this.props.currentNode.id}
-                    answers={question.answers}
+                    currentNode={this.props.currentNode}
+                    options={question.answers}
                     setAnswer={this.props.setAnswer}
+                    baseUrl={this.props.baseUrl}
+                    history={this.props.history}
                 />
                 <Back
                     show={Boolean(this.props.breadcrumbs.length)}

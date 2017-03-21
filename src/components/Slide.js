@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory'
 
 import { getCurrentNode, getRequestSent } from '../selectors';
 
@@ -15,6 +20,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 
+const customHistory = createBrowserHistory()
+
 class Slide extends React.Component {
     render() {
         /*return (
@@ -28,9 +35,9 @@ class Slide extends React.Component {
             </ReactCSSTransitionGroup>
         );*/
         return (
-            <div className={`slide ${this.props.requestSent? 'hide' : ''}`} key={this.props.currentNode.id} ref={slide => this.slide = slide}>
-                    <SlideInner />
-            </div>
+                <div className={`slide ${this.props.requestSent ? 'hide' : ''}`} key={this.props.currentNode.id} ref={slide => this.slide = slide}>
+                    <SlideInner history={customHistory} />
+                </div>
         );
     }
 };

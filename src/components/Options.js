@@ -1,21 +1,25 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const Options = ({nodeId, answers, setAnswer}) => {
-    if (!answers) {
+
+const Options = ({currentNode, options, setAnswer, baseUrl, history}) => {
+    if (!options) {
         return null;
     }
 
-    return <fieldset className="answers">
-            {Object.keys(answers).map(key => {
-                    var checked = false;
-                    
-                    return <label key={key} className="answerWrapper">
-                        {answers[key]}
-                        <input type="radio" name="answer" value={key} id={nodeId + '_' + key} checked={checked} onClick={(e) => setAnswer(key)}/>
-                    </label>;
+    return <div className="answers">
+            {Object.keys(options).map(key => {
+                    var optionId = currentNode[key].id;
+
+                    return <button key={key} className="ctaBtn" onClick={e => {
+                        history.push('/' + key, { some: 'state' })
+                        setAnswer(e.target.key);
+                        }}>
+                        {options[key]}
+                    </button>;
                 })
             }
-    </fieldset>
+    </div>
 }
 
 export default Options;
