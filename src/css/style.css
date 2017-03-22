@@ -57,7 +57,7 @@ html, body, #app, .appInner {
 .linkHome {
     text-decoration: none;
     color: currentColor;
-    display: block;
+    display: inline-block;
     height: 1.5em;
     position: relative;
 
@@ -133,6 +133,10 @@ input[type="radio"]:checked {
     margin-bottom: 1em;
 }
 
+p.note {
+    margin-top: 1em;
+}
+
 .image {
     max-width: 100%;
 }
@@ -147,6 +151,34 @@ input[type="radio"]:checked {
 
 .ctaBtn:hover {
     background-color: var(--color-orange);
+}
+
+.ctaBtn--inverse {
+    background-color: var(--color-orange);
+
+    &:hover {
+        background-color: var(--color-darkGrey);        
+    }    
+}
+
+.requestNotification {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.requestNotification-sentWrapper, .requestNotification-successWrapper, .requestNotification-errorWrapper {
+    margin: 5em 0 3em;
+}
+
+.requestNotification-thanks {
+    font-size: 200%;
+    margin-bottom: 0.5em;
+}
+
+.requestNotification-success, .requestNotification-error {
+    font-size: 150%;
+    margin-bottom: 0.5em;    
 }
 
 @media screen and (min-width: 1000px) {

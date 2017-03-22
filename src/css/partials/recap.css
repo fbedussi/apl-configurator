@@ -1,5 +1,6 @@
 .recap-table {
     border-spacing: 0;
+    font-size: 80%;
 
      & th, & td {
          padding: 0.5rem 1rem;

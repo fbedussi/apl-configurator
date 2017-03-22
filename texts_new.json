@@ -21,7 +21,13 @@
             "submit": "Invia",
             "quotationBtn": "scopri quanto costa",
             "question": "domanda",
-            "answer": "risposta"
+            "answer": "risposta",
+            "thanks": "Grazie!",
+            "requestSent": "Stiamo inviando la tua richiesta... attendi un attimo",
+            "requestSuccess": "La vostra richiesta è stata inviata con successo",
+            "requestError": "Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a <a mailto=\"info@d-power.com\">info@d-power.com</a>.",
+            "followUp": "Vi contatteremo al più presto",
+            "linkHome": "Home page >"
         },
         "answers": [
             {
@@ -207,7 +213,7 @@
                 "id": 3,
                 "title": "APL Classic soluzione 2 Stratos N",
                 "images": [
-                    "APL_Classic_soluzione1_Stratos_N.jpg"
+                    "APL_Classic_soluzione2_Stratos_N.jpg"
                 ],
                 "text": ""
             }
@@ -240,6 +246,7 @@
             {
                 "id": 4,
                 "text": "La distanza frontale tra i 2 pali è maggiore di 9 metri?",
+                "images": ["9m.jpg"],
                 "answers": {
                     "a": "no",
                     "b": "sì"
@@ -255,7 +262,7 @@
             },
             {
                 "id": 6,
-                "text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? Scarica le <a href=\"http://www.example.com\">istruzioni posizionamento sensore</a> per valutare se è possibile utilizzarlo nella tua installazione",
+                "text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? <p class=\"note\"><small><em>Scarica le <a href=\"http://www.example.com\" target=\"_blank\">istruzioni posizionamento sensore</a> per valutare se è possibile utilizzarlo nella tua installazione</em></small></p>",
                 "answers": {
                     "a": "Sensore",
                     "b": "Pulsante touch"

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {Provider, connect} from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router'
-
 
 import reducer from './reducers';
 import {init} from './actions';
@@ -16,10 +14,7 @@ const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 function run() {
    ReactDOM.render(
                <Provider store={store}>
-                   <Router history={browserHistory}>
-                    {/*<Route path="/" component={App} />*/}
-                    <Route path="/apl-configurator" component={App} />
-                  </Router>
+                  <App />
                </Provider>, document.getElementById('app'));
 }
 //run();

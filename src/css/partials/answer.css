@@ -23,11 +23,6 @@
     padding-left: 1em;
 }
 
-.answer-buttons {
-    display: flex;
-    justify-content: space-between;
-}
-
 .quotation-btn {
-    margin-right: 4em;
+    margin-bottom: 2em;
 }

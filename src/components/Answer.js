@@ -33,7 +33,7 @@ class Answer extends React.Component {
         
         return (
             <div className="slideInner">
-                <Title currentNode={answer.title} />
+                <Title text={answer.title} />
                 <p className="answer-text">{answer.text}</p>
                 <div className="answer-recapAndImage">
                     <Images
@@ -49,21 +49,20 @@ class Answer extends React.Component {
                 <Form
                     showForm={this.props.showForm} 
                 />
-                <div className="answer-buttons">
-                    <Back
-                        show={Boolean(this.props.breadcrumbs.length)}
-                        label={this.props.labels["back"]}
-                        clickHandler={() =>
-                            this.props.goBack(this.props.currentNode)
-                        }
-                    />
-                    <QuotationButton
-                        show={!this.props.showForm}
-                        text={this.props.labels.quotationBtn}
-                        clickHandler={() => this.props.toggleForm()}
-                    />
-                </div>
                 
+                <QuotationButton
+                    show={!this.props.showForm}
+                    text={this.props.labels.quotationBtn}
+                    clickHandler={() => this.props.toggleForm()}
+                />
+                
+                <Back
+                    show={Boolean(this.props.breadcrumbs.length)}
+                    label={this.props.labels["back"]}
+                    clickHandler={() =>
+                        this.props.goBack(this.props.currentNode)
+                    }
+                />                
             </div>
         );
     }

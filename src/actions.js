@@ -32,6 +32,21 @@ export function toggleForm() {
     return {type: 'TOGGLE_FORM'};    
 }
 
-export function requestSent() {
-    return {type: 'REQUEST_SENT'};        
+export function submitForm(data) {
+    return function(dispatch) {
+        dispatch({type: 'REQUEST_SENT'});   
+        //https://github.com/dwyl/html-form-send-email-via-google-script-without-server
+        fetch('https://script.google.com/macros/s/AKfycbx4vjw-Pgwb8C4-W046IS20B8N0yWVwbdQl5JNlMiH14L1fcSm5/exec', {
+            method: 'post',
+            body: data
+        })
+        .then(response => {
+            console.log(response);
+            dispatch({type: 'REQUEST_SUCCESS'});        
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch({type: 'REQUEST_ERROR'});                    
+        });
+    }
 }
