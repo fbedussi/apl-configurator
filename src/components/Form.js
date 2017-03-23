@@ -75,15 +75,15 @@ class Form extends React.Component {
                 <span className="form-label">{this.props.labels.reason}*</span>
                 <fieldset className="form-input form-reason">
                     <span className="form-reason-option">
-                        <input required type="radio" name="reason" id="project" />
+                        <input required type="radio" name="reason" id="project" value="project"/>
                         <label htmlFor="project">{this.props.labels.project}</label>
                     </span>
                     <span className="form-reason-option">
-                        <input required type="radio" name="reason" id="call" />
+                        <input required type="radio" name="reason" id="call" value="call"/>
                         <label htmlFor="call">{this.props.labels.call}</label>
                     </span>
                     <span className="form-reason-option">
-                        <input required type="radio" name="reason" id="other" />
+                        <input required type="radio" name="reason" id="other" value="other"/>
                         <label htmlFor="other">{this.props.labels.other}</label>
                     </span>
                 </fieldset>

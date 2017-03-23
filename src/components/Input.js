@@ -9,7 +9,7 @@ const Input = ({ labelText, name, minLenght, required, type }) => {
 
     return <div className="form-field">
             <label className="form-label" htmlFor={name}>{labelText}</label>
-            <input className="form-input" type={type} minLength={minLenght} required={Boolean(required)}/>
+            <input className="form-input" id={name} name={name} type={type} minLength={minLenght} required={Boolean(required)}/>
     </div>
 }
 

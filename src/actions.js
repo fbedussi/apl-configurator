@@ -36,7 +36,7 @@ export function submitForm(data) {
     return function(dispatch) {
         dispatch({type: 'REQUEST_SENT'});   
         //https://github.com/dwyl/html-form-send-email-via-google-script-without-server
-        fetch('https://script.google.com/macros/s/AKfycbx4vjw-Pgwb8C4-W046IS20B8N0yWVwbdQl5JNlMiH14L1fcSm5/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzKkZDzW-TURbi1EieZDKHutU3QBLt0c4ylJuvuWrRacqW5BXYE/exec', {
             method: 'post',
             body: data
         })
