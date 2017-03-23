@@ -96,10 +96,13 @@ html, body, #app, .appInner {
     margin-bottom: 2em;
 }
 
-.answers {
-    border: none;
+.question-options {
     text-align: center; 
     margin-bottom: 1em;
+}
+
+.question-optionBtn:first-child {
+    margin-right: 1em;
 }
 
 .answerWrapper {

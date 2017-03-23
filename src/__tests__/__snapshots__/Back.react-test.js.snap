@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Back has an icon 1`] = `
+<div
+  className="backWrapper"
+>
+  <button
+    className="backBtn"
+    onClick={[Function]}
+  >
+    <span
+      className="button-icon"
+    >
+      <svg
+        height="29.571"
+        id="svg2"
+        viewBox="0 0 29.57144 29.57144"
+        width="29.571"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          id="layer1"
+          strokeLinecap="round"
+          transform="translate(153.57 -600.29)"
+        >
+          <circle
+            cx="-138.786"
+            cy="615.076"
+            fill="gray"
+            id="circle"
+            r="14.286"
+            strokeWidth="0"
+          />
+          <path
+            d="M-140.283 606.237c-.61.017-1.19.272-1.617.71l-6.785 6.788c-1.855 1.676 0 3.322 0 3.322l7.142 7.143c2.215 2.293 5.617-1.107 3.325-3.323l-2.92-2.922h9.05c2.936 0 2.936-4.406 0-4.406h-9.765l3.277-3.278c1.538-1.494.437-4.1-1.707-4.035z"
+            id="arrow"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      className="button-label"
+    >
+      back
+    </span>
+  </button>
+</div>
+`;

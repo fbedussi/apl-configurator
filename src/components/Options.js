@@ -5,17 +5,12 @@ const Options = ({nodeId, answers, setAnswer}) => {
         return null;
     }
 
-    return <fieldset className="answers">
+    return <div className="question-options">
             {Object.keys(answers).map(key => {
-                    var checked = false;
-                    
-                    return <label key={key} className="answerWrapper">
-                        {answers[key]}
-                        <input type="radio" name="answer" value={key} id={nodeId + '_' + key} checked={checked} onClick={(e) => setAnswer(key)}/>
-                    </label>;
+                    return <button key={key} className="question-optionBtn ctaBtn" onClick={(e) => setAnswer(key)}>{answers[key]}</button>                    
                 })
             }
-    </fieldset>
+    </div>
 }
 
 export default Options;
