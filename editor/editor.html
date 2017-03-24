@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>APL Configurator Editor</title>
+    <link rel="stylesheet" href="css/foundation.min.css" />
+</head>
+
+<body>
+    <div id="editor"></div>
+    <script src="jsoneditor.js" type="text/javascript"></script>
+    <script>
+        fetch('../questions.json')
+        .then(response => response.json())
+        .then(questions => {
+            var element = document.getElementById('editor');
+
+        var editor = new JSONEditor(element, {
+            theme: 'foundation5',
+            // Enable fetching schemas via ajax
+            ajax: true,
+
+            startval: questions,
+
+            // The schema for the editor
+            schema: {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "title": "Questions",
+                "description": "APL-Configurator questions",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "isoCode": {
+                            "description": "Language iso code",
+                            "type": "string",
+                            "minLength": 2,
+                            "maxLength": 2
+                        },
+                        "questions": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "../questions_only.schema.json"
+                            }
+                        }
+                    }
+                }
+            },
+
+            // Seed the form with a starting value
+            //startval: starting_value,
+
+            // Disable additional properties
+            no_additional_properties: true,
+
+            // Require all properties by default
+            required_by_default: true
+        });
+        });
+    </script>
+</body>
+
+</html>

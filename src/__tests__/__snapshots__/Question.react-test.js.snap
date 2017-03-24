@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question component 1`] = `
+<div
+  className="slideInner"
+>
+  <p
+    className="text question-text"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
+      }
+    }
+  />
+  <div
+    className="question-options"
+  >
+    <button
+      className="question-optionBtn ctaBtn"
+      onClick={[Function]}
+    >
+      no
+    </button>
+    <button
+      className="question-optionBtn ctaBtn"
+      onClick={[Function]}
+    >
+      sì
+    </button>
+  </div>
+</div>
+`;

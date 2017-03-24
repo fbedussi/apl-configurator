@@ -2,79 +2,57 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Questions",
     "description": "APL-Configurator questions",
-    "type": "object",
-    "properties": {
-        "id": {
-            "description": "The unique identifier for a product",
-            "type": "integer"
-        },
-        "text": {
-            "description": "Question's text",
-            "type": "string"
-        },
-        "images": {
-            "description": "Question's images",
-            "type": "array",
-            "items": {
-                "type": "string"
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "isoCode": {
+                "description": "Language iso code",
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2
             },
-            "minItems": 1,
-            "uniqueItems": true
-        },
-        "options": {
-            "description": "Question's possible answers",
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "minItems": 2,
-            "uniqueItems": true
-        }
-    },
-    "required": ["id", "text", "options"]
-}
-
-
-    "it": [
-            {
-                "id": 1,
-                "text": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
-                "options": ["no", "sì"]
-            },
-            {
-                "id": 2,
-                "text": "Il sistema deve essere dotato di dispositivo per l'interazione con il pedone?",
-                "options": ["no","sì"]
-            },
-            {
-                "id": 3,
-                "text": "Nel luogo di installazione è già presente illuminazione stradale oppure altra illuminazione artificiale? (Vetrine, insegne luminose, ecc.)?",
-                "options": ["no","sì"]
-            },
-            {
-                "id": 4,
-                "text": "La distanza frontale tra i 2 pali è maggiore di 9 metri?",
-                "options": ["no","sì"]
-            },
-            {
-                "id": 5,
-                "text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
-                "options": ["no","sì"]
-            },
-            {
-                "id": 6,
-                "text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? Scarica le <a href=\"http://www.example.com\">istruzioni posizionamento sensore</a> per valutare se è possibile utilizzarlo nella tua installazione",
-                "options": ["Sensore","Pulsante touch"]
-            },
-            {
-                "id": 7,
-                "text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
-                "options": ["no","sì"]
-            },
-            {
-                "id": 8,
-                "text": "L'alimentazione 230V è disponibile su entrambi i lati della strada?",
-                "options": ["no","sì"]
+            "questions": {
+                "description": "Questions contents",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier for a question",
+                        "type": "integer"
+                    },
+                    "text": {
+                        "description": "Question's text",
+                        "type": "string"
+                    },
+                    "images": {
+                        "description": "Question's images",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    },
+                    "options": {
+                        "description": "Question's possible answers",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 2,
+                        "uniqueItems": true
+                    }
+                },
+                "required": [
+                    "id",
+                    "text",
+                    "options"
+                ]
             }
+        },
+        "required": [
+            "isoCode",
+            "questions"
         ]
+    }
 }
