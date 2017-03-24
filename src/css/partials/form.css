@@ -12,21 +12,22 @@
 
 .form-field {
     display: flex;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     min-height: 2em;
+    flex-direction: column;
 }
 
 .form-label {
-    display: inline-block;
-    width: 30%;
-    padding-right: 0.5em;
-    text-align: right;
+    display: block;
+    width: 100%;
+    text-align: center;
     align-self: center;
 }
 
 .form-input {
-    display: inline-block;
-    width: 70%;
+    display: block;
+    width: 100%;
+    min-height: 3em;
     background-color: var(--color-grey);
 }
 
@@ -57,4 +58,24 @@
     float: right;
     margin-right: 5em;
     margin-top: 1em;
+}
+
+@media (--medium-viewport) {
+    .form-field {
+        flex-direction: row;
+    }
+
+    .form-label {
+        display: inline-block;
+        width: 30%;
+        padding-right: 0.5em;        
+        text-align: right;
+        align-self: center;
+    }
+
+    .form-input {
+        display: inline-block;
+        width: 70%;
+    }
+
 }

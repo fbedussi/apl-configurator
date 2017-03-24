@@ -3,4 +3,6 @@
     --color-mediumGrey: #bbbbbb;
     --color-darkGrey: #808080;
     --color-orange: #ff8800;
-}
+  }
+
+@custom-media --medium-viewport (min-width: 700px);
