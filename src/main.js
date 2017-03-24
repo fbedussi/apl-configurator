@@ -4,8 +4,6 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {Provider, connect} from 'react-redux';
 
-
-
 import reducer from './reducers';
 import {init} from './actions';
 

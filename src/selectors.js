@@ -34,8 +34,8 @@ export function getShowForm(state) {
     return state.showForm;
 }
 
-export function getRequestSent(state) {
-    return state.requestSent;
+export function getRequestStatus(state) {
+    return state.requestStatus;
 }
 
 export function getAnswers(state) {
@@ -44,4 +44,8 @@ export function getAnswers(state) {
 
 export function getQuestions(state) {
     return state.questions;
+}
+
+export function getRequestSuccess(state) {
+    return state.requestSuccess;
 }

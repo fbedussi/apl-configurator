@@ -9,7 +9,7 @@
 @import "partials/footer.css";
 
 html {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 html, body, #app, .appInner {
@@ -57,7 +57,7 @@ html, body, #app, .appInner {
 .linkHome {
     text-decoration: none;
     color: currentColor;
-    display: block;
+    display: inline-block;
     height: 1.5em;
     position: relative;
 
@@ -96,10 +96,13 @@ html, body, #app, .appInner {
     margin-bottom: 2em;
 }
 
-.answers {
-    border: none;
+.question-options {
     text-align: center; 
     margin-bottom: 1em;
+}
+
+.question-optionBtn:first-child {
+    margin-right: 1em;
 }
 
 .answerWrapper {
@@ -133,6 +136,10 @@ input[type="radio"]:checked {
     margin-bottom: 1em;
 }
 
+p.note {
+    margin-top: 1em;
+}
+
 .image {
     max-width: 100%;
 }
@@ -149,10 +156,32 @@ input[type="radio"]:checked {
     background-color: var(--color-orange);
 }
 
-@media screen and (min-width: 1000px) {
-    html {
-        font-size: 16px;
-    }
+.ctaBtn--inverse {
+    background-color: var(--color-orange);
+
+    &:hover {
+        background-color: var(--color-darkGrey);        
+    }    
+}
+
+.requestNotification {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.requestNotification-sentWrapper, .requestNotification-successWrapper, .requestNotification-errorWrapper {
+    margin: 5em 0 3em;
+}
+
+.requestNotification-thanks {
+    font-size: 200%;
+    margin-bottom: 0.5em;
+}
+
+.requestNotification-success, .requestNotification-error {
+    font-size: 150%;
+    margin-bottom: 0.5em;    
 }
 
 @media screen and (min-width: 1100px) {

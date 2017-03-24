@@ -7,16 +7,9 @@ const Options = ({currentNode, options, setAnswer, baseUrl, history}) => {
         return null;
     }
 
-    return <div className="answers">
-            {Object.keys(options).map(key => {
-                    var optionId = currentNode[key].id;
-
-                    return <button key={key} className="ctaBtn" onClick={e => {
-                        history.push('/' + key, { some: 'state' })
-                        setAnswer(e.target.key);
-                        }}>
-                        {options[key]}
-                    </button>;
+    return <div className="question-options">
+            {Object.keys(answers).map(key => {
+                    return <button key={key} className="question-optionBtn ctaBtn" onClick={(e) => setAnswer(key)}>{answers[key]}</button>                    
                 })
             }
     </div>

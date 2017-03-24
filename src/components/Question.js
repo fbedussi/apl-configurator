@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
     goBack: (currentNode) => dispatch(goBack(currentNode)),
 })
 
-class Question extends React.Component {
+export class Question extends React.Component {
     render() {
         var nodeId = isNaN(this.props.nodeId)? 1: this.props.nodeId;
         var question = this.props.questions.filter(question => question.id === nodeId)[0];

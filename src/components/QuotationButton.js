@@ -5,14 +5,12 @@ const QuotationButton = ({show, text, clickHandler}) => {
         return null;
     }
 
-    return <div className="quotation">
-        <button 
-            className={'quotation-btn ctaBtn'}
+    return <button 
+            className={'quotation-btn ctaBtn ctaBtn--inverse'}
             onClick={clickHandler}
         >
             {text}
         </button>
-    </div>
 }
 
 export default QuotationButton;

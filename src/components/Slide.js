@@ -7,13 +7,12 @@ import {
 } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
 
-import { getCurrentNode, getRequestSent } from '../selectors';
+import { getCurrentNode } from '../selectors';
 
 import SlideInner from './SlideInner';
 
 const mapStateToProps = (state) => ({
-    currentNode: getCurrentNode(state),
-    requestSent: getRequestSent(state)
+    currentNode: getCurrentNode(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -35,9 +34,9 @@ class Slide extends React.Component {
             </ReactCSSTransitionGroup>
         );*/
         return (
-                <div className={`slide ${this.props.requestSent ? 'hide' : ''}`} key={this.props.currentNode.id} ref={slide => this.slide = slide}>
-                    <SlideInner history={customHistory} />
-                </div>
+            <div className="slide" key={this.props.currentNode.id} ref={slide => this.slide = slide}>
+                    <SlideInner />
+            </div>
         );
     }
 };

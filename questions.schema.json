@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Questions",
+    "description": "APL-Configurator questions",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "isoCode": {
+                "description": "Language iso code",
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2
+            },
+            "questions": {
+                "description": "Questions contents",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier for a question",
+                        "type": "integer"
+                    },
+                    "text": {
+                        "description": "Question's text",
+                        "type": "string"
+                    },
+                    "images": {
+                        "description": "Question's images",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    },
+                    "options": {
+                        "description": "Question's possible answers",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 2,
+                        "uniqueItems": true
+                    }
+                },
+                "required": [
+                    "id",
+                    "text",
+                    "options"
+                ]
+            }
+        },
+        "required": [
+            "isoCode",
+            "questions"
+        ]
+    }
+}

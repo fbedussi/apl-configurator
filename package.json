@@ -11,6 +11,7 @@
     "url": "https://github.com/fbedussi/apl-configurator"
   },
   "dependencies": {
+    "jest": "^19.0.2",
     "preact": "^7.2.0",
     "preact-compat": "^3.13.1",
     "preact-css-transition-group": "^1.1.1",
@@ -27,21 +28,25 @@
     "autoprefixer": "^6.7.6",
     "babel": "^6.5.2",
     "babel-core": "^6.21.0",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
     "css-loader": "^0.26.2",
+    "jest": "^19.0.2",
     "json-loader": "^0.5.4",
+    "npm-run-all": "^4.0.2",
     "postcss-cssnext": "^2.9.0",
     "postcss-loader": "^1.3.3",
     "postcss-partial-import": "^3.1.1",
+    "react-test-renderer": "^15.4.2",
     "style-loader": "^0.13.2",
     "webpack": "^1.14.0"
   },
   "keywords": [
     "APL",
     "configurator",
-    "pedestrina cross",
+    "pedestrian cross",
     "lights"
   ],
   "license": "MIT",
@@ -52,7 +57,9 @@
     "url": "git://github.com/fbedussi/apl-configurator.git"
   },
   "scripts": {
-    "dev": "webpack --watch",
-    "css": "postcss -w -o style.css ./src/css/style.css"
+    "test": "jest",
+    "js": "webpack --watch",
+    "css": "postcss -w -o style.css ./src/css/style.css",
+    "dev": "npm-run-all -p js css"
   }
 }

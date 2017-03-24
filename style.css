@@ -9,6 +9,7 @@ button {
        -moz-appearance: none;
             appearance: none;
     border: none;
+    font-size: 100%;
 }
 
 fieldset, input, textarea {
@@ -164,17 +165,8 @@ progress::-moz-progress-bar {
     padding-left: 1em;
 }
 
-.answer-buttons {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-}
-
 .quotation-btn {
-    margin-right: 4em;
+    margin-bottom: 2em;
 }
 
 .backWrapper {
@@ -189,7 +181,7 @@ progress::-moz-progress-bar {
     background: transparent;
     border: none;
     color: #808080;
-    font-size: 20px;
+    font-size: 16px;
     font-size: 1rem;
 }
 
@@ -219,11 +211,12 @@ progress::-moz-progress-bar {
 }
 
 .recap-table {
-    border-spacing: 0
+    border-spacing: 0;
+    font-size: 80%
 }
 
 .recap-table th, .recap-table td {
-    padding: 10px 20px;
+    padding: 8px 16px;
     padding: 0.5rem 1rem;
     text-align: left;
 }
@@ -263,23 +256,27 @@ progress::-moz-progress-bar {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     min-height: 2em;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .form-label {
-    display: inline-block;
-    width: 30%;
-    padding-right: 0.5em;
-    text-align: right;
+    display: block;
+    width: 100%;
+    text-align: center;
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
 }
 
 .form-input {
-    display: inline-block;
-    width: 70%;
+    display: block;
+    width: 100%;
+    min-height: 3em;
     background-color: #eeeeee;
 }
 
@@ -312,6 +309,31 @@ progress::-moz-progress-bar {
     margin-top: 1em;
 }
 
+@media (min-width: 700px) {
+    .form-field {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+    }
+
+    .form-label {
+        display: inline-block;
+        width: 30%;
+        padding-right: 0.5em;        
+        text-align: right;
+        -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
+            align-self: center;
+    }
+
+    .form-input {
+        display: inline-block;
+        width: 70%;
+    }
+
+}
+
 .footer {
     background-color: #eee;
     text-align: center;
@@ -339,7 +361,7 @@ progress::-moz-progress-bar {
 }
 
 html {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 html, body, #app, .appInner {
@@ -394,7 +416,7 @@ html, body, #app, .appInner {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    font-size: 30px;
+    font-size: 24px;
     font-size: 1.5rem;
     margin-bottom: 2em;
     -webkit-box-flex: 1;
@@ -406,7 +428,7 @@ html, body, #app, .appInner {
 .linkHome {
     text-decoration: none;
     color: currentColor;
-    display: block;
+    display: inline-block;
     height: 1.5em;
     position: relative
 }
@@ -448,10 +470,13 @@ html, body, #app, .appInner {
     margin-bottom: 2em;
 }
 
-.answers {
-    border: none;
+.question-options {
     text-align: center; 
     margin-bottom: 1em;
+}
+
+.question-optionBtn:first-child {
+    margin-right: 1em;
 }
 
 .answerWrapper {
@@ -488,6 +513,10 @@ input[type="radio"]:checked {
     margin-bottom: 1em;
 }
 
+p.note {
+    margin-top: 1em;
+}
+
 .image {
     max-width: 100%;
 }
@@ -504,10 +533,39 @@ input[type="radio"]:checked {
     background-color: #ff8800;
 }
 
-@media screen and (min-width: 1000px) {
-    html {
-        font-size: 16px;
-    }
+.ctaBtn--inverse {
+    background-color: #ff8800    
+}
+
+.ctaBtn--inverse:hover {
+    background-color: #808080;
+}
+
+.requestNotification {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.requestNotification-sentWrapper, .requestNotification-successWrapper, .requestNotification-errorWrapper {
+    margin: 5em 0 3em;
+}
+
+.requestNotification-thanks {
+    font-size: 200%;
+    margin-bottom: 0.5em;
+}
+
+.requestNotification-success, .requestNotification-error {
+    font-size: 150%;
+    margin-bottom: 0.5em;    
 }
 
 @media screen and (min-width: 1100px) {

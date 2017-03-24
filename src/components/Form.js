@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getLabels, getShowForm } from '../selectors';
-import { requestSent } from '../actions';
+import { submitForm } from '../actions';
 
 import Input from './Input';
 
@@ -12,29 +12,17 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    requestSent: () => dispatch(requestSent())
+    submitForm: (data) => dispatch(submitForm(data))
 })
 
 class Form extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        console.log(e);
         var form = e.target;
         var data = new FormData(form);
 
-        //https://github.com/dwyl/html-form-send-email-via-google-script-without-server
-        fetch('https://script.google.com/macros/s/AKfycbx4vjw-Pgwb8C4-W046IS20B8N0yWVwbdQl5JNlMiH14L1fcSm5/exec', {
-            method: 'post',
-            body: data
-        })
-            .then(response => {
-                console.log(response);
-                this.props.requestSent();
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        this.props.submitForm(data);
     }
 
     render() {
@@ -84,21 +72,21 @@ class Form extends React.Component {
             />)}
 
             <div className="form-field">
-                <span className="form-label">{this.props.labels.reason}</span>
-                <span className="form-input form-reason">
+                <span className="form-label">{this.props.labels.reason}*</span>
+                <fieldset className="form-input form-reason">
                     <span className="form-reason-option">
-                        <input type="radio" name="reason" id="project" />
+                        <input required type="radio" name="reason" id="project" value="project"/>
                         <label htmlFor="project">{this.props.labels.project}</label>
                     </span>
                     <span className="form-reason-option">
-                        <input type="radio" name="reason" id="call" />
+                        <input required type="radio" name="reason" id="call" value="call"/>
                         <label htmlFor="call">{this.props.labels.call}</label>
                     </span>
                     <span className="form-reason-option">
-                        <input type="radio" name="reason" id="other" />
+                        <input required type="radio" name="reason" id="other" value="other"/>
                         <label htmlFor="other">{this.props.labels.other}</label>
                     </span>
-                </span>
+                </fieldset>
             </div>
             <label className="form-field">
                 <span className="form-label">{this.props.labels.msg}</span>
