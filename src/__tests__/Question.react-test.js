@@ -9,7 +9,7 @@ var questions = texts.it.questions;
 var currentNode = texts.it.tree;
 var breadcrumbs = [];
 
-test('Question component', () => {
+test.skip('Question component', () => { 
   const component = renderer.create(
     <Question labels={labels} questions={questions} currentNode={currentNode} breadcrumbs={breadcrumbs} />
   );

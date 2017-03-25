@@ -5,13 +5,16 @@ import {
     BrowserRouter as Router,
     Route
 } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory'
+import {createBrowserHistory} from 'history'
 
-import { getCurrentNode } from '../selectors';
+import { getLabels, getBreadcrumbs, getCurrentNode } from '../selectors';
 
 import SlideInner from './SlideInner';
+import Back from './Back';
 
 const mapStateToProps = (state) => ({
+    labels: getLabels(state),
+    breadcrumbs: getBreadcrumbs(state),
     currentNode: getCurrentNode(state)
 });
 
@@ -19,7 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 
-const customHistory = createBrowserHistory()
+const customHistory = createBrowserHistory({
+  //customHistory: '/apl-configurator'
+});
 
 class Slide extends React.Component {
     render() {
@@ -34,9 +39,18 @@ class Slide extends React.Component {
             </ReactCSSTransitionGroup>
         );*/
         return (
+            <Router history={customHistory}>
             <div className="slide" key={this.props.currentNode.id} ref={slide => this.slide = slide}>
-                    <SlideInner />
+                <Route path="/:id" component={SlideInner} /> 
+            <Back
+                    show={Boolean(this.props.breadcrumbs.length)}
+                    label={this.props.labels["back"]}
+                    clickHandler={() =>
+                        customHistory.goBack()
+                    }
+                />
             </div>
+            </Router>
         );
     }
 };

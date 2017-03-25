@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getLabels, getCurrentNode, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions } from '../selectors';
-import { goBack, toggleForm } from '../actions';
+import { getLabels, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions } from '../selectors';
+import { toggleForm } from '../actions';
 
 import Title from './Title';
-import Back from './Back';
 import Images from './Images';
 import Recap from './Recap';
 import QuotationButton from './QuotationButton';
@@ -14,16 +12,15 @@ import Form from './Form';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
-    currentNode: getCurrentNode(state),
-    breadcrumbs: getBreadcrumbs(state),
+    //currentNode: getCurrentNode(state),
     answersHistory: getAnswersHistory(state),
+    breadcrumbs: getBreadcrumbs(state),
     answers: getAnswers(state),
     questions: getQuestions(state),
     showForm: getShowForm(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    goBack: (currentNode) => dispatch(goBack(currentNode)),
     toggleForm: () => dispatch(toggleForm())
 })
 
@@ -32,9 +29,11 @@ class Answer extends React.Component {
         var answer = this.props.answers.filter(answer => answer.id === this.props.currentNode.answerId)[0];
         
         return (
-            <div className="slideInner">
+            <div className="answer-contents">
                 <Title text={answer.title} />
+
                 <p className="answer-text">{answer.text}</p>
+                
                 <div className="answer-recapAndImage">
                     <Images
                         sources={answer.images}
@@ -46,6 +45,7 @@ class Answer extends React.Component {
                         answersHistory={this.props.answersHistory}
                     />
                 </div>
+                
                 <Form
                     showForm={this.props.showForm} 
                 />
@@ -54,15 +54,7 @@ class Answer extends React.Component {
                     show={!this.props.showForm}
                     text={this.props.labels.quotationBtn}
                     clickHandler={() => this.props.toggleForm()}
-                />
-                
-                <Back
-                    show={Boolean(this.props.breadcrumbs.length)}
-                    label={this.props.labels["back"]}
-                    clickHandler={() =>
-                        this.props.goBack(this.props.currentNode)
-                    }
-                />                
+                />          
             </div>
         );
     }

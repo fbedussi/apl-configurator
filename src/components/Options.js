@@ -1,15 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {
+    Link
+} from 'react-router-dom';
 
-
-const Options = ({currentNode, options, setAnswer, baseUrl, history}) => {
+const Options = ({currentNode, options, setAnswer}) => {
     if (!options) {
         return null;
     }
 
     return <div className="question-options">
-            {Object.keys(answers).map(key => {
-                    return <button key={key} className="question-optionBtn ctaBtn" onClick={(e) => setAnswer(key)}>{answers[key]}</button>                    
+            {Object.keys(options).map(key => {
+                    return <Link 
+                        key={key} 
+                        className="question-optionBtn ctaBtn" 
+                        to={`/${currentNode[key].id}`}
+                        onClick={() => setAnswer(key)}
+                    >{options[key]}</Link>                    
                 })
             }
     </div>

@@ -146,10 +146,12 @@ p.note {
 
 .ctaBtn {
     text-transform: uppercase;
-    padding: 1em 1.5em;
+    padding: 0.5em 1em;
+    display: inline-block;
     background-color: var(--color-darkGrey);
     border-radius: 3px;
     color: var(--color-grey);
+    text-decoration: none;
 }
 
 .ctaBtn:hover {
