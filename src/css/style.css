@@ -144,6 +144,11 @@ p.note {
     max-width: 100%;
 }
 
+.question .image {
+    max-width: 50%;
+    margin-bottom: 1em;
+}
+
 .ctaBtn {
     text-transform: uppercase;
     padding: 1em 1.5em;
