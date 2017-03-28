@@ -4,19 +4,35 @@ export function init(language = 'it') {
     //return { type: 'SET_TEXTS', texts };
     
     return function(dispatch) {
-        fetch('texts_new.json', {
-            mode: 'no-cors'
-        })
-        .then(response => {
-            console.log(response);
-            return response.json();
-        })
-        .then(texts => {
-            dispatch({ type: 'SET_TEXTS', texts })
-        })
-        .catch(function (err) {
-            console.log('ERROR: ', err);
-        });
+        // fetch('texts_new.json', {
+        //     mode: 'no-cors'
+        // })
+        // .then(response => {
+        //     console.log(response);
+        //     return response.json();
+        // })
+        // .then(texts => {
+        //     dispatch({ type: 'SET_TEXTS', texts })
+        // })
+        // .catch(function (err) {
+        //     console.log('ERROR: ', err);
+        // });
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'texts_new.json');
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            var DONE = 4; // readyState 4 means the request is done.
+            var OK = 200; // status 200 is a successful return.
+            if (xhr.readyState === DONE) {
+                if (xhr.status === OK) {
+                    console.log(xhr.responseText); // 'This is the returned text.'
+                    var texts = JSON.parse(xhr.responseText);
+                    dispatch({ type: 'SET_TEXTS', texts})
+                } else {
+                    console.log('ERROR: ' + xhr.status); // An error occurred during the request.
+                }
+            }
+        };
     }
 }
 
