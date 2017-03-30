@@ -6,8 +6,8 @@ const Options = ({nodeId, answers, setAnswer}) => {
     }
 
     return <div className="question-options">
-            {Object.keys(answers).map(key => {
-                    return <button key={key} className="question-optionBtn ctaBtn" onClick={(e) => setAnswer(key)}>{answers[key]}</button>                    
+            {answers.map((label, i) => {
+                    return <button key={i} className="question-optionBtn ctaBtn" onClick={(e) => setAnswer(i)}>{label}</button>                    
                 })
             }
     </div>

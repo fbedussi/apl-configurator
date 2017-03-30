@@ -1,24 +1,9 @@
 //import texts from '../texts.json';
 
-export function init(language = 'it') {
-    //return { type: 'SET_TEXTS', texts };
-    
+export function init() {
     return function(dispatch) {
-        // fetch('texts_new.json', {
-        //     mode: 'no-cors'
-        // })
-        // .then(response => {
-        //     console.log(response);
-        //     return response.json();
-        // })
-        // .then(texts => {
-        //     dispatch({ type: 'SET_TEXTS', texts })
-        // })
-        // .catch(function (err) {
-        //     console.log('ERROR: ', err);
-        // });
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'texts_new.json');
+        xhr.open('GET', 'texts_new.1.json');
         xhr.send(null);
         xhr.onreadystatechange = function () {
             var DONE = 4; // readyState 4 means the request is done.

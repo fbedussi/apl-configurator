@@ -34,6 +34,7 @@ class Answer extends React.Component {
         return (
             <div className="slideInner">
                 <Title text={answer.title} />
+                {answer.subtitle && <p className="subtitle">{answer.subtitle}</p>}
                 <p className="answer-text">{answer.text}</p>
                 <div className="answer-recapAndImage">
                     <Images

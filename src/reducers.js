@@ -13,20 +13,10 @@ function depthOf(obj) {
 	return level;
 }
 
-//var steps = depthOf(texts.it);
-
-export default function reducer(state = {
-	// steps: steps,
-	// stepsLeft: steps,
-	// goingBack: false,
-	// breadcrumbs: [],
-	// labels: texts.it.labels,
-	// currentNode: texts.it.questions,
-	// questions: texts.it.questions
-}, action) {
+export default function reducer(state = {}, action) {
 	switch (action.type) {
 		case 'SET_TEXTS':
-			let steps = depthOf(action.texts.it.tree)
+			let steps = depthOf(action.texts.tree)
 			return Object.assign({}, state, {
 				showForm: false,
 				steps: steps,
@@ -34,11 +24,11 @@ export default function reducer(state = {
 				goingBack: false,
 				breadcrumbs: [],
 				answersHistory: [],
-				labels: action.texts.it.labels,
-				answers: action.texts.it.answers,
-				questions: action.texts.it.questions,
-				tree: action.texts.it.tree,
-				currentNode: action.texts.it.tree,
+				labels: action.texts.labels,
+				answers: action.texts.answers,
+				questions: action.texts.questions,
+				tree: action.texts.tree,
+				currentNode: action.texts.tree,
 				requestStatus: 'unsent'
 			});
 

@@ -4,9 +4,9 @@ import {Question} from '../components/Question';
 import renderer from 'react-test-renderer';
 import texts from '../../texts_new.json'
 
-var labels = texts.it.labels;
-var questions = texts.it.questions;
-var currentNode = texts.it.tree;
+var labels = texts.labels;
+var questions = texts.questions;
+var currentNode = texts.tree;
 var breadcrumbs = [];
 
 test('Question component', () => {

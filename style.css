@@ -510,6 +510,11 @@ input[type="radio"]:checked {
     margin-bottom: 1em;
 }
 
+.subtitle {
+    margin-top: -1.5em;
+    margin-bottom: 1em;
+}
+
 .text {
     margin-bottom: 1em;
 }
