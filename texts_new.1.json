@@ -247,17 +247,17 @@
         {
             "id": 1,
             "text": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
-            "answers": ["no", "sì"]
+            "options": ["no", "sì"]
         },
         {
             "id": 2,
             "text": "Il sistema deve essere dotato di dispositivo per l'interazione con il pedone?",
-            "answers": ["no", "sì"]
+            "options": ["no", "sì"]
         },
         {
             "id": 3,
             "text": "Nel luogo di installazione è già presente illuminazione stradale oppure altra illuminazione artificiale? (Vetrine, insegne luminose, ecc.)?",
-            "answers": ["no", "sì"]
+            "options": ["no", "sì"]
         },
         {
             "id": 4,
@@ -265,27 +265,27 @@
             "images": [
                 "9m.jpg"
             ],
-            "answers": ["no", "sì"]
+            "options": ["no", "sì"]
         },
         {
             "id": 5,
             "text": "Ci sono ostacoli dove verranno installati i pali che potrebbero ridurre la visibilità dei cartelli di segnalazione laterali (alberi, tabelle segnaletiche o pubblicitarie, ecc)?",
-            "answers": ["no", "sì"]
+            "options": ["no", "sì"]
         },
         {
             "id": 6,
             "text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? <p class=\"note\"><small><em>Scarica le <a href=\"http://www.example.com\" target=\"_blank\">istruzioni posizionamento sensore</a> per valutare se è possibile utilizzarlo nella tua installazione</em></small></p>",
-            "answers": ["Sensore", "Pulsante touch"]
+            "options": ["Sensore", "Pulsante touch"]
         },
         {
             "id": 7,
             "text": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
-            "answers": ["no", "sì"]
+            "options": ["no", "sì"]
         },
         {
             "id": 8,
             "text": "L'alimentazione 230V è disponibile su entrambi i lati della strada?",
-            "answers": ["no", "sì"]
+            "options": ["no", "sì"]
         }
     ],
     "tree": {

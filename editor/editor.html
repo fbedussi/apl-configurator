@@ -8,6 +8,7 @@
     <script src="js/jsoneditor.js"></script>
     <script src="https://bgrins.github.io/filereader.js/filereader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/4.11.5/ajv.min.js"></script>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <div id="jsoneditor" style="width: 100%; height: 100%;"></div>
 
     <script>
-        fetch('../texts_new.json')
+        fetch('../texts_new.1.json')
             .then(response => response.json())
             .then(questions => {
 
@@ -23,112 +24,82 @@
                 var schema = {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "title": "APL-Configurator",
-                    "description": "APL-Configurator texts",
                     "type": "object",
+                    "required": ["labels", "answers", "questions"],
                     "properties": {
                         "labels": {
-                            "description": "Configurator labels",
+                            "description": "configurator texts that are not questiona neighter answers",
                             "type": "object"
                         },
                         "answers": {
-                            "description": "Answers text and images",
                             "type": "array",
+                            "minItems": 2,
+                            "uniqueItems": true,
                             "items": {
                                 "type": "object",
+                                "description": "Single answer contents",
+                                "dynamicDefaults": {
+                                    "id": { "func": "seq", "name": "id" }
+                                },
                                 "properties": {
-                                    "description": "Single answer contents",
-                                    "type": "object",
-                                    "properties": {
-                                        "id": {
-                                            "description": "ID",
-                                            "type": "number"
-                                        },
-                                        "title": {
-                                            "description"
-                                        },
-                                        "subtitle": "con pulsante touch",
-                                        "images": [
-                                            "APL_Solar-active_con_pulsante_touch.jpg"
-                                        ],
-                                        "text": 
-                                    }
-                                }
-                            }
-                        }
-
-
-                        "type": "object",
-                        "properties": {
-                            "isoCode": {
-                                "description": "Language iso code",
-                                "type": "string",
-                                "minLength": 2,
-                                "maxLength": 2
-                            },
-                            "questions": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "isoCode": {
-                                            "description": "Language iso code",
-                                            "type": "string",
-                                            "minLength": 2,
-                                            "maxLength": 2
-                                        },
-                                        "questions": {
-                                            "description": "Questions contents",
-                                            "type": "object",
-                                            "properties": {
-                                                "id": {
-                                                    "description": "The unique identifier for a question",
-                                                    "type": "integer"
-                                                },
-                                                "text": {
-                                                    "description": "Question's text",
-                                                    "type": "string"
-                                                },
-                                                "images": {
-                                                    "description": "Question's images",
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    },
-                                                    "minItems": 1,
-                                                    "uniqueItems": true
-                                                },
-                                                "options": {
-                                                    "description": "Question's possible answers",
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    },
-                                                    "minItems": 2,
-                                                    "uniqueItems": true
-                                                }
-                                            },
-                                            "required": [
-                                                "id",
-                                                "text",
-                                                "options"
-                                            ]
+                                    "id": { "type": "integer", "minimum": 0 },
+                                    "title": { "type": "string" },
+                                    "subtitle": { "type": "string" },
+                                    "images": {
+                                        "type": "array",
+                                        "items": {
+                                            "description": "image file name extension included",
+                                            "type": "string"
                                         }
                                     },
-                                    "required": [
-                                        "isoCode",
-                                        "questions"
-                                    ]
-                                }
+                                    "text": { "type": "string" }
+                                },
+                                "required": ["id"]
+                            }
+                        },
+                        "questions": {
+                            "type": "array",
+                            "minItems": 1,
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "object",
+                                "description": "single question",
+                                "dynamicDefaults": {
+                                    "id": { "func": "seq", "name": "id" }
+                                },
+                                "properties": {
+                                    "id": { "type": "integer", "minimum": 0 },
+                                    "title": { "type": "string" },
+                                    "subtitle": { "type": "string" },
+                                    "images": {
+                                        "type": "array",
+                                        "items": {
+                                            "description": "image file name extension included",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "text": { "type": "string" },
+                                    "options": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 2,
+                                        "uniqueItems": true
+                                    }
+                                },
+                                "required": ["id", "options"]
                             }
                         }
                     }
                 };
 
                 var options = {
-                    mode: 'form',
+                    ajv: Ajv({ useDefaults: true }),
+                    mode: 'tree',
                     history: true,
-                    search: true
-                    //schema: schema
+                    search: true,
+                    schema: schema
                 };
 
 
