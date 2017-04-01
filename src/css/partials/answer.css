@@ -15,14 +15,16 @@
     margin-bottom: 1em;
 }
 
-.recap {
-    padding-right: 1em;
-}
-
 .image {
     padding-left: 1em;
 }
 
 .quotation-btn {
     margin-bottom: 2em;
+}
+
+@media (--large-viewport) {
+    .recap {
+        padding-right: 1em;
+    }
 }

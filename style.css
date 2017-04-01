@@ -157,16 +157,18 @@ progress::-moz-progress-bar {
     margin-bottom: 1em;
 }
 
-.recap {
-    padding-right: 1em;
-}
-
 .image {
     padding-left: 1em;
 }
 
 .quotation-btn {
     margin-bottom: 2em;
+}
+
+@media (min-width: 1100px) {
+    .recap {
+        padding-right: 1em;
+    }
 }
 
 .backWrapper {
@@ -212,7 +214,8 @@ progress::-moz-progress-bar {
 
 .recap-table {
     border-spacing: 0;
-    font-size: 80%
+    font-size: 80%;
+    width: 100%
 }
 
 .recap-table th, .recap-table td {
@@ -274,6 +277,8 @@ progress::-moz-progress-bar {
 }
 
 .form-input {
+    font-size: 16px;
+    font-size: 1rem;
     display: block;
     width: 100%;
     min-height: 3em;
@@ -522,8 +527,9 @@ p.note {
 }
 
 .ctaBtn {
+    font-size: 55%;
     text-transform: uppercase;
-    padding: 0.5em 1em;
+    padding: 1em 1.5em;
     display: inline-block;
     background-color: #808080;
     border-radius: 3px;
@@ -570,7 +576,7 @@ p.note {
     margin-bottom: 0.5em;    
 }
 
-@media screen and (min-width: 1100px) {
+@media (min-width: 1100px) {
     .wrapper {
         max-width: 1000px;
     }

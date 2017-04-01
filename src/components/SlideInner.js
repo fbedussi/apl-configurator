@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getLabels, getBreadcrumbs, getCurrentNode, getTree, getCurrentNodeById } from '../selectors';
+import { getLabels, getBreadcrumbs, getTree, getCurrentNodeById } from '../selectors';
 import {goBack} from '../actions';
 
 import Answer from './Answer';
@@ -9,7 +9,6 @@ import Question from './Question';
 import Back from './Back';
 
 const mapStateToProps = (state) => ({
-    //currentNode: getCurrentNode(state),
     tree: getTree(state),    
     labels: getLabels(state),
     breadcrumbs: getBreadcrumbs(state)
@@ -28,7 +27,6 @@ class SlideInner extends React.Component {
             <div className="slideInner">
                 {currentNode.questionId && <Question currentNode={currentNode}/>}
                 {currentNode.answerId && <Answer currentNode={currentNode}/>}
-                
             </div>
         )
     }

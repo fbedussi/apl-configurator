@@ -22,9 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 
-const customHistory = createBrowserHistory({
-  //customHistory: '/apl-configurator'
-});
+// const customHistory = createBrowserHistory({
+//   basename: '/apl-configurator/'
+// });
 
 class Slide extends React.Component {
     render() {
@@ -39,7 +39,11 @@ class Slide extends React.Component {
             </ReactCSSTransitionGroup>
         );*/
         return (
-            <Router history={customHistory}>
+            <Router history={createBrowserHistory({
+  basename: '/apl-configurator/'
+})} history={createBrowserHistory({
+  basename: '/apl-configurator/'
+})}>
             <div className="slide" key={this.props.currentNode.id} ref={slide => this.slide = slide}>
                 <Route path="/:id" component={SlideInner} /> 
             <Back

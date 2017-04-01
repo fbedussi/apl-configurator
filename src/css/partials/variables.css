@@ -6,3 +6,4 @@
   }
 
 @custom-media --medium-viewport (min-width: 700px);
+@custom-media --large-viewport (min-width: 1100px);
