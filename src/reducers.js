@@ -20,7 +20,7 @@ export default function reducer(state = {}, action) {
 			return Object.assign({}, state, {
 				showForm: false,
 				steps: steps,
-				stepsLeft: steps - 1,
+				stepsLeft: steps,
 				goingBack: false,
 				breadcrumbs: [],
 				answersHistory: [],

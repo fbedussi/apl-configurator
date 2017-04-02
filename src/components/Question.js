@@ -35,7 +35,7 @@ export class Question extends React.Component {
                 />
                 <Options
                     nodeId={this.props.currentNode.id}
-                    answers={question.answers}
+                    options={question.options}
                     setAnswer={this.props.setAnswer}
                 />
                 <Back

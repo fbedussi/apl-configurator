@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Options = ({nodeId, answers, setAnswer}) => {
-    if (!answers) {
+const Options = ({nodeId, options, setAnswer}) => {
+    if (!options) {
         return null;
     }
 
     return <div className="question-options">
-            {answers.map((label, i) => {
+            {options.map((label, i) => {
                     return <button key={i} className="question-optionBtn ctaBtn" onClick={(e) => setAnswer(i)}>{label}</button>                    
                 })
             }

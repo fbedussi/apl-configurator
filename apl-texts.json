@@ -36,7 +36,7 @@
             "images": [
                 "APL_Solar-active_con_pulsante_touch.jpg"
             ],
-            "text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
+            "text": "Questa soluzione è valida solo se nel sito di installazione <strong style=\"text-transform: uppercase;\">non è presente illuminazione pubblica</strong> in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
         },
         {
             "id": 2,
@@ -177,7 +177,7 @@
             "images": [
                 "APL_Solar-active_con_sensore_e_pulsante_meccanico.jpg"
             ],
-            "text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
+            "text": "Questa soluzione è valida solo se nel sito di installazione <strong style=\"text-transform: uppercase;\">non è presente illuminazione pubblica</strong> in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
         },
         {
             "id": 17,
@@ -222,7 +222,7 @@
             "images": [
                 "APL_Solar.jpg"
             ],
-            "text": "Questa soluzione è valida solo se nel sito di installazione non è presente illuminazione pubblica in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
+            "text": "Questa soluzione è valida solo se nel sito di installazione <strong style=\"text-transform: uppercase;\">non è presente illuminazione pubblica</strong> in quanto le potenze sviluppate non sono sufficienti a creare un contrasto adeguato se non in zone buie"
         },
         {
             "id": 22,
@@ -274,7 +274,7 @@
         },
         {
             "id": 6,
-            "text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? <p class=\"note\"><small><em>Scarica le <a href=\"http://www.example.com\" target=\"_blank\">istruzioni posizionamento sensore</a> per valutare se è possibile utilizzarlo nella tua installazione</em></small></p>",
+            "text": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? <p class=\"note\"><small><em>Scarica le <a href=\"http://www.attraversamentipedonali.it/pdf/come_installare_sensore_APL_smart.pdf\" target=\"_blank\">istruzioni posizionamento sensore</a> per valutare se è possibile utilizzarlo nella tua installazione</em></small></p>",
             "options": ["Sensore", "Pulsante touch"]
         },
         {

@@ -1,0 +1,25 @@
+.question {
+    margin-bottom: 2em;
+}
+
+.question-options {
+    text-align: center; 
+    margin-bottom: 1em;
+    font-size: 80%;
+}
+
+.question-optionBtn:first-child {
+    margin-right: 1em;
+}
+
+.answerWrapper {
+    display: block;
+    margin-bottom: 1em;
+    text-align: right;
+    padding-right: 49%;
+}
+
+.question .image {
+    max-width: 50%;
+    margin-bottom: 1em;
+}

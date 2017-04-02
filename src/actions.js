@@ -3,14 +3,14 @@
 export function init() {
     return function(dispatch) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'texts_new.1.json');
+        xhr.open('GET', 'apl-texts.json');
         xhr.send(null);
         xhr.onreadystatechange = function () {
             var DONE = 4; // readyState 4 means the request is done.
             var OK = 200; // status 200 is a successful return.
             if (xhr.readyState === DONE) {
                 if (xhr.status === OK) {
-                    console.log(xhr.responseText); // 'This is the returned text.'
+                    //console.log(xhr.responseText); // 'This is the returned text.'
                     var texts = JSON.parse(xhr.responseText);
                     dispatch({ type: 'SET_TEXTS', texts})
                 } else {

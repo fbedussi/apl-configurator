@@ -1,0 +1,19 @@
+{
+  "name": "apl-configurator-editor",
+  "version": "1.0.0",
+  "description": "editor for apl-configurator texts",
+  "main": "js/apl-editor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack ./js/src/apl-editor.js ./js/apl-editor-build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^4.11.5",
+    "ajv-keywords": "^1.5.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.2"
+  }
+}

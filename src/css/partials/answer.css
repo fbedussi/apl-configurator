@@ -2,11 +2,6 @@
     background-color: transparent;
 }
 
-
-.answer .title {
-    color: black;
-}
-
 .answer-text {
     margin-bottom: 1em;
 }
@@ -25,4 +20,16 @@
 
 .quotation-btn {
     margin-bottom: 2em;
+}
+
+@media (--large-viewport) {
+    .answer-recapAndImage {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    
+        & > * {
+            width: 50%;
+        }
+    }
 }

@@ -48,6 +48,7 @@
 
 .form-reason-option {
     display: block;
+    padding: 1em 0;
 }
 
 .form-msg {
@@ -78,4 +79,10 @@
         width: 70%;
     }
 
+}
+
+@media (--large-viewport) {
+    .form-reason-option {
+        display: inline-block;
+    }
 }

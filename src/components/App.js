@@ -34,7 +34,7 @@ class App extends React.Component {
                 <footer className="footer">
                     <div className="wrapper footer-wrapper">
                         <div className="footer-logoAndLink">
-                            <img src="images/d-power-logo.png" alt={this.props.labels.logoDpowerAlt} />
+                            <img src="images/d-power-logo_70.png" alt={this.props.labels.logoDpowerAlt} />
                             <LinkHome text={this.props.labels.linkHome} />
                         </div>
                         <small className="copyright">&copy; Detas.com - All rights reserved</small>

@@ -141,12 +141,34 @@ progress::-moz-progress-bar {
     opacity: 1;
 }
 
-.workarea.answer {
-    background-color: transparent;
+.question {
+    margin-bottom: 2em;
 }
 
-.answer .title {
-    color: black;
+.question-options {
+    text-align: center; 
+    margin-bottom: 1em;
+    font-size: 80%;
+}
+
+.question-optionBtn:first-child {
+    margin-right: 1em;
+}
+
+.answerWrapper {
+    display: block;
+    margin-bottom: 1em;
+    text-align: right;
+    padding-right: 49%;
+}
+
+.question .image {
+    max-width: 50%;
+    margin-bottom: 1em;
+}
+
+.workarea.answer {
+    background-color: transparent;
 }
 
 .answer-text {
@@ -167,6 +189,24 @@ progress::-moz-progress-bar {
 
 .quotation-btn {
     margin-bottom: 2em;
+}
+
+@media (min-width: 1100px) {
+    .answer-recapAndImage {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: row-reverse;
+                flex-direction: row-reverse;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center
+    }
+    .answer-recapAndImage > * {
+        width: 50%;
+    }
 }
 
 .backWrapper {
@@ -297,6 +337,7 @@ progress::-moz-progress-bar {
 
 .form-reason-option {
     display: block;
+    padding: 1em 0;
 }
 
 .form-msg {
@@ -332,6 +373,12 @@ progress::-moz-progress-bar {
         width: 70%;
     }
 
+}
+
+@media (min-width: 1100px) {
+    .form-reason-option {
+        display: inline-block;
+    }
 }
 
 .footer {
@@ -466,27 +513,6 @@ html, body, #app, .appInner {
     width: 100%;
 }
 
-.question {
-    margin-bottom: 2em;
-}
-
-.question-options {
-    text-align: center; 
-    margin-bottom: 1em;
-    font-size: 80%;
-}
-
-.question-optionBtn:first-child {
-    margin-right: 1em;
-}
-
-.answerWrapper {
-    display: block;
-    margin-bottom: 1em;
-    text-align: right;
-    padding-right: 49%;
-}
-
 input[type="radio"] {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -507,10 +533,16 @@ input[type="radio"]:checked {
 }
 
 .title {
+    font-size: 44.8px;
+    font-size: 2.8rem;
+    color: #3e3e3e;
     margin-bottom: 1em;
 }
 
 .subtitle {
+    font-size: 28.8px;
+    font-size: 1.8rem;    
+    color: #3e3e3e;
     margin-top: -1.5em;
     margin-bottom: 1em;
 }
@@ -527,14 +559,11 @@ p.note {
     max-width: 100%;
 }
 
-.question .image {
-    max-width: 50%;
-    margin-bottom: 1em;
-}
-
 .ctaBtn {
+    font-size: 13.6px;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    padding: 0.5em 1em;
+    padding: 1em 1.5em;
     background-color: #808080;
     border-radius: 3px;
     color: #eeeeee;
@@ -552,56 +581,8 @@ p.note {
     background-color: #808080;
 }
 
-.requestNotification {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-}
-
-.requestNotification-sentWrapper, .requestNotification-successWrapper, .requestNotification-errorWrapper {
-    margin: 5em 0 3em;
-}
-
-.requestNotification-thanks {
-    font-size: 200%;
-    margin-bottom: 0.5em;
-}
-
-.requestNotification-success, .requestNotification-error {
-    font-size: 150%;
-    margin-bottom: 0.5em;    
-}
-
-@media screen and (min-width: 1100px) {
+@media (min-width: 1100px) {
     .wrapper {
         max-width: 1000px;
-    }
-
-    .answer-recapAndImage {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: reverse;
-            -ms-flex-direction: row-reverse;
-                flex-direction: row-reverse;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center
-    }
-
-    .answer-recapAndImage > * {
-        width: 50%;
-    }
-
-    .form-reason-option {
-        display: inline-block;
     }
 }

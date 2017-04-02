@@ -1,7 +1,7 @@
 import React from 'react';
 
 function getAnswerLabel(question, answerKey) {
-    return question.answers[answerKey];
+    return question.options[answerKey];
 }
 
 const Recap = ({ labels, breadcrumbs, answersHistory, questions }) => {
