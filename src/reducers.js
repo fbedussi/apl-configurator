@@ -13,11 +13,14 @@ function depthOf(obj) {
 	return level;
 }
 
-export default function reducer(state = {}, action) {
+export default function reducer(state = {
+	currentLanguage: 'it'
+}, action) {
 	switch (action.type) {
 		case 'SET_TEXTS':
 			let steps = depthOf(action.texts.tree)
 			return Object.assign({}, state, {
+				currentLanguage: action.texts.languageIsoCode,
 				showForm: false,
 				steps: steps,
 				stepsLeft: steps,

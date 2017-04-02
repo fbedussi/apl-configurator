@@ -58,8 +58,11 @@
   },
   "scripts": {
     "test": "jest",
-    "js": "webpack --watch",
-    "css": "postcss -w -o style.css ./src/css/style.css",
-    "dev": "npm-run-all -p js css"
+    "js:dev": "webpack --watch",
+    "js:prod": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
+    "css:dev": "postcss -w -o style.css ./src/css/style.css",
+    "css:prod": "postcss -o style.css ./src/css/style.css",
+    "dev": "npm-run-all -p js:dev css:dev",
+    "prod": "npm-run-all -p js:prod css:prod"
   }
 }

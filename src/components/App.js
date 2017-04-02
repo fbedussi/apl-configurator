@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getLabels, getRequestStatus } from '../selectors';
+import { getLabels, getRequestStatus, getCurrentLanguage } from '../selectors';
 
 import Main from './Main';
 import LinkHome from './LinkHome';
@@ -9,6 +9,7 @@ import RequestNotification from './RequestNotification';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
+    currentLanguage: getCurrentLanguage(state),
     requestStatus: getRequestStatus(state)
 });
 
@@ -18,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 class App extends React.Component {
     render() {
         return (
-            <div className="appInner">
+            <div className="appInner" lang={this.props.currentLanguage}>
                 <header className="header">
                     <div className="wrapper header-wrapper">
                         <a className="logoLink" href="http://www.attraversamentipedonali.it/">

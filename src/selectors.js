@@ -49,3 +49,7 @@ export function getQuestions(state) {
 export function getRequestSuccess(state) {
     return state.requestSuccess;
 }
+
+export function getCurrentLanguage(state) {
+    return state.currentLanguage;
+}
