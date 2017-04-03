@@ -163,7 +163,7 @@ progress::-moz-progress-bar {
 }
 
 .question .image {
-    max-width: 50%;
+    max-width: 30%;
     margin-bottom: 1em;
 }
 
