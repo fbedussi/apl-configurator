@@ -32,6 +32,7 @@
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
+    "bestzip": "^1.1.4",
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
     "jest": "^19.0.2",
@@ -64,6 +65,7 @@
     "css:dev": "postcss -w -o style.css ./src/css/style.css",
     "css:prod": "postcss -o style.css ./src/css/style.css",
     "dev": "npm-run-all -p js:dev css:dev",
-    "prod": "npm-run-all -p js:prod css:prod"
+    "prod": "npm-run-all -p js:prod css:prod",
+    "pack": "bestzip apl.zip images/ editor/ apl-texts.json index.html script.min.js script.min.js.map style.css"
   }
 }
