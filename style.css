@@ -569,7 +569,7 @@ p.note {
     color: #eeeeee;
 }
 
-.ctaBtn:hover {
+.ctaBtn:hover:not(:focus), .ctaBtn:active {
     background-color: #ff8800;
 }
 

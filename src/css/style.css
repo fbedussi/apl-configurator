@@ -143,7 +143,7 @@ p.note {
     color: var(--color-grey);
 }
 
-.ctaBtn:hover {
+.ctaBtn:hover:not(:focus), .ctaBtn:active {
     background-color: var(--color-orange);
 }
 
