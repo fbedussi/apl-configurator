@@ -35,7 +35,7 @@ class Answer extends React.Component {
             <div className="slideInner">
                 <Title text={answer.title} />
                 {answer.subtitle && <p className="subtitle">{answer.subtitle}</p>}
-                <p className="answer-text">{answer.text}</p>
+                <p className="answer-text" dangerouslySetInnerHTML={{__html: answer.text}}/>
                 <div className="answer-recapAndImage">
                     <Images
                         sources={answer.images}
