@@ -32,6 +32,6 @@
     fill: white;
 }
 
-.backBtn:hover #arrow {
+.backBtn:hover:not(:focus) #arrow, .backBtn:active #arrow {
     fill: var(--color-orange);
 }

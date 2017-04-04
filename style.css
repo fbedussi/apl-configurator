@@ -246,7 +246,7 @@ progress::-moz-progress-bar {
     fill: white;
 }
 
-.backBtn:hover #arrow {
+.backBtn:hover:not(:focus) #arrow, .backBtn:active #arrow {
     fill: #ff8800;
 }
 
