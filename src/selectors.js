@@ -53,3 +53,7 @@ export function getRequestSuccess(state) {
 export function getCurrentLanguage(state) {
     return state.currentLanguage;
 }
+
+export function getCurrentAnswer(state) {
+    return state.answers.filter(answer => answer.id === state.currentNode.answerId)[0];
+}

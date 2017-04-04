@@ -1,7 +1,10 @@
 .requestNotification {
     flex: 1;
-    flex-direction: column;
-    justify-content: center;
+    width: 100%;
+
+    & .linkHome {
+        margin: 5em 0;
+    }
 }
 
 .requestNotification-sentWrapper, .requestNotification-successWrapper, .requestNotification-errorWrapper {

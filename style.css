@@ -151,8 +151,8 @@ progress::-moz-progress-bar {
     font-size: 80%;
 }
 
-.question-optionBtn:first-child {
-    margin-right: 1em;
+.question-optionBtn {
+    margin: 1em;
 }
 
 .answerWrapper {
@@ -379,6 +379,31 @@ progress::-moz-progress-bar {
     .form-reason-option {
         display: inline-block;
     }
+}
+
+.requestNotification {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    width: 100%
+}
+
+.requestNotification .linkHome {
+    margin: 5em 0;
+}
+
+.requestNotification-sentWrapper, .requestNotification-successWrapper, .requestNotification-errorWrapper {
+    margin: 5em 0 3em;
+}
+
+.requestNotification-thanks {
+    font-size: 200%;
+    margin-bottom: 0.5em;
+}
+
+.requestNotification-success, .requestNotification-error {
+    font-size: 150%;
+    margin-bottom: 0.5em;    
 }
 
 .footer {

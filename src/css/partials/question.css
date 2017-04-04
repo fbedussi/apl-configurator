@@ -8,8 +8,8 @@
     font-size: 80%;
 }
 
-.question-optionBtn:first-child {
-    margin-right: 1em;
+.question-optionBtn {
+    margin: 1em;
 }
 
 .answerWrapper {

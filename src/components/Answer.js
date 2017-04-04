@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getLabels, getCurrentNode, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions } from '../selectors';
+import { getLabels, getCurrentNode, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions, getCurrentAnswer } from '../selectors';
 import { goBack, toggleForm } from '../actions';
 
 import Title from './Title';
@@ -19,7 +19,8 @@ const mapStateToProps = (state) => ({
     answersHistory: getAnswersHistory(state),
     answers: getAnswers(state),
     questions: getQuestions(state),
-    showForm: getShowForm(state)
+    showForm: getShowForm(state),
+    answer: getCurrentAnswer(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,16 +30,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Answer extends React.Component {
     render() {
-        var answer = this.props.answers.filter(answer => answer.id === this.props.currentNode.answerId)[0];
-        
         return (
             <div className="slideInner">
-                <Title text={answer.title} />
-                {answer.subtitle && <p className="subtitle">{answer.subtitle}</p>}
-                <p className="answer-text" dangerouslySetInnerHTML={{__html: answer.text}}/>
+                <Title text={this.props.answer.title} />
+                {this.props.answer.subtitle && <p className="subtitle">{this.props.answer.subtitle}</p>}
+                <p className="answer-text" dangerouslySetInnerHTML={{__html: this.props.answer.text}}/>
                 <div className="answer-recapAndImage">
                     <Images
-                        sources={answer.images}
+                        sources={this.props.answer.images}
                     />
                     <Recap
                         questions={this.props.questions}
@@ -48,7 +47,8 @@ class Answer extends React.Component {
                     />
                 </div>
                 <Form
-                    showForm={this.props.showForm} 
+                    //showForm={this.props.showForm} 
+                    //solutionName={answer.title + ' - ' + answer.subtitle}
                 />
                 
                 <QuotationButton
