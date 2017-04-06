@@ -18,5 +18,6 @@ function run() {
                </Provider>, document.getElementById('app'));
 }
 //run();
+
 store.subscribe(run);
 store.dispatch(init());

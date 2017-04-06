@@ -52,21 +52,21 @@
 }
 
 .fade-leave {
-    transition: opacity 2.5s; 
     opacity: 1;    
 }
 
 .fade-leave.fade-leave-active {
+    transition: opacity 0.25s; 
       opacity: 0;
 }
 
 .fade-enter {
     opacity: 0;    
     position: absolute;
-    transition: opacity 2.5s 2.5s;
 }
 
 .fade-enter.fade-enter-active {
+    transition: opacity 0.25s;
     opacity: 1;
 }
 

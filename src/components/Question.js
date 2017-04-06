@@ -11,7 +11,7 @@ import Back from './Back';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
-    currentNode: getCurrentNode(state),
+    //currentNode: getCurrentNode(state),
     questions: getQuestions(state),
     breadcrumbs: getBreadcrumbs(state)
 });
@@ -26,6 +26,7 @@ export class Question extends React.Component {
         var question = this.props.questions.filter(question => question.id === this.props.currentNode.questionId)[0];
         
         return (
+            
             <div className="slideInner">
                 <Title currentNode={question.title} />
                 <p className="text question-text" dangerouslySetInnerHTML={{__html: question.text}} />
