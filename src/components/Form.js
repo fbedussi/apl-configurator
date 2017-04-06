@@ -4,35 +4,36 @@ import { connect } from 'react-redux';
 import { getLabels, getShowForm, getCurrentAnswer } from '../selectors';
 import { submitForm } from '../actions';
 
-import Input from './Input';
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     labels: getLabels(state),
     showForm: getShowForm(state),
     answer: getCurrentAnswer(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    submitForm: (data) => dispatch(submitForm(data))
-})
+const mapDispatchToProps = dispatch => ({
+    submitForm: data => dispatch(submitForm(data))
+});
 
 class Form extends React.Component {
     handleSubmit(e) {
+        var form;
+        var data;
+
         e.preventDefault();
 
-        var form = e.target;
-        var data = new FormData(form);
+        form = e.target;
+        data = new FormData(form);
 
         this.props.submitForm(data);
     }
 
     render() {
-        return <form onSubmit={(e) => this.handleSubmit(e)}
+        return <form onSubmit={e => this.handleSubmit(e)}
             className={`quotation-form ${this.props.showForm ? 'show' : 'hide'}`}
             name="contactForm"
         >
             <p className="form-mandatory">{this.props.labels.mandatory}</p>
-            <input id="solution" name="solution" type="hidden"  value={this.props.answer.subtitle.length? this.props.answer.title + ' - ' + this.props.answer.subtitle : this.props.answer.title}/>
+            <input id="solution" name="solution" type="hidden" value={this.props.answer.subtitle.length ? this.props.answer.title + ' - ' + this.props.answer.subtitle : this.props.answer.title}/>
             {[{
                 labelText: this.props.labels.name,
                 name: 'name',
@@ -96,7 +97,7 @@ class Form extends React.Component {
             </label>
 
             <button className="ctaBtn form-submit" type="submit">{this.props.labels.submit}</button>
-        </form>
+        </form>;
     }
 }
 

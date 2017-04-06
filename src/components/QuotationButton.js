@@ -1,6 +1,4 @@
-import React from 'react';
-
-const QuotationButton = ({show, text, clickHandler}) => {
+const QuotationButton = ({ show, text, clickHandler }) => {
     if (!show) {
         return null;
     }
@@ -10,7 +8,7 @@ const QuotationButton = ({show, text, clickHandler}) => {
             onClick={clickHandler}
         >
             {text}
-        </button>
-}
+        </button>;
+};
 
 export default QuotationButton;
