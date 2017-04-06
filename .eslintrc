@@ -1,6 +1,10 @@
 {
   "parser": "babel-eslint",
   "rules": {
+      "indent": ["error", 4],
+      "linebreak-style": "off",
+      "no-var": "off",
+      "prefer-template": "off"
   },
   "extends": ["airbnb-base"]
 }
