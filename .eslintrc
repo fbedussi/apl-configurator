@@ -13,6 +13,10 @@
     }
   },
   "rules": {
+      "max-len": ["warn", 120],
+      "spaced-comment": [0],
+      "func-names": ["error", "never"],
+      "react/jsx-uses-react": [2],
       "react/jsx-uses-vars": [2],
       "indent": ["error", 4],
       "linebreak-style": "off",
