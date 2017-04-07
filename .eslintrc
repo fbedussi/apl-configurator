@@ -3,12 +3,24 @@
   "env": {
         "browser": true
   },
+  "extends": ["airbnb-base"],
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
+      "react/jsx-uses-vars": [2],
       "indent": ["error", 4],
       "linebreak-style": "off",
       "no-var": "off",
       "prefer-template": "off",
-      "comma-dangle": "off"
-  },
-  "extends": ["airbnb-base"]
+      "comma-dangle": "off",
+      "arrow-body-style": ["off", "never"],
+      "object-curly-spacing": "off",
+      "arrow-parens": ["off", "always"]
+  }
 }
