@@ -1,6 +1,3 @@
-//import texts from '../texts.json';
-import {getCurrentNode} from './selectors';
-
 function depthOf(obj) {
 	var level = 0;
 	Object.keys(obj).forEach(key => {
@@ -62,18 +59,18 @@ export default function reducer(state = {
 			});
 
 		case 'TOGGLE_FORM':
-			return Object.assign({}, state, {showForm: !state.showForm});
+			return Object.assign({}, state, { showForm: !state.showForm });
 
 		case 'REQUEST_SENT':
-			return Object.assign({}, state, {requestStatus: 'sent'});
-		
+			return Object.assign({}, state, { requestStatus: 'sent' });
+
 		case 'REQUEST_SUCCESS':
-			return Object.assign({}, state, {requestStatus: 'success'});
-		
-		case 'REQUEST_ERROR':
-			return Object.assign({}, state, {requestStatus: 'error'});
-		
-		default:
-			return state;
-	}
+			return Object.assign({}, state, { requestStatus: 'success' });
+
+        case 'REQUEST_ERROR':
+            return Object.assign({}, state, { requestStatus: 'error' });
+
+        default:
+            return state;
+    }
 }

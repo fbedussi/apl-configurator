@@ -8,7 +8,7 @@ const Back = ({ show, label, clickHandler }) => {
     return <div className="backWrapper">
             <button className="backBtn" onClick={clickHandler}>
             <span className="button-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 29.57144 29.57144" 
+                <svg xmlns="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 29.57144 29.57144"
                     height="29.571" width="29.571">
                     <g transform="translate(153.57 -600.29)" id="layer1" strokeLinecap="round">
                         <circle r="14.286" cy="615.076" cx="-138.786" id="circle" fill="gray" strokeWidth="0" />
@@ -18,7 +18,7 @@ const Back = ({ show, label, clickHandler }) => {
             </span>
             <span className="button-label">{label}</span>
         </button>
-    </div>
-}
+    </div>;
+};
 
 export default Back;

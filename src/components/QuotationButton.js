@@ -3,7 +3,7 @@ const QuotationButton = ({ show, text, clickHandler }) => {
         return null;
     }
 
-    return <button 
+    return <button
             className={'quotation-btn ctaBtn ctaBtn--inverse'}
             onClick={clickHandler}
         >

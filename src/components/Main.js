@@ -5,7 +5,6 @@ import {
     getSteps, getStepsLeft, getCurrentNode, getLabels,
     getGoingBack, getRequestStatus
 } from '../selectors';
-import { parseAnswer, goBack, toggleForm } from '../actions';
 
 import Slide from './Slide';
 
@@ -18,8 +17,8 @@ const mapStateToProps = (state) => ({
     currentNode: getCurrentNode(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-})
+const mapDispatchToProps = () => ({
+});
 
 class Main extends React.Component {
     render() {
@@ -30,7 +29,7 @@ class Main extends React.Component {
         return (
             <div className="wrapper main-wrapper">
                 <div className="progressWrapper">
-                    <span className="progressLabel">{this.props.labels["configurator"]}</span>
+                    <span className="progressLabel">{this.props.labels.configurator}</span>
                     <progress className="progressBar" value={this.props.steps - this.props.stepsLeft} max={this.props.steps}></progress>
                 </div>
                 <div className={`workarea ${this.props.goingBack ? 'back' : ''} ${this.props.currentNode.questionId ? 'question' : 'answer'}`}>
@@ -39,6 +38,6 @@ class Main extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

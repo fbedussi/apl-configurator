@@ -11,9 +11,7 @@ const mapStateToProps = (state) => ({
     currentNode: getCurrentNode(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-})
+const mapDispatchToProps = () => ({});
 
 class Slide extends React.Component {
     render() {
@@ -34,6 +32,6 @@ class Slide extends React.Component {
             </div>
         );*/
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slide);

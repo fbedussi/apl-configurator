@@ -5,7 +5,6 @@ function getAnswerLabel(question, answerKey) {
 }
 
 const Recap = ({ labels, breadcrumbs, answersHistory, questions }) => {
-    
     return <div className="recap">
         <table className="recap-table">
             <thead className="recap-head">
@@ -27,7 +26,7 @@ const Recap = ({ labels, breadcrumbs, answersHistory, questions }) => {
                 })}
             </tbody>
         </table>
-    </div>
-}
+    </div>;
+};
 
 export default Recap;

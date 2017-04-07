@@ -13,8 +13,8 @@ const mapStateToProps = (state) => ({
     requestStatus: getRequestStatus(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-})
+const mapDispatchToProps = () => ({
+});
 
 class App extends React.Component {
     render() {
@@ -44,6 +44,6 @@ class App extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

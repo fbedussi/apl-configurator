@@ -3,7 +3,6 @@ import React from 'react';
 import LinkHome from './LinkHome';
 
 const RequestNotification = ({labels, requestStatus}) => {
-
     if (requestStatus === 'unsent') {
         return null;
     }

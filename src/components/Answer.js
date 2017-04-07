@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getLabels, getCurrentNode, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions, getCurrentAnswer } from '../selectors';
+import { getLabels, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions } from '../selectors';
 import { goBack, toggleForm } from '../actions';
 
 import Title from './Title';
@@ -26,11 +26,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     goBack: (currentNode) => dispatch(goBack(currentNode)),
     toggleForm: () => dispatch(toggleForm())
-})
+});
 
 class Answer extends React.Component {
     render() {
-        var answer = this.props.answers.filter(answer => answer.id === this.props.currentNode.answerId)[0];
+        var answer = this.props.answers.filter(answer =>
+            answer.id === this.props.currentNode.answerId)[0];
 
         return (
             <div className="slideInner">
@@ -49,26 +50,26 @@ class Answer extends React.Component {
                     />
                 </div>
                 <Form
-                    //showForm={this.props.showForm} 
+                    //showForm={this.props.showForm}
                     //solutionName={answer.title + ' - ' + answer.subtitle}
                 />
-                
+
                 <QuotationButton
                     show={!this.props.showForm}
                     text={this.props.labels.quotationBtn}
                     clickHandler={() => this.props.toggleForm()}
                 />
-                
+
                 <Back
                     show={Boolean(this.props.breadcrumbs.length)}
-                    label={this.props.labels["back"]}
+                    label={this.props.labels.back}
                     clickHandler={() =>
                         this.props.goBack(this.props.currentNode)
                     }
-                />                
+                />
             </div>
         );
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Answer);
