@@ -15,12 +15,12 @@ const Recap = ({ labels, breadcrumbs, answersHistory, questions }) => {
             </thead>
             <tbody className="recap-body">
                 {breadcrumbs.map((node, i) => {
-                    var question = questions.filter(question => question.id === node.questionId)[0];
+                    var currentQuestion = questions.filter(question => question.id === node.questionId)[0];
 
                     return <tr key={i}>
-                            <td dangerouslySetInnerHTML={{__html: question.text}}/>
+                            <td dangerouslySetInnerHTML={{__html: currentQuestion.text}}/>
                             <td>
-                                {getAnswerLabel(question, answersHistory[i])}
+                                {getAnswerLabel(currentQuestion, answersHistory[i])}
                             </td>
                         </tr>;
                 })}

@@ -26,13 +26,21 @@ class Main extends React.Component {
             return null;
         }
 
+        const className = `workarea ${this.props.goingBack ? 'back' : ''} ${this.props.currentNode.questionId ? 'question' : 'answer'}`;
+
         return (
             <div className="wrapper main-wrapper">
                 <div className="progressWrapper">
                     <span className="progressLabel">{this.props.labels.configurator}</span>
-                    <progress className="progressBar" value={this.props.steps - this.props.stepsLeft} max={this.props.steps}></progress>
+                    <progress
+                        className="progressBar"
+                        value={this.props.steps - this.props.stepsLeft}
+                        max={this.props.steps}>
+                    </progress>
                 </div>
-                <div className={`workarea ${this.props.goingBack ? 'back' : ''} ${this.props.currentNode.questionId ? 'question' : 'answer'}`}>
+                <div
+                    className={className}
+                >
                     <Slide />
                 </div>
             </div>

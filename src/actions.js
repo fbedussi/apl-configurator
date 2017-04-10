@@ -10,11 +10,13 @@ export function init() {
             var OK = 200; // status 200 is a successful return.
             if (xhr.readyState === DONE) {
                 if (xhr.status === OK) {
-                    let texts = JSON.parse(xhr.responseText);
+                    const texts = JSON.parse(xhr.responseText);
                     //console.log(xhr.responseText); // 'This is the returned text.'
                     dispatch({ type: 'SET_TEXTS', texts });
                 } else {
+                    /*eslint-disable */
                     console.log('ERROR: ' + xhr.status); // An error occurred during the request.
+                    /*eslint-enable */
                 }
             }
         };

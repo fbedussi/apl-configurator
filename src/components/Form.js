@@ -33,7 +33,13 @@ class Form extends React.Component {
             name="contactForm"
         >
             <p className="form-mandatory">{this.props.labels.mandatory}</p>
-            <input id="solution" name="solution" type="hidden" value={this.props.answer.subtitle.length ? this.props.answer.title + ' - ' + this.props.answer.subtitle : this.props.answer.title}/>
+            <input id="solution"
+                name="solution"
+                type="hidden"
+                value={this.props.answer.subtitle.length ?
+                    this.props.answer.title + ' - ' + this.props.answer.subtitle
+                    : this.props.answer.title}
+            />
             {[{
                 labelText: this.props.labels.name,
                 name: 'name',

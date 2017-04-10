@@ -30,17 +30,17 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Answer extends React.Component {
     render() {
-        var answer = this.props.answers.filter(answer =>
+        var currentAnswer = this.props.answers.filter(answer =>
             answer.id === this.props.currentNode.answerId)[0];
 
         return (
             <div className="slideInner">
-                <Title text={answer.title} />
-                {answer.subtitle && <p className="subtitle">{answer.subtitle}</p>}
-                <p className="answer-text" dangerouslySetInnerHTML={{__html: answer.text}}/>
+                <Title text={currentAnswer.title} />
+                {currentAnswer.subtitle && <p className="subtitle">{currentAnswer.subtitle}</p>}
+                <p className="answer-text" dangerouslySetInnerHTML={{__html: currentAnswer.text}}/>
                 <div className="answer-recapAndImage">
                     <Images
-                        sources={answer.images}
+                        sources={currentAnswer.images}
                     />
                     <Recap
                         questions={this.props.questions}

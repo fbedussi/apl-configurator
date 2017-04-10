@@ -1,8 +1,9 @@
+/*eslint-disable */
 function depthOf(obj) {
 	var level = 0;
 	Object.keys(obj).forEach(key => {
 		if (obj[key] && typeof obj[key] === 'object') {
-			var depth = depthOf(obj[key]) + 1;
+			const depth = depthOf(obj[key]) + 1;
 			level = Math.max(depth, level);
 		}
 	});
@@ -15,7 +16,7 @@ export default function reducer(state = {
 }, action) {
 	switch (action.type) {
 		case 'SET_TEXTS':
-			let steps = depthOf(action.texts.tree)
+			const steps = depthOf(action.texts.tree)
 			return Object.assign({}, state, {
 				currentLanguage: action.texts.languageIsoCode,
 				showForm: false,
@@ -33,10 +34,10 @@ export default function reducer(state = {
 			});
 
 		case 'PARSE_ANSWER':
-			let newNode = state.currentNode[action.value];
-			let newBreadcrumbs = state.breadcrumbs.concat(state.currentNode);
-			let newAnswersHistory = state.answersHistory.concat(action.value);
-			//console.log(newBreadcrumbs);
+			const newNode = state.currentNode[action.value];
+			const newBreadcrumbs = state.breadcrumbs.concat(state.currentNode);
+			const newAnswersHistory = state.answersHistory.concat(action.value);
+
 			return Object.assign({}, state, {
 				breadcrumbs: newBreadcrumbs,
 				answersHistory: newAnswersHistory,
@@ -47,7 +48,7 @@ export default function reducer(state = {
 
 
 		case 'GO_BACK':
-			let backNode = state.breadcrumbs.length >= 1 ? state.breadcrumbs[state.breadcrumbs.length - 1] : state.currentNode;
+			const backNode = state.breadcrumbs.length >= 1 ? state.breadcrumbs[state.breadcrumbs.length - 1] : state.currentNode;
 
 			//console.log(state.breadcrumbs.length >= 1? state.breadcrumbs.slice(0, state.breadcrumbs.length - 1) : []);
 			return Object.assign({}, state, {
@@ -67,10 +68,10 @@ export default function reducer(state = {
 		case 'REQUEST_SUCCESS':
 			return Object.assign({}, state, { requestStatus: 'success' });
 
-        case 'REQUEST_ERROR':
-            return Object.assign({}, state, { requestStatus: 'error' });
+		case 'REQUEST_ERROR':
+			return Object.assign({}, state, { requestStatus: 'error' });
 
-        default:
-            return state;
-    }
+		default:
+			return state;
+	}
 }

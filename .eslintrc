@@ -13,7 +13,7 @@
     }
   },
   "rules": {
-      "max-len": ["warn", 120],
+      "max-len": ["warn", 150],
       "spaced-comment": [0],
       "func-names": ["error", "never"],
       "react/jsx-uses-react": [2],
@@ -25,6 +25,8 @@
       "comma-dangle": "off",
       "arrow-body-style": ["off", "never"],
       "object-curly-spacing": "off",
-      "arrow-parens": ["off", "always"]
+      "arrow-parens": ["off", "always"],
+      "no-shadow": ["warn", {"builtinGlobals": false, "hoist": "functions", "allow": []}],
+      "import/no-named-as-default": ["off"]
   }
 }

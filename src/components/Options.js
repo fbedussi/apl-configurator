@@ -5,7 +5,12 @@ const Options = ({ nodeId, options, setAnswer }) => {
 
     return <div className="question-options">
         {options.map((label, i) => {
-            return <button key={i} id={nodeId + '_' + i} className="question-optionBtn ctaBtn" onClick={() => setAnswer(i)}>{label}</button>;
+            return <button
+                key={i}
+                id={nodeId + '_' + i}
+                className="question-optionBtn ctaBtn"
+                onClick={() => setAnswer(i)}>{label}
+            </button>;
         })
         }
     </div>;
