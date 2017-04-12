@@ -30,7 +30,7 @@ export default function reducer(state = {
 				questions: action.texts.questions,
 				tree: action.texts.tree,
 				currentNode: action.texts.tree,
-				requestStatus: 'unsent'
+				requestStatus: 'unsent' // || sent || success || error
 			});
 
 		case 'PARSE_ANSWER':
