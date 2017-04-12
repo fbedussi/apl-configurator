@@ -27,7 +27,8 @@
         "requestSuccess": "La vostra richiesta è stata inviata con successo",
         "requestError": "Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a <a mailto=\"info@d-power.com\">info@d-power.com</a>.",
         "followUp": "Vi contatteremo al più presto",
-        "linkHome": "Home page >"
+        "linkHome": "Home page >",
+        "homeUrl": "http://www.attraversamentipedonali.it/"
     },
     "answers": [
         {

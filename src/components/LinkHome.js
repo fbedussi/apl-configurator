@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LinkHome = ({text}) => {
-    return <a className="linkHome" href="http://www.attraversamentipedonali.it/">{text}</a>;
+const LinkHome = ({text, url}) => {
+    return <a className="linkHome" href={url}>{text}</a>;
 };
 
 export default LinkHome;
