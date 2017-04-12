@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Options = ({ nodeId, options, setAnswer }) => {
     if (!options) {
         return null;

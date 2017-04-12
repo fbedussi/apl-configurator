@@ -23,27 +23,27 @@ const mapDispatchToProps = (dispatch) => ({
 
 export class Question extends React.Component {
     render() {
-        var currentQuestion = this.props.questions.filter(question =>
-            question.id === this.props.currentNode.questionId)[0];
+        const { questions, currentNode, breadcrumbs, labels } = this.props;
+        const currentQuestion = questions.filter(question => question.id === currentNode.questionId)[0];
 
         return (
             <div className="slideInner">
-                <Title currentNode={currentQuestion.title} />
+                <Title text={currentQuestion.title} />
                 <p className="text question-text" dangerouslySetInnerHTML={{__html: currentQuestion.text}} />
 
                 <Images
                     sources={currentQuestion.images}
                 />
                 <Options
-                    nodeId={this.props.currentNode.id}
+                    nodeId={currentNode.id}
                     options={currentQuestion.options}
                     setAnswer={this.props.setAnswer}
                 />
                 <Back
-                    show={Boolean(this.props.breadcrumbs.length)}
-                    label={this.props.labels.back}
+                    show={Boolean(breadcrumbs.length)}
+                    label={labels.back}
                     clickHandler={() =>
-                        this.props.goBack(this.props.currentNode)
+                        this.props.goBack(currentNode)
                     }
                 />
             </div>

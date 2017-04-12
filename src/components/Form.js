@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getLabels, getShowForm, getCurrentAnswer } from '../selectors';
 import { submitForm } from '../actions';
 
+import Input from './Input';
+
 const mapStateToProps = state => ({
     labels: getLabels(state),
     showForm: getShowForm(state),
@@ -28,48 +30,50 @@ class Form extends React.Component {
     }
 
     render() {
+        const { showForm, labels, answer } = this.props;
+
         return <form onSubmit={e => this.handleSubmit(e)}
-            className={`quotation-form ${this.props.showForm ? 'show' : 'hide'}`}
+            className={`quotation-form ${showForm ? 'show' : 'hide'}`}
             name="contactForm"
         >
-            <p className="form-mandatory">{this.props.labels.mandatory}</p>
+            <p className="form-mandatory">{labels.mandatory}</p>
             <input id="solution"
                 name="solution"
                 type="hidden"
-                value={this.props.answer.subtitle.length ?
-                    this.props.answer.title + ' - ' + this.props.answer.subtitle
-                    : this.props.answer.title}
+                value={answer.subtitle.length ?
+                    answer.title + ' - ' + answer.subtitle
+                    : answer.title}
             />
             {[{
-                labelText: this.props.labels.name,
+                labelText: labels.name,
                 name: 'name',
                 minLength: 2
             }, {
-                labelText: this.props.labels.surname,
+                labelText: labels.surname,
                 name: 'surname',
                 minLength: 2
             }, {
-                labelText: this.props.labels.company,
+                labelText: labels.company,
                 name: 'company',
                 required: true,
                 minLength: 2
             }, {
-                labelText: this.props.labels.address,
+                labelText: labels.address,
                 name: 'address',
                 minLength: 5,
                 required: true
             }, {
-                labelText: this.props.labels.email,
+                labelText: labels.email,
                 name: 'email',
                 type: 'email',
                 required: true
             }, {
-                labelText: this.props.labels.phone,
+                labelText: labels.phone,
                 name: 'phone',
                 minLength: 5,
                 type: 'tel'
             }, {
-                labelText: this.props.labels.website,
+                labelText: labels.website,
                 name: 'website'
             }].map((input, i) => <Input
                 labelText={input.labelText}
@@ -81,28 +85,28 @@ class Form extends React.Component {
             />)}
 
             <div className="form-field">
-                <span className="form-label">{this.props.labels.reason}*</span>
+                <span className="form-label">{labels.reason}*</span>
                 <fieldset className="form-input form-reason">
                     <span className="form-reason-option">
                         <input required type="radio" name="reason" id="project" value="project"/>
-                        <label htmlFor="project">{this.props.labels.project}</label>
+                        <label htmlFor="project">{labels.project}</label>
                     </span>
                     <span className="form-reason-option">
                         <input required type="radio" name="reason" id="call" value="call"/>
-                        <label htmlFor="call">{this.props.labels.call}</label>
+                        <label htmlFor="call">{labels.call}</label>
                     </span>
                     <span className="form-reason-option">
                         <input required type="radio" name="reason" id="other" value="other"/>
-                        <label htmlFor="other">{this.props.labels.other}</label>
+                        <label htmlFor="other">{labels.other}</label>
                     </span>
                 </fieldset>
             </div>
             <label className="form-field">
-                <span className="form-label">{this.props.labels.msg}</span>
+                <span className="form-label">{labels.msg}</span>
                 <textarea className="form-msg form-input" id="msg" name="msg"></textarea>
             </label>
 
-            <button className="ctaBtn form-submit" type="submit">{this.props.labels.submit}</button>
+            <button className="ctaBtn form-submit" type="submit">{labels.submit}</button>
         </form>;
     }
 }

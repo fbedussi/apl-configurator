@@ -1,3 +1,5 @@
+import React from 'react';
+
 const QuotationButton = ({ show, text, clickHandler }) => {
     if (!show) {
         return null;

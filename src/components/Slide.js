@@ -15,22 +15,18 @@ const mapDispatchToProps = () => ({});
 
 class Slide extends React.Component {
     render() {
+        const { currentNode } = this.props;
         return (
              <ReactCSSTransitionGroup
                 transitionName="fade"
                 transitionEnterTimeout={250}
                 transitionLeaveTimeout={250}>
-                <div className="slide" key={this.props.currentNode.id}>
-                        {this.props.currentNode.questionId && <Question currentNode={this.props.currentNode}/>}
-                        {this.props.currentNode.answerId && <Answer currentNode={this.props.currentNode}/>}
+                <div className="slide" key={currentNode.id}>
+                        {currentNode.questionId && <Question currentNode={currentNode}/>}
+                        {currentNode.answerId && <Answer currentNode={currentNode}/>}
                 </div>
             </ReactCSSTransitionGroup>
         );
-        /*return (
-            <div className="slide">
-                    <SlideInner />
-            </div>
-        );*/
     }
 }
 

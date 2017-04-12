@@ -25,17 +25,18 @@ class Main extends React.Component {
         if (this.props.requestStatus !== 'unsent') {
             return null;
         }
+        const { goingBack, currentNode, labels, steps, stepsLeft } = this.props;
 
-        const className = `workarea ${this.props.goingBack ? 'back' : ''} ${this.props.currentNode.questionId ? 'question' : 'answer'}`;
+        const className = `workarea ${goingBack ? 'back' : ''} ${currentNode.questionId ? 'question' : 'answer'}`;
 
         return (
             <div className="wrapper main-wrapper">
                 <div className="progressWrapper">
-                    <span className="progressLabel">{this.props.labels.configurator}</span>
+                    <span className="progressLabel">{labels.configurator}</span>
                     <progress
                         className="progressBar"
-                        value={this.props.steps - this.props.stepsLeft}
-                        max={this.props.steps}>
+                        value={steps - stepsLeft}
+                        max={steps}>
                     </progress>
                 </div>
                 <div

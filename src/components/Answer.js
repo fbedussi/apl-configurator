@@ -30,8 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Answer extends React.Component {
     render() {
-        var currentAnswer = this.props.answers.filter(answer =>
-            answer.id === this.props.currentNode.answerId)[0];
+        const { answers, questions, labels, breadcrumbs, answersHistory, showForm, currentNode } = this.props;
+
+        const currentAnswer = answers.filter(answer => answer.id === currentNode.answerId)[0];
 
         return (
             <div className="slideInner">
@@ -43,28 +44,25 @@ class Answer extends React.Component {
                         sources={currentAnswer.images}
                     />
                     <Recap
-                        questions={this.props.questions}
-                        labels={this.props.labels}
-                        breadcrumbs={this.props.breadcrumbs}
-                        answersHistory={this.props.answersHistory}
+                        questions={questions}
+                        labels={labels}
+                        breadcrumbs={breadcrumbs}
+                        answersHistory={answersHistory}
                     />
                 </div>
-                <Form
-                    //showForm={this.props.showForm}
-                    //solutionName={answer.title + ' - ' + answer.subtitle}
-                />
+                <Form />
 
                 <QuotationButton
-                    show={!this.props.showForm}
-                    text={this.props.labels.quotationBtn}
+                    show={!showForm}
+                    text={labels.quotationBtn}
                     clickHandler={() => this.props.toggleForm()}
                 />
 
                 <Back
-                    show={Boolean(this.props.breadcrumbs.length)}
-                    label={this.props.labels.back}
+                    show={Boolean(breadcrumbs.length)}
+                    label={labels.back}
                     clickHandler={() =>
-                        this.props.goBack(this.props.currentNode)
+                        this.props.goBack(currentNode)
                     }
                 />
             </div>
