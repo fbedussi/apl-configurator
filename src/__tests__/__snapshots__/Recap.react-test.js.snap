@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recap component 1`] = `
+<div
+  className="recap"
+>
+  <table
+    className="recap-table"
+  >
+    <thead
+      className="recap-head"
+    >
+      <tr>
+        <th>
+          domanda
+        </th>
+        <th>
+          risposta
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className="recap-body"
+    >
+      <tr>
+        <td
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
+            }
+          }
+        />
+        <td>
+          sì
+        </td>
+      </tr>
+      <tr>
+        <td
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Il sistema deve essere dotato di dispositivo per l'interazione con il pedone?",
+            }
+          }
+        />
+        <td>
+          sì
+        </td>
+      </tr>
+      <tr>
+        <td
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "L'interazione con il pedone deve avvenire tramite pulsante touch (consigliata) o tramite sensore? <p class=\\"note\\"><small><em>Scarica le <a href=\\"http://www.attraversamentipedonali.it/pdf/come_installare_sensore_APL_smart.pdf\\" target=\\"_blank\\">istruzioni posizionamento sensore</a> per valutare se è possibile utilizzarlo nella tua installazione</em></small></p>",
+            }
+          }
+        />
+        <td>
+          Pulsante touch
+        </td>
+      </tr>
+      <tr>
+        <td
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Il limite di velocità consentito sulla strada è maggiore di 50km/h?",
+            }
+          }
+        />
+        <td>
+          sì
+        </td>
+      </tr>
+      <tr>
+        <td
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "L'alimentazione 230V è disponibile su entrambi i lati della strada?",
+            }
+          }
+        />
+        <td>
+          sì
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

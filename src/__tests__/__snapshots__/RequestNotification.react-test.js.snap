@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestNotification component - error 1`] = `
+<div
+  className="wrapper requestNotification"
+>
+  <div
+    className="requestNotification-sentWrapper hide"
+  >
+    <p
+      className="requestNotification-success"
+    >
+      Stiamo inviando la tua richiesta... attendi un attimo
+    </p>
+  </div>
+  <div
+    className="requestNotification-successWrapper hide"
+  >
+    <p
+      className="requestNotification-thanks"
+    >
+      Grazie!
+    </p>
+    <p
+      className="requestNotification-success"
+    >
+      La vostra richiesta è stata inviata con successo
+    </p>
+    <p
+      className="requestNotification-followUp"
+    >
+      Vi contatteremo al più presto
+    </p>
+  </div>
+  <div
+    className="requestNotification-errorWrapper show"
+  >
+    <p
+      className="requestNotification-error"
+    >
+      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
+    </p>
+  </div>
+  <a
+    className="linkHome"
+    href={undefined}
+  >
+    Home page &gt;
+  </a>
+</div>
+`;
+
+exports[`RequestNotification component - sent 1`] = `
+<div
+  className="wrapper requestNotification"
+>
+  <div
+    className="requestNotification-sentWrapper show"
+  >
+    <p
+      className="requestNotification-success"
+    >
+      Stiamo inviando la tua richiesta... attendi un attimo
+    </p>
+  </div>
+  <div
+    className="requestNotification-successWrapper hide"
+  >
+    <p
+      className="requestNotification-thanks"
+    >
+      Grazie!
+    </p>
+    <p
+      className="requestNotification-success"
+    >
+      La vostra richiesta è stata inviata con successo
+    </p>
+    <p
+      className="requestNotification-followUp"
+    >
+      Vi contatteremo al più presto
+    </p>
+  </div>
+  <div
+    className="requestNotification-errorWrapper hide"
+  >
+    <p
+      className="requestNotification-error"
+    >
+      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
+    </p>
+  </div>
+  <a
+    className="linkHome"
+    href={undefined}
+  >
+    Home page &gt;
+  </a>
+</div>
+`;
+
+exports[`RequestNotification component - success 1`] = `
+<div
+  className="wrapper requestNotification"
+>
+  <div
+    className="requestNotification-sentWrapper hide"
+  >
+    <p
+      className="requestNotification-success"
+    >
+      Stiamo inviando la tua richiesta... attendi un attimo
+    </p>
+  </div>
+  <div
+    className="requestNotification-successWrapper show"
+  >
+    <p
+      className="requestNotification-thanks"
+    >
+      Grazie!
+    </p>
+    <p
+      className="requestNotification-success"
+    >
+      La vostra richiesta è stata inviata con successo
+    </p>
+    <p
+      className="requestNotification-followUp"
+    >
+      Vi contatteremo al più presto
+    </p>
+  </div>
+  <div
+    className="requestNotification-errorWrapper hide"
+  >
+    <p
+      className="requestNotification-error"
+    >
+      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
+    </p>
+  </div>
+  <a
+    className="linkHome"
+    href={undefined}
+  >
+    Home page &gt;
+  </a>
+</div>
+`;
+
+exports[`RequestNotification component - unsent 1`] = `
+<div
+  className="wrapper requestNotification"
+>
+  <div
+    className="requestNotification-sentWrapper hide"
+  >
+    <p
+      className="requestNotification-success"
+    >
+      Stiamo inviando la tua richiesta... attendi un attimo
+    </p>
+  </div>
+  <div
+    className="requestNotification-successWrapper hide"
+  >
+    <p
+      className="requestNotification-thanks"
+    >
+      Grazie!
+    </p>
+    <p
+      className="requestNotification-success"
+    >
+      La vostra richiesta è stata inviata con successo
+    </p>
+    <p
+      className="requestNotification-followUp"
+    >
+      Vi contatteremo al più presto
+    </p>
+  </div>
+  <div
+    className="requestNotification-errorWrapper hide"
+  >
+    <p
+      className="requestNotification-error"
+    >
+      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
+    </p>
+  </div>
+  <a
+    className="linkHome"
+    href={undefined}
+  >
+    Home page &gt;
+  </a>
+</div>
+`;

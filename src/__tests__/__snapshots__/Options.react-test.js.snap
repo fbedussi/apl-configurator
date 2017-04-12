@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Options component 1`] = `
+<div
+  className="question-options"
+>
+  <button
+    className="question-optionBtn ctaBtn"
+    id="0_0"
+    onClick={[Function]}
+  >
+    no
+  </button>
+  <button
+    className="question-optionBtn ctaBtn"
+    id="0_1"
+    onClick={[Function]}
+  >
+    sì
+  </button>
+</div>
+`;

@@ -17,12 +17,14 @@ exports[`Question component 1`] = `
   >
     <button
       className="question-optionBtn ctaBtn"
+      id="1_0"
       onClick={[Function]}
     >
       no
     </button>
     <button
       className="question-optionBtn ctaBtn"
+      id="1_1"
       onClick={[Function]}
     >
       sì
