@@ -3,6 +3,13 @@
     margin-top: 2em;
     color: black;
     margin-bottom: 1em;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.showForm .quotation-form {
+    max-height: 10000px;
 }
 
 .form-mandatory {

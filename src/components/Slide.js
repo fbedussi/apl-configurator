@@ -17,10 +17,15 @@ class Slide extends React.Component {
     render() {
         const { currentNode } = this.props;
         return (
-            <div className="slide" key={currentNode.id}>
+            <ReactCSSTransitionGroup
+                transitionName="fade"
+                transitionEnterTimeout={250}
+                transitionLeaveTimeout={250}>
+                <div className="slide" key={currentNode.id}>
                         {currentNode.questionId && <Question currentNode={currentNode}/>}
                         {currentNode.answerId && <Answer currentNode={currentNode}/>}
                 </div>
+            </ReactCSSTransitionGroup>
         );
     }
 }

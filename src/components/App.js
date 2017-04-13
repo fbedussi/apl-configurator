@@ -17,6 +17,18 @@ const mapDispatchToProps = () => ({
 });
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        document.body.addEventListener('keyup', () => {
+            document.body.classList.add('keyboard');
+        });
+
+        document.body.addEventListener('click', () => {
+            document.body.classList.remove('keyboard');
+        });
+    }
+
     render() {
         const { currentLanguage, labels, requestStatus } = this.props;
         return (

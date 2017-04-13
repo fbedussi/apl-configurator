@@ -18,6 +18,14 @@ html, body, #app, .appInner {
     min-height: 100vh;
 }
 
+*:focus {
+    outline: none;
+}
+
+.keyboard *:focus {
+    box-shadow: 0 0 15px 3px var(--color-orange)
+}
+
 .appInner {
     display: flex;
     flex-direction: column;
@@ -82,16 +90,19 @@ html, body, #app, .appInner {
 
 .workarea {
     flex: 1;
-    background-color: var(--color-grey);
-    color: var(--color-darkGrey);
     text-align: center; 
     position: relative;
     overflow: hidden;
 }
 
 .slide {
-    padding: 2em 1em;
     width: 100%;
+}
+
+.slideInner {
+    background-color: var(--color-grey);
+    color: var(--color-darkGrey);
+    padding: 2em 1em;
 }
 
 input[type="radio"] {

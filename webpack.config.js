@@ -41,11 +41,11 @@ module.exports = {
     //     new webpack.optimize.UglifyJsPlugin({ minimize: true })
     // ],
     devtool: 'source-map',
-    resolve: {
-        alias: {
-            "react": "preact-compat",
-            "react-dom": "preact-compat",
-            "react-addons-css-transition-group": "preact-css-transition-group"
-        }
-    }
+    // resolve: {
+    //     alias: {
+    //         "react": "preact-compat",
+    //         "react-dom": "preact-compat",
+    //         "react-addons-css-transition-group": "preact-css-transition-group"
+    //     }
+    // }
 };

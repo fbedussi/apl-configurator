@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { getLabels, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions } from '../selectors';
-import { goBack, toggleForm } from '../actions';
+import { goBack, toggleForm, submitForm } from '../actions';
 
 import Title from './Title';
 import Back from './Back';
@@ -25,17 +25,20 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     goBack: (currentNode) => dispatch(goBack(currentNode)),
-    toggleForm: () => dispatch(toggleForm())
+    toggleForm: () => dispatch(toggleForm()),
+    submitForm: (data) => dispatch(submitForm(data))
 });
 
 class Answer extends React.Component {
     render() {
-        const { answers, questions, labels, breadcrumbs, answersHistory, showForm, currentNode } = this.props;
+        const { answers, questions, labels, breadcrumbs, answersHistory, showForm, submitForm, currentNode } = this.props;
 
         const currentAnswer = answers.filter(answer => answer.id === currentNode.answerId)[0];
 
+        const className = `slideInner answer ${showForm ? 'showForm' : 'hideForm'}`;
+
         return (
-            <div className="slideInner">
+            <div className={className}>
                 <Title text={currentAnswer.title} />
                 {currentAnswer.subtitle && <p className="subtitle">{currentAnswer.subtitle}</p>}
                 <p className="answer-text" dangerouslySetInnerHTML={{__html: currentAnswer.text}}/>
@@ -50,7 +53,21 @@ class Answer extends React.Component {
                         answersHistory={answersHistory}
                     />
                 </div>
-                <Form />
+                <Form
+                    labels={labels}
+                    answer={currentAnswer}
+                    submitHandler={(e) => {
+                        var form;
+                        var data;
+
+                        e.preventDefault();
+
+                        form = e.target;
+                        data = new FormData(form);
+
+                        submitForm(data);
+                    }}
+                />
 
                 <QuotationButton
                     show={!showForm}

@@ -1,46 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { getLabels, getShowForm, getCurrentAnswer } from '../selectors';
-import { submitForm } from '../actions';
 
 import Input from './Input';
 
-const mapStateToProps = state => ({
-    labels: getLabels(state),
-    showForm: getShowForm(state),
-    answer: getCurrentAnswer(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-    submitForm: data => dispatch(submitForm(data))
-});
-
-class Form extends React.Component {
-    handleSubmit(e) {
-        var form;
-        var data;
-
-        e.preventDefault();
-
-        form = e.target;
-        data = new FormData(form);
-
-        this.props.submitForm(data);
-    }
-
-    render() {
-        const { showForm, labels, answer } = this.props;
-
-        return <form onSubmit={e => this.handleSubmit(e)}
-            className={`quotation-form ${showForm ? 'show' : 'hide'}`}
+export default ({ labels, answer, submitHandler }) => <form onSubmit={e => submitHandler(e)}
+            className="quotation-form"
             name="contactForm"
         >
             <p className="form-mandatory">{labels.mandatory}</p>
             <input id="solution"
                 name="solution"
                 type="hidden"
-                value={answer.subtitle.length ?
+                value={answer.subtitle && answer.subtitle.length ?
                     answer.title + ' - ' + answer.subtitle
                     : answer.title}
             />
@@ -108,7 +78,3 @@ class Form extends React.Component {
 
             <button className="ctaBtn form-submit" type="submit">{labels.submit}</button>
         </form>;
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form);

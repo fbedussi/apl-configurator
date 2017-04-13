@@ -27,7 +27,7 @@ export class Question extends React.Component {
         const currentQuestion = questions.filter(question => question.id === currentNode.questionId)[0];
 
         return (
-            <div className="slideInner">
+            <div className="slideInner question">
                 <Title text={currentQuestion.title} />
                 <p className="text question-text" dangerouslySetInnerHTML={{__html: currentQuestion.text}} />
 

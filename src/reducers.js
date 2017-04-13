@@ -56,6 +56,7 @@ export default function reducer(state = {
 				answersHistory: state.answersHistory.length >= 1 ? state.answersHistory.slice(0, state.answersHistory.length - 1) : [],
 				currentNode: backNode,
 				goingBack: true,
+				showForm: false,
 				stepsLeft: depthOf(backNode)
 			});
 
