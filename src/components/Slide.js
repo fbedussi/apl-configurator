@@ -17,7 +17,15 @@ class Slide extends React.Component {
     render() {
         const { currentNode } = this.props;
         return (
-             <ReactCSSTransitionGroup
+            <div className="slide" key={currentNode.id}>
+                        {currentNode.questionId && <Question currentNode={currentNode}/>}
+                        {currentNode.answerId && <Answer currentNode={currentNode}/>}
+                </div>
+        );
+    }
+}
+
+/*<ReactCSSTransitionGroup
                 transitionName="fade"
                 transitionEnterTimeout={250}
                 transitionLeaveTimeout={250}>
@@ -25,9 +33,5 @@ class Slide extends React.Component {
                         {currentNode.questionId && <Question currentNode={currentNode}/>}
                         {currentNode.answerId && <Answer currentNode={currentNode}/>}
                 </div>
-            </ReactCSSTransitionGroup>
-        );
-    }
-}
-
+            </ReactCSSTransitionGroup>*/
 export default connect(mapStateToProps, mapDispatchToProps)(Slide);

@@ -1,0 +1,585 @@
+{
+  "languageIsoCode": "it",
+  "labels": {
+    "back": "back",
+    "configurator": "Configurator",
+    "logoAlt": "back to www.ledpedestriancrossing.com",
+    "logoDPowerAlt": "Attraversamento Pedonale Luminoso è un progetto D-power",
+    "mandatory": "* mandatory fields",
+    "name": "Name",
+    "surname": "Surname",
+    "company": "Company",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "E-mail",
+    "website": "Website",
+    "reason": "Reason for request",
+    "project": "Project",
+    "call": "Improvements for tenders ",
+    "other": "Other",
+    "msg": "Notes",
+    "submit": "Submit",
+    "quotationBtn": "How much does it cost?",
+    "question": "question",
+    "answer": "answer",
+    "thanks": "Thanks",
+    "requestSent": "We are sending your request... please wait",
+    "requestSuccess": "Your request was sent successfully",
+    "requestError": "There was an error processing your request, please try again later. If the problem persist please contact us <a mailto=\"info@d-power.com\">info@d-power.com</a>.",
+    "followUp": "We will contact you as soon as possible",
+    "linkHome": "Home page >",
+    "homeUrl": "http://www.ledpedestriancrossing.com"    
+  },
+  "answers": [
+    {
+      "id": 3,
+      "title": "APL Classic",
+      "subtitle": "solution 1 Stratos P",
+      "images": [
+        "APL_Classic_soluzione1_Stratos_P.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 4,
+      "title": "APL Classic",
+      "subtitle": "solution 2 Stratos P",
+      "images": [
+        "APL_Classic_soluzione2_Stratos_P.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 5,
+      "title": "APL Classic",
+      "subtitle": "solution 2 o 3 Stratos P",
+      "images": [
+        "APL_Classic_soluzione2_Stratos_P.jpg",
+        "APL_Classic_soluzione3_Stratos_P.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 6,
+      "title": "APL Smart",
+      "subtitle": "solution 1  with pedestrian sensor and push button",
+      "images": [
+        "APL_Smart_soluzione1_con_sensore_e_pulsante_meccanico.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 7,
+      "title": "APL Smart",
+      "subtitle": "solution 2 o 3 with pedestrian sensor and push button",
+      "images": [
+        "APL_Smart_soluzione2_con_sensore_e__pulsante_meccanico.jpg",
+        "APL_Smart_soluzione3_con_sensore_e_pulsante_meccanico.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 1,
+      "title": "APL Solar-active",
+      "subtitle": "with touch button",
+      "images": [
+        "APL_Solar-active_con_pulsante_touch.jpg"
+      ],
+      "text": "This solution is valid only for installation sites <strong style=\"text-transform: uppercase;\">without street lighting. pubblica</strong> Since this is a low powered light, the contrast between the surroundings and the crosswalk is enough to create a good contrast only in dark areas"
+    },
+    {
+      "id": 2,
+      "title": "APL Classic",
+      "subtitle": "solution 1 Stratos N",
+      "images": [
+        "APL_Classic_soluzione1_Stratos_N.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 8,
+      "title": "APL Smart",
+      "subtitle": "solution 1 with touch button",
+      "images": [
+        "APL_Smart_soluzione1_con_pulsante_touch.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 9,
+      "title": "APL Smart",
+      "subtitle": "solution 2 or 3 with touch button",
+      "images": [
+        "APL_Smart_soluzione2_con_pulsante_touch.jpg",
+        "APL_Smart_soluzione3_con_pulsante_touch.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 10,
+      "title": "APL Smart-wireless",
+      "subtitle": "solution 2 or 3 with touch button",
+      "images": [
+        "APL_Smart-wireless_soluzione2_con_pulsante_touch.jpg",
+        "APL_Smart-wireless_soluzione3_con_pulsante_touch.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 11,
+      "title": "APL Smart-wireless",
+      "subtitle": "solution 1 with touch button",
+      "images": [
+        "APL_Smart-wireless_soluzione1_con_pulsante_touch.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 12,
+      "title": "APL Smart-wireless",
+      "subtitle": "solution 2 or 3 with pedestrian sensor and push button ",
+      "images": [
+        "APL_Smart-wireless_soluzione2_con_sensore_e_pulsante_meccanico.jpg",
+        "APL_Smart-wireless_soluzione3_con_sensore_e_pulsante_meccanico.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 13,
+      "title": "APL Smart-wireless",
+      "subtitle": "solution 1 with pedestrian sensor and push button ",
+      "images": [
+        "APL_Smart-wireless_soluzione1_con_sensore_e_pulsante_meccanico.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 14,
+      "title": "APL Classic-ELV",
+      "subtitle": "solution 2 or 3 Stratos P",
+      "images": [
+        "APL_Classic-ELV_soluzione2_Stratos_P.jpg",
+        "APL_Classic-ELV_soluzione3_Stratos_P.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 15,
+      "title": "APL Classic-ELV",
+      "subtitle": "solution 1 Stratos P",
+      "images": [
+        "APL_Classic-ELV_soluzione1_Stratos_P.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 16,
+      "title": "APL Solar-active",
+      "subtitle": "with pedestrian sensor and push button ",
+      "images": [
+        "APL_Solar-active_con_sensore_e_pulsante_meccanico.jpg"
+      ],
+      "text": "This solution is valid only for installation sites <strong \nstyle=\"text-transform: uppercase;\">without street lighting. \npubblica</strong> Since this is a low powered light, the contrast \nbetween the surroundings and the crosswalk is enough to create a good \ncontrast only in dark areas"
+    },
+    {
+      "id": 17,
+      "title": "APL Classic",
+      "subtitle": "solution 3 Stratos P",
+      "images": [
+        "APL_Classic_soluzione3_Stratos_P.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 18,
+      "title": "APL Classic",
+      "subtitle": "solution 4",
+      "images": [
+        "APL_Classic_soluzione4.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 19,
+      "title": "APL Classic-ELV",
+      "subtitle": "solution 1 Stratos N",
+      "images": [
+        "APL_Classic-ELV_soluzione1_Stratos_N.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 20,
+      "title": "APL Classic-ELV",
+      "subtitle": "solution 2 Stratos N",
+      "images": [
+        "APL_Classic-ELV_soluzione2_Stratos_N.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 21,
+      "title": "APL Solar",
+      "subtitle": "",
+      "images": [
+        "APL_Solar.jpg"
+      ],
+      "text": "This solution is valid only for installation sites <strong \nstyle=\"text-transform: uppercase;\">without street lighting. \npubblica</strong> Since this is a low powered light, the contrast \nbetween the surroundings and the crosswalk is enough to create a good \ncontrast only in dark areas"
+    },
+    {
+      "id": 22,
+      "title": "APL Smart",
+      "subtitle": "solution 2 with pedestrian sensor and pu sensore e pulsante meccanico",
+      "images": [
+        "APL_Smart_soluzione2_con_sensore_e__pulsante_meccanico.jpg"
+      ],
+      "text": ""
+    },
+    {
+      "id": 3,
+      "title": "APL Classic",
+      "subtitle": "soluzione 2 Stratos N",
+      "images": [
+        "APL_Classic_soluzione2_Stratos_N.jpg"
+      ],
+      "text": ""
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "Is the 230V power going to be available at the installation site? ",
+      "options": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "id": 2,
+      "text": "Do you want the APL system to have any interaction with pedestrians?",
+      "options": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "id": 3,
+      "text": "Does the street already have public lighting or any other sort of artificial lighting (stores, illuminated signs, etc.)?",
+      "options": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "id": 4,
+      "text": "Is the frontal distance between the poles grater than 9m?",
+      "images": [
+        "9m.jpg"
+      ],
+      "options": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "id": 5,
+      "text": "Are there any obstacles where the poles are going to be installed that could reduce the visibility of the signs (trees, advertising panels, etc.)?",
+      "options": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "id": 6,
+      "text": "Do you prefer that the interactivity with pedestrian is done by touch button (recommended) or motion sensor? <p class=\"note\"><small><em>Please download the <a href=\"http://www.ledpedestriancrossing.com/pdf/how_to_install_APLsmart_safetycross_sensor.pdf\" target=\"_blank\">mounting instruction of the sensor </a> and verify that it can be used at your installation site </em></small></p>",
+      "options": [
+        "Sensor",
+        "Touch button"
+      ]
+    },
+    {
+      "id": 7,
+      "text": "Does the speed limit of the street exceed 50 km/h?",
+      "options": [
+        "no",
+        "yes"
+      ]
+    },
+    {
+      "id": 8,
+      "text": "Is the 230V power supply available at both sides of the road?",
+      "options": [
+        "no",
+        "yes"
+      ]
+    }
+  ],
+  "tree": {
+    "0": {
+      "0": {
+        "id": 3,
+        "questionId": null,
+        "answerId": 21
+      },
+      "1": {
+        "0": {
+          "id": 5,
+          "questionId": null,
+          "answerId": 16
+        },
+        "1": {
+          "id": 6,
+          "questionId": null,
+          "answerId": 1
+        },
+        "id": 4,
+        "questionId": 6,
+        "answerId": null
+      },
+      "id": 2,
+      "questionId": 2,
+      "answerId": null
+    },
+    "1": {
+      "0": {
+        "0": {
+          "0": {
+            "0": {
+              "0": {
+                "id": 12,
+                "questionId": null,
+                "answerId": 19
+              },
+              "1": {
+                "id": 13,
+                "questionId": null,
+                "answerId": 2
+              },
+              "id": 11,
+              "questionId": 8,
+              "answerId": null
+            },
+            "1": {
+              "0": {
+                "id": 15,
+                "questionId": null,
+                "answerId": 20
+              },
+              "1": {
+                "id": 16,
+                "questionId": null,
+                "answerId": 23
+              },
+              "id": 14,
+              "questionId": 8,
+              "answerId": null
+            },
+            "id": 10,
+            "questionId": 5,
+            "answerId": null
+          },
+          "1": {
+            "0": {
+              "0": {
+                "id": 19,
+                "questionId": null,
+                "answerId": 15
+              },
+              "1": {
+                "id": 20,
+                "questionId": null,
+                "answerId": 3
+              },
+              "id": 18,
+              "questionId": 8,
+              "answerId": null
+            },
+            "1": {
+              "0": {
+                "id": 22,
+                "questionId": null,
+                "answerId": 14
+              },
+              "1": {
+                "id": 23,
+                "questionId": null,
+                "answerId": 5
+              },
+              "id": 21,
+              "questionId": 8,
+              "answerId": null
+            },
+            "id": 17,
+            "questionId": 5,
+            "answerId": null
+          },
+          "id": 9,
+          "questionId": 4,
+          "images": [
+            "9m.jpg"
+          ],
+          "answerId": null
+        },
+        "1": {
+          "0": {
+            "0": {
+              "id": 26,
+              "questionId": null,
+              "answerId": 15
+            },
+            "1": {
+              "id": 27,
+              "questionId": null,
+              "answerId": 3
+            },
+            "id": 25,
+            "questionId": 8,
+            "answerId": null
+          },
+          "1": {
+            "0": {
+              "id": 29,
+              "questionId": null,
+              "answerId": 14
+            },
+            "1": {
+              "id": 30,
+              "questionId": null,
+              "answerId": 5
+            },
+            "id": 28,
+            "questionId": 8,
+            "answerId": null
+          },
+          "id": 24,
+          "questionId": 5,
+          "answerId": null
+        },
+        "id": 8,
+        "questionId": 3,
+        "answerId": null
+      },
+      "1": {
+        "0": {
+          "0": {
+            "0": {
+              "0": {
+                "id": 35,
+                "questionId": null,
+                "answerId": 6
+              },
+              "1": {
+                "id": 36,
+                "questionId": null,
+                "answerId": 13
+              },
+              "id": 34,
+              "questionId": 8,
+              "answerid": null
+            },
+            "1": {
+              "0": {
+                "id": 38,
+                "questionId": null,
+                "answerId": 7
+              },
+              "1": {
+                "id": 39,
+                "questionId": null,
+                "answerId": 12
+              },
+              "id": 37,
+              "questionId": 8,
+              "answerid": null
+            },
+            "id": 33,
+            "questionId": 5,
+            "answerId": null
+          },
+          "1": {
+            "0": {
+              "id": 41,
+              "questionId": null,
+              "answerId": 22
+            },
+            "1": {
+              "id": 42,
+              "questionId": null,
+              "answerId": 12
+            },
+            "id": 40,
+            "questionId": 8,
+            "answerid": null
+          },
+          "id": 32,
+          "questionId": 7,
+          "answerId": null
+        },
+        "1": {
+          "0": {
+            "0": {
+              "0": {
+                "id": 46,
+                "questionId": null,
+                "answerId": 8
+              },
+              "1": {
+                "id": 47,
+                "questionId": null,
+                "answerId": 11
+              },
+              "id": 45,
+              "questionId": 8,
+              "answerid": null
+            },
+            "1": {
+              "0": {
+                "id": 49,
+                "questionId": null,
+                "answerId": 9
+              },
+              "1": {
+                "id": 50,
+                "questionId": null,
+                "answerId": 10
+              },
+              "id": 48,
+              "questionId": 8,
+              "answerid": null
+            },
+            "id": 44,
+            "questionId": 5,
+            "answerId": null
+          },
+          "1": {
+            "0": {
+              "id": 52,
+              "questionId": null,
+              "answerId": 9
+            },
+            "1": {
+              "id": 53,
+              "questionId": null,
+              "answerId": 10
+            },
+            "id": 51,
+            "questionId": 8,
+            "answerid": null
+          },
+          "id": 43,
+          "questionId": 7,
+          "answerId": null
+        },
+        "id": 31,
+        "questionId": 6,
+        "answerId": null
+      },
+      "id": 7,
+      "questionId": 2,
+      "answerId": null
+    },
+    "id": 1,
+    "questionId": 1,
+    "answerId": null
+  }
+}
