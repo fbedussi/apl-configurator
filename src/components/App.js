@@ -34,7 +34,6 @@ class App extends React.Component {
         return (
             <div className="appInner" lang={currentLanguage}>
                 <header className="header">
-                    <p>pippo</p>
                     <div className="wrapper header-wrapper">
                         <a className="logoLink" href={labels.homeUrl}>
                             <img src="images/logo_apl-02.png" alt={labels.logoAlt} />

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import { getCurrentNode } from '../selectors';
