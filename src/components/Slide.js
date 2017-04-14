@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+//import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import { getCurrentNode } from '../selectors';
 
@@ -17,7 +18,7 @@ class Slide extends React.Component {
     render() {
         const { currentNode } = this.props;
         return (
-            <ReactCSSTransitionGroup
+            <CSSTransitionGroup
                 transitionName="fade"
                 transitionEnterTimeout={250}
                 transitionLeaveTimeout={250}>
@@ -25,10 +26,11 @@ class Slide extends React.Component {
                         {currentNode.questionId && <Question currentNode={currentNode}/>}
                         {currentNode.answerId && <Answer currentNode={currentNode}/>}
                 </div>
-            </ReactCSSTransitionGroup>
+            </CSSTransitionGroup>
         );
     }
 }
+
 
 /*<ReactCSSTransitionGroup
                 transitionName="fade"
