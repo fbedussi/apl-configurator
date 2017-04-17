@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component 1`] = `
+<div
+  className="form-field"
+>
+  <label
+    className="form-label"
+    htmlFor="company"
+  >
+    label text*
+  </label>
+  <input
+    className="form-input"
+    id="company"
+    minLength={undefined}
+    name="company"
+    required={true}
+    type="text"
+  />
+</div>
+`;

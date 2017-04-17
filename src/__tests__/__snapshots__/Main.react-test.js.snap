@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main component - error 1`] = `
+<div
+  className="wrapper main-wrapper"
+>
+  <div
+    className="progressWrapper"
+  >
+    <span
+      className="progressLabel"
+    >
+      Configuratore
+    </span>
+    <progress
+      className="progressBar"
+      max={6}
+      value={0}
+    />
+  </div>
+  <div
+    className="workarea "
+  >
+    <div
+      className="slide"
+    >
+      <div
+        className="slideInner question"
+      >
+        <p
+          className="text question-text"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
+            }
+          }
+        />
+        <div
+          className="question-options"
+        >
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_0"
+            onClick={[Function]}
+          >
+            no
+          </button>
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_1"
+            onClick={[Function]}
+          >
+            sì
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main component - sent 1`] = `
+<div
+  className="wrapper main-wrapper"
+>
+  <div
+    className="progressWrapper"
+  >
+    <span
+      className="progressLabel"
+    >
+      Configuratore
+    </span>
+    <progress
+      className="progressBar"
+      max={6}
+      value={0}
+    />
+  </div>
+  <div
+    className="workarea "
+  >
+    <div
+      className="slide"
+    >
+      <div
+        className="slideInner question"
+      >
+        <p
+          className="text question-text"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
+            }
+          }
+        />
+        <div
+          className="question-options"
+        >
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_0"
+            onClick={[Function]}
+          >
+            no
+          </button>
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_1"
+            onClick={[Function]}
+          >
+            sì
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main component - slide 1`] = `
+<div
+  className="wrapper main-wrapper"
+>
+  <div
+    className="progressWrapper"
+  >
+    <span
+      className="progressLabel"
+    >
+      Configuratore
+    </span>
+    <progress
+      className="progressBar"
+      max={6}
+      value={0}
+    />
+  </div>
+  <div
+    className="workarea "
+  >
+    <div
+      className="slide"
+    >
+      <div
+        className="slideInner question"
+      >
+        <p
+          className="text question-text"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
+            }
+          }
+        />
+        <div
+          className="question-options"
+        >
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_0"
+            onClick={[Function]}
+          >
+            no
+          </button>
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_1"
+            onClick={[Function]}
+          >
+            sì
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main component - success 1`] = `
+<div
+  className="wrapper main-wrapper"
+>
+  <div
+    className="progressWrapper"
+  >
+    <span
+      className="progressLabel"
+    >
+      Configuratore
+    </span>
+    <progress
+      className="progressBar"
+      max={6}
+      value={0}
+    />
+  </div>
+  <div
+    className="workarea "
+  >
+    <div
+      className="slide"
+    >
+      <div
+        className="slideInner question"
+      >
+        <p
+          className="text question-text"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
+            }
+          }
+        />
+        <div
+          className="question-options"
+        >
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_0"
+            onClick={[Function]}
+          >
+            no
+          </button>
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_1"
+            onClick={[Function]}
+          >
+            sì
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

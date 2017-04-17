@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Images component 1`] = `
+<div
+  className="imagesContainer"
+>
+  <img
+    className="image"
+    src="images/src1.jpg"
+  />
+  <img
+    className="image"
+    src="images/src2.jpg"
+  />
+</div>
+`;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Recap from '../components/Recap';
 import renderer from 'react-test-renderer';
-import texts from './apl-texts.json'
+import texts from '../fakeData//apl-texts.json'
 
 const { questions, labels } = texts;
 

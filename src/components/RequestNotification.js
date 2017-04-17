@@ -26,8 +26,7 @@ const RequestNotification = ({labels, requestStatus}) => {
                 </p>
             </div>
             <div className={`requestNotification-errorWrapper ${requestStatus === 'error' ? 'show' : 'hide'}`}>
-                <p className="requestNotification-error">
-                    {labels.requestError}
+                <p className="requestNotification-error" dangerouslySetInnerHTML={{__html: labels.requestError}}>
                 </p>
             </div>
             <LinkHome text={labels.linkHome} />

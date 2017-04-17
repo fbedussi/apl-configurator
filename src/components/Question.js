@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getBreadcrumbs, getLabels, getQuestions } from '../selectors';
+import { getBreadcrumbs, getLabels, getQuestions, getCurrentNode } from '../selectors';
 import { parseAnswer, goBack } from '../actions';
 
 import Title from './Title';
@@ -11,7 +11,7 @@ import Back from './Back';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
-    //currentNode: getCurrentNode(state),
+    currentNode: getCurrentNode(state),
     questions: getQuestions(state),
     breadcrumbs: getBreadcrumbs(state)
 });

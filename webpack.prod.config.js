@@ -1,7 +1,7 @@
 var webpack = require("webpack");
 
 module.exports = {
-    entry: './src/main.js',
+    entry: './src/index.js',
     output: {
         path: './',
         filename: 'script.min.js'
@@ -66,11 +66,10 @@ module.exports = {
         //new webpack.optimize.UglifyJsPlugin({ minimize: true })
     ],
     devtool: 'cheap-module-source-map',
-    // resolve: {
-    //     alias: {
-    //         "react": "preact-compat",
-    //         "react-dom": "preact-compat",
-    //         "react-transition-group": "preact-transition-group"
-    //     }
-    // }
+    resolve: {
+        alias: {
+            "react": "preact-compat",
+            "react-dom": "preact-compat"
+        }
+    }
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Question} from '../components/Question';
 import renderer from 'react-test-renderer';
-import texts from './apl-texts.json'
+import texts from '../fakeData/apl-texts.json'
 
 var labels = texts.labels;
 var questions = texts.questions;

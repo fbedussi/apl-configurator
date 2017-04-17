@@ -2,7 +2,7 @@
 
 exports[`Question component 1`] = `
 <div
-  className="slideInner"
+  className="slideInner question"
 >
   <p
     className="text question-text"

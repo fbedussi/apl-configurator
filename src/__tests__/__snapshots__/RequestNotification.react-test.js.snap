@@ -37,9 +37,12 @@ exports[`RequestNotification component - error 1`] = `
   >
     <p
       className="requestNotification-error"
-    >
-      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
-    </p>
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a <a mailto=\\"info@d-power.com\\">info@d-power.com</a>.",
+        }
+      }
+    />
   </div>
   <a
     className="linkHome"
@@ -87,9 +90,12 @@ exports[`RequestNotification component - sent 1`] = `
   >
     <p
       className="requestNotification-error"
-    >
-      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
-    </p>
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a <a mailto=\\"info@d-power.com\\">info@d-power.com</a>.",
+        }
+      }
+    />
   </div>
   <a
     className="linkHome"
@@ -137,9 +143,12 @@ exports[`RequestNotification component - success 1`] = `
   >
     <p
       className="requestNotification-error"
-    >
-      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
-    </p>
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a <a mailto=\\"info@d-power.com\\">info@d-power.com</a>.",
+        }
+      }
+    />
   </div>
   <a
     className="linkHome"
@@ -187,9 +196,12 @@ exports[`RequestNotification component - unsent 1`] = `
   >
     <p
       className="requestNotification-error"
-    >
-      Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a &lt;a mailto="info@d-power.com"&gt;info@d-power.com&lt;/a&gt;.
-    </p>
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Purtroppo non siamo riusciti ad inviare la vostra richiesta, riprovate tra qualche minuto. Se il problema persiste vi preghiamo di segnalarcelo scrivendo a <a mailto=\\"info@d-power.com\\">info@d-power.com</a>.",
+        }
+      }
+    />
   </div>
   <a
     className="linkHome"

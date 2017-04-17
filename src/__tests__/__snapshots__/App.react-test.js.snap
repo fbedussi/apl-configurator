@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component 1`] = `
+<div
+  className="appInner"
+  lang="it"
+>
+  <header
+    className="header"
+  >
+    <div
+      className="wrapper header-wrapper"
+    >
+      <a
+        className="logoLink"
+        href="http://www.attraversamentipedonali.it/"
+      >
+        <img
+          alt="torna al sito attraversamentipedonali.it"
+          src="images/logo_apl-02.png"
+        />
+      </a>
+      <a
+        className="linkHome"
+        href="http://www.attraversamentipedonali.it/"
+      >
+        Home page &gt;
+      </a>
+    </div>
+  </header>
+  <div
+    className="wrapper main-wrapper"
+  >
+    <div
+      className="progressWrapper"
+    >
+      <span
+        className="progressLabel"
+      >
+        Configuratore
+      </span>
+      <progress
+        className="progressBar"
+        max={6}
+        value={0}
+      />
+    </div>
+    <div
+      className="workarea "
+    >
+      <div
+        className="slide"
+      >
+        <div
+          className="slideInner question"
+        >
+          <p
+            className="text question-text"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
+              }
+            }
+          />
+          <div
+            className="question-options"
+          >
+            <button
+              className="question-optionBtn ctaBtn"
+              id="1_0"
+              onClick={[Function]}
+            >
+              no
+            </button>
+            <button
+              className="question-optionBtn ctaBtn"
+              id="1_1"
+              onClick={[Function]}
+            >
+              sì
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer
+    className="footer"
+  >
+    <div
+      className="wrapper footer-wrapper"
+    >
+      <div
+        className="footer-logoAndLink"
+      >
+        <img
+          alt={undefined}
+          src="images/d-power-logo_70.png"
+        />
+        <a
+          className="linkHome"
+          href="http://www.attraversamentipedonali.it/"
+        >
+          Home page &gt;
+        </a>
+      </div>
+      <small
+        className="copyright"
+      >
+        © Detas.com - All rights reserved
+      </small>
+    </div>
+  </footer>
+</div>
+`;

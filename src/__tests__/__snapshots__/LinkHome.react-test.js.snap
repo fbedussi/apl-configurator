@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkHone component 1`] = `
+<a
+  className="linkHome"
+  href="http://www.example.com"
+>
+  Link text
+</a>
+`;

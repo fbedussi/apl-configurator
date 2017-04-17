@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { getLabels, getBreadcrumbs, getAnswersHistory, getShowForm, getAnswers, getQuestions } from '../selectors';
+import { getLabels, getBreadcrumbs, getAnswersHistory, getShowForm, getQuestions, getCurrentAnswer, getCurrentNode } from '../selectors';
 import { goBack, toggleForm, submitForm } from '../actions';
 
 import Title from './Title';
@@ -14,13 +13,12 @@ import Form from './Form';
 
 const mapStateToProps = (state) => ({
     labels: getLabels(state),
-    //currentNode: getCurrentNode(state),
+    currentNode: getCurrentNode(state),
     breadcrumbs: getBreadcrumbs(state),
     answersHistory: getAnswersHistory(state),
-    answers: getAnswers(state),
     questions: getQuestions(state),
     showForm: getShowForm(state),
-    //answer: getCurrentAnswer(state)
+    currentAnswer: getCurrentAnswer(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -31,9 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Answer extends React.Component {
     render() {
-        const { answers, questions, labels, breadcrumbs, answersHistory, showForm, submitForm, currentNode } = this.props;
-
-        const currentAnswer = answers.filter(answer => answer.id === currentNode.answerId)[0];
+        const { currentAnswer, questions, labels, breadcrumbs, answersHistory, showForm, submitForm, currentNode } = this.props;
 
         const className = `slideInner answer ${showForm ? 'showForm' : 'hideForm'}`;
 
