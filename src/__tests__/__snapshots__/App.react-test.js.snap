@@ -46,40 +46,36 @@ exports[`App component 1`] = `
       />
     </div>
     <div
-      className="workarea "
+      className="slide "
     >
       <div
-        className="slide"
+        className="slideInner question"
       >
-        <div
-          className="slideInner question"
-        >
-          <p
-            className="text question-text"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
-              }
+        <p
+          className="text question-text"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Nel luogo di installazione è possibile collegare il sistema APL alla rete elettrica?",
             }
-          />
-          <div
-            className="question-options"
+          }
+        />
+        <div
+          className="question-options"
+        >
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_0"
+            onClick={[Function]}
           >
-            <button
-              className="question-optionBtn ctaBtn"
-              id="1_0"
-              onClick={[Function]}
-            >
-              no
-            </button>
-            <button
-              className="question-optionBtn ctaBtn"
-              id="1_1"
-              onClick={[Function]}
-            >
-              sì
-            </button>
-          </div>
+            no
+          </button>
+          <button
+            className="question-optionBtn ctaBtn"
+            id="1_1"
+            onClick={[Function]}
+          >
+            sì
+          </button>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 export function init() {
     return function (dispatch) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'apl-texts_eng.json');
+        xhr.open('GET', 'apl-texts.json');
         xhr.send(null);
         xhr.onreadystatechange = function () {
             var DONE = 4; // readyState 4 means the request is done.

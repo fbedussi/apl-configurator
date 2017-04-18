@@ -1,7 +1,7 @@
 @import "partials/reset.css";
 @import "partials/variables.css";
 @import "partials/progress.css";
-@import "partials/animations.css";
+/*@import "partials/animations.css";*/
 @import "partials/question.css";
 @import "partials/answer.css";
 @import "partials/backBtn.css";
@@ -16,6 +16,9 @@ html {
 
 html, body, #app, .appInner {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: museo-sans, sans-serif;
 }
 
 *:focus {
@@ -49,12 +52,6 @@ a {
     }
 }
 
-.appInner {
-    display: flex;
-    flex-direction: column;
-    font-family: museo-sans, sans-serif;
-}
-
 .hide {
     display: none !important;
 }
@@ -79,11 +76,9 @@ a {
 }
 
 .main-wrapper {
-    display: flex;
-    flex-direction: column;
     font-size: 1.5rem;
     margin-bottom: 2em;
-    flex: 1;
+    flex-grow: 1;
     width: 100%;
 }
 
@@ -91,15 +86,8 @@ a {
     height: 1.5em;
 }
 
-.workarea {
-    flex: 1;
-    text-align: center; 
-    position: relative;
-    overflow: hidden;
-}
-
 .slide {
-    width: 100%;
+    text-align: center; 
 }
 
 .slideInner {

@@ -1,3 +1,5 @@
+import '../polyfill';
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -28,7 +30,7 @@ export class Main extends React.Component {
         }
         const { goingBack, labels, steps, stepsLeft, currentNode } = this.props;
 
-        const className = `workarea ${goingBack ? 'back' : ''}`;
+        const className = `slide ${goingBack ? 'back' : ''}`;
 
         return (
             <div className="wrapper main-wrapper">
@@ -40,13 +42,9 @@ export class Main extends React.Component {
                         max={steps}>
                     </progress>
                 </div>
-                <div
-                    className={className}
-                >
-                    <div className="slide" key={currentNode.id}>
-                        {currentNode.questionId && <Question />}
-                        {currentNode.answerId && <Answer />}
-                    </div>
+                <div className={className} key={currentNode.id}>
+                    {currentNode.questionId && <Question />}
+                    {currentNode.answerId && <Answer />}
                 </div>
             </div>
         );
