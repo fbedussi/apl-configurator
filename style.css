@@ -385,14 +385,14 @@ html, body, #app, .appInner {
     box-shadow: 0 0 15px 3px #ff8800
 }
 
-a {
+.linkHome {
     text-decoration: none;
     color: currentColor;
     display: inline-block;
     position: relative
 }
 
-a::after {
+.linkHome::after {
     content: "";
     display: block;
     position: absolute;
@@ -405,7 +405,7 @@ a::after {
     transition: width 0.5s;
 }
 
-a:hover::after {
+.linkHome:hover::after {
     width: 100%;
 }
 

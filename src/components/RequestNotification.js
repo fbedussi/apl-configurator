@@ -29,7 +29,10 @@ const RequestNotification = ({labels, requestStatus}) => {
                 <p className="requestNotification-error" dangerouslySetInnerHTML={{__html: labels.requestError}}>
                 </p>
             </div>
-            <LinkHome text={labels.linkHome} />
+            <LinkHome 
+                text={labels.linkHome} 
+                url={labels.homeUrl}
+            />
         </div>
     );
 };
